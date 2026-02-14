@@ -1,44 +1,67 @@
 body {
-    background: linear-gradient(135deg, #8A8BFC, #B0B1EA);
-    height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #7A7BFC 0%, #9091EA 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .login-card {
-    border-radius: 40px;
-    background: linear-gradient(to bottom, #ffffff, #dcdcf2);
+    width: 100%;
+    max-width: 380px;
+    padding: 45px 35px;
+    
+    background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(138, 139, 252, 0.4) 100%); 
+    
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid #000000;;
+    border-radius: 60px 60px 70px 70px; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    
+    position: relative;
+    z-index: 10;
 }
 
-.btn-primary {
-    background-color: #8A8BFC;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #6f70e5;
-}
-
-.logo-title {
-    font-weight: bold;
-    color: #8A8BFC;
+.login-card h2 {
+    font-weight: 900;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 35px;
+    letter-spacing: 1.5px;
 }
 
 .form-control,
 .form-select {
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff !important;
+    border: none;
+    border-radius: 20px; 
+    padding: 14px 22px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12); 
+    margin-bottom: 15px;
 }
 
 .btn-primary {
-    background-color: #8A8BFC;
+    background: linear-gradient(180deg, #4A51C5 0%, #2E3494 100%);
+    color: white;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 10px 45px;
+    font-weight: 800;
+    display: block;
+    margin: 30px auto 0;
+    box-shadow: 0 8px 20px rgba(46, 52, 148, 0.4);
     transition: 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
 .btn-primary:hover {
-    background-color: #6f70e5;
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(46, 52, 148, 0.5);
 }
