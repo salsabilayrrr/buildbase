@@ -87,16 +87,17 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 
     <!-- FOOTER -->
     <footer class="footer-nav">
-    <div class="footer-content">
-        <div class="footer-item text-center">
-            <img src="../assets/img/home.png" class="footer-icon footer-home">
-            <div class="footer-text">Home</div>
+        <div class="footer-content">
+
+            <a href="qc.php" class="footer-item text-decoration-none">
+                <img src="../assets/img/home.png" class="footer-icon footer-home">
+                <div class="footer-text">Home</div>
+            </a>
+            <a href="../dashboard/qc/dokumenQc.php" class="footer-item text-decoration-none">
+                <img src="../assets/img/folder.png" class="footer-icon">
+                <div class="footer-text">Dokumen</div>
+            </a>
         </div>
-        <div class="footer-item text-center">
-            <img src="../assets/img/folder.png" class="footer-icon">
-            <div class="footer-text">Dokumen</div>
-        </div>
-    </div>
     </footer>
 
 </div>
