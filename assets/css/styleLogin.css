@@ -1,67 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(135deg, #7A7BFC 0%, #9091EA 100%);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: #f0f0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+}
+
+/* Frame iPhone 16 */
+.device-wrapper {
+    width: 393px;
+    height: 852px;
+    background: #1c1c1c; 
+    border-radius: 55px;
+    padding: 12px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+}
+
+.device-screen {
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg-desktop.jpg') no-repeat center top;
+    background-size: 100% auto;
+    border-radius: 43px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-section {
+    height: 65%; 
+    width: 100%;
 }
 
 .login-card {
-    width: 100%;
-    max-width: 380px;
-    padding: 45px 35px;
-    
-    background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.6) 0%, 
-                rgba(255, 255, 255, 0.2) 50%, 
-                rgba(138, 139, 252, 0.4) 100%); 
-    
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    
-    border: 1px solid #000000;;
-    border-radius: 60px 60px 70px 70px; 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    
-    position: relative;
+    flex: 1;
+    background: linear-gradient(180deg, #FFFFFF 0%, #DCDCF2 50%, #8A8BFC 100%);
+    border-radius: 50px 50px 0 0;
+    padding: 65px 30px;
+    border: 2px solid #adafb0; 
     z-index: 10;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.1);
 }
 
-.login-card h2 {
-    font-weight: 900;
-    color: #000000;
+.login-title {
     text-align: center;
-    margin-bottom: 35px;
-    letter-spacing: 1.5px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1c1c1c;
 }
 
-.form-control,
-.form-select {
-    background-color: #ffffff !important;
-    border: none;
-    border-radius: 20px; 
-    padding: 14px 22px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12); 
+.error-msg {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    font-weight: 600;
+}
+
+.input-group {
     margin-bottom: 15px;
 }
 
-.btn-primary {
-    background: linear-gradient(180deg, #4A51C5 0%, #2E3494 100%);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 45px;
-    font-weight: 800;
+.input-group label {
     display: block;
-    margin: 30px auto 0;
-    box-shadow: 0 8px 20px rgba(46, 52, 148, 0.4);
-    transition: 0.3s ease;
-    text-transform: uppercase;
-    font-size: 0.85rem;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-bottom: 5px;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(46, 52, 148, 0.5);
+.custom-input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 18px;
+    border: 1px solid #ced4da; 
+    background: #fff;
+    font-size: 14px;
+}
+
+.form-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0 25px 5px;
+    font-size: 13px;
+}
+
+.btn-login-submit {
+    width: 100%;
+    padding: 14px;
+    border-radius: 15px;
+    border: none;
+    background: #2D1A9C;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login-submit:active {
+    transform: scale(0.97);
 }
