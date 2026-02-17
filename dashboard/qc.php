@@ -7,52 +7,75 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard QC - BuildBase</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/styleDashboardQc.css">
+    <link rel="stylesheet" href="../assets/css/styleDashboardQc.css?v=<?php echo time(); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="app-container">
-    <nav class="navbar top-bar px-3">
-        <div class="d-flex align-items-center w-100 justify-content-between">
-            <div class="d-flex align-items-center">
-                <img src="../../assets/img/logo.jpg" class="logo-small me-2">
-                <span class="role-title">Dashboard</span>
+<div class="device-wrapper">
+    <div class="device-screen">
+        
+        <div class="dashboard-header">
+            <div class="header-left">
+                <img src="../assets/img/logo.jpg" class="header-logo">
+                <span class="header-title">Quality Control</span>
             </div>
-            <a href="../../logout.php" class="logout-pill">
-                <img src="../../assets/img/logout_icon.png" width="20"> Logout
+            <a href="../logout.php" class="btn-logout-pill">
+                <div class="logout-icon-box">
+                    <img src="../assets/img/logout.png" alt="icon">
+                </div>
+                <span class="logout-text">Logout</span>
             </a>
         </div>
-    </nav>
 
-    <main class="content-area p-4">
-        <div class="text-center mb-4">
-            <img src="../../assets/img/doc.png" width="80" class="mb-2">
-            <h4 class="title-main">Input Laporan Inspeksi<br>Produksi</h4>
-        </div>
-
-        <div class="d-grid mt-5">
-            <a href="input_qc.php" class="btn-start-report">
-                Mulai Buat Laporan
-            </a>
-        </div>
-    </main>
-
-    <footer class="footer-nav">
-        <div class="footer-content">
-            <a href="qc.php" class="footer-item active">
-                <img src="../../assets/img/home.png" class="footer-icon">
-            </a>
-            <div class="floating-nav-wrapper">
-                <a href="dokumenQc.php" class="nav-circle">
-                    <img src="../../assets/img/doc_white.png" width="30">
-                </a>
+        <div class="scroll-content">
+            <h1 class="greeting-text">Halo Quality Control</h1>
+            
+            <div class="search-section-wrapper">
+                <img src="../assets/img/avatar.png" class="avatar-floating">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" placeholder="Ketik Nama Dokumen...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button class="btn-filter">▼</button>
+                </div>
             </div>
-            <a href="dokumenQc.php" class="footer-item">
-                <img src="../../assets/img/folder.png" class="footer-icon">
-            </a>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="../assets/img/doc.png" class="doc-img">
+                    <p>Dokumen Proyek 1</p>
+                </div>
+                <div class="project-card">
+                    <img src="../assets/img/doc.png" class="doc-img">
+                    <p>Dokumen Proyek 2</p>
+                </div>
+                <div class="project-card">
+                    <img src="../assets/img/doc.png" class="doc-img">
+                    <p>Dokumen Proyek 3</p>
+                </div>
+                <div class="project-card">
+                    <img src="../assets/img/doc.png" class="doc-img">
+                    <p>Dokumen Proyek 4</p>
+                </div>
+            </div>
         </div>
-    </footer>
+
+        <div class="bottom-nav-full">
+            <div class="nav-item">
+                <div class="nav-home-circle">
+                    <img src="../assets/img/home.png" class="doc-img">
+                </div>
+            </div>
+            <div class="nav-item">
+            <a href="qc/dokumenQc.php">
+            <img src="../assets/img/folder.png" class="doc-img">
+        </a>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 </body>
