@@ -8,9 +8,35 @@ body {
     background: linear-gradient(135deg, #8A8BFC, #B0B1EA);
     padding: 12px 0;
 }
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
 
 .role-title {
-    color: white;
+    color: rgb(15, 15, 15);
     font-weight: 700;
     font-size: 18px;
 }
@@ -22,7 +48,7 @@ body {
 
 .form-card-qc {
     background-color: #B0B1EA;
-    border: 3px solid #32A0F1; 
+    border: 3px solid #C4B0EA; 
     border-radius: 40px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
@@ -49,49 +75,52 @@ body {
     transform: translateY(-2px);
 }
 
-.footer-nav {
+/* --- FOOTER NAV BASE --- */
+.bottom-nav-full {
+    background: #8A8BFC;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #8A8BFC, #B0B1EA);
-    padding: 10px 0;
-    z-index: 1000;
+    border-radius: 0;
 }
 
-.footer-content {
+/* Lingkaran Menonjol */
+.nav-folder-circle {
+    background: #4E5FE1;
+    width: 60px; /* Ukuran lingkaran sedikit diperkecil */
+    height: 60px;
+    border-radius: 50%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    gap: 230px;            
-    max-width: 600px; 
-    margin: 0 auto;   
+    border: 4px solid #8A8BFC;
+    margin-top: -40px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.footer-item:hover {
-    transform: translateY(-3px);
-}
-
-.footer-home:active {
-    transform: scale(0.95) !important;
-}
-.footer-item {
-    text-align: center;
-    transition: 0.3s;
-}
-
-.footer-icon {
-    width: 40px;
+/* KHUSUS: Memperkecil Ikon Folder di dalam lingkaran */
+.icon-nav-folder {
+    width: 25px !important; /* Ukuran ikon folder kecil */
     height: auto;
-    display: block;
-    margin: 0 auto 2px;
+    filter: brightness(0) invert(1); /* Membuat ikon putih jika aslinya hitam */
 }
-.footer-home {
-    width: 55px; 
+
+/* KHUSUS: Memperkecil Ikon Home */
+.icon-nav-home {
+    width: 22px !important; /* Ukuran ikon home lebih kecil agar proporsional */
+    height: auto;
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
 }
-.footer-text {
-    font-size: 12px;
-    color: white;
-    font-weight: 500;
+
+/* Menghilangkan gaya link standar */
+.nav-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }

@@ -69,9 +69,9 @@ session_start();
                 </div>
             </div>
             <div class="nav-item">
-            <a href="qc/dokumenQc.php">
-            <img src="../assets/img/folder.png" class="doc-img">
-        </a>
+                <a href="../qc/dokumenQc.php">
+                    <img src="../assets/img/folder.png" class="doc-img">
+                </a>
             </div>
         </div>
 
