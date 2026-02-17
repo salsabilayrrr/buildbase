@@ -85,39 +85,38 @@ body {
     align-items: center;
     position: fixed;
     bottom: 0;
-    border-radius: 0;
+    left: 0; 
+    z-index: 1000;
 }
 
-/* Lingkaran Menonjol */
 .nav-folder-circle {
     background: #4E5FE1;
-    width: 60px; /* Ukuran lingkaran sedikit diperkecil */
-    height: 60px;
+    width: 65px; 
+    height: 65px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 4px solid #8A8BFC;
-    margin-top: -40px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 5px solid #ffffff; 
+    margin-top: -45px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* KHUSUS: Memperkecil Ikon Folder di dalam lingkaran */
 .icon-nav-folder {
-    width: 25px !important; /* Ukuran ikon folder kecil */
+    width: 50px; 
     height: auto;
-    filter: brightness(0) invert(1); /* Membuat ikon putih jika aslinya hitam */
+    display: block;
+    filter: brightness(0) invert(1); 
 }
 
-/* KHUSUS: Memperkecil Ikon Home */
 .icon-nav-home {
-    width: 22px !important; /* Ukuran ikon home lebih kecil agar proporsional */
+    width: 70px !important; 
     height: auto;
-    opacity: 0.9;
-    filter: brightness(0) invert(1);
+    display: block;
+    filter: brightness(0) invert(1); 
+    opacity: 1;
 }
 
-/* Menghilangkan gaya link standar */
 .nav-item a {
     display: flex;
     align-items: center;

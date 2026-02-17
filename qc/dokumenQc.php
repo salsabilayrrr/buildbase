@@ -102,12 +102,12 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
         <div class="bottom-nav-full">
             <div class="nav-item">
                 <a href="../dashboard/qc.php">
-                    <img src="../assets/img/home.png" class="doc-img">
+                    <img src="../assets/img/home.png" class="icon-nav-home">
                 </a>
             </div>
             <div class="nav-item">
-                <div class="nav-folder-circle" class=".icon-nav-folder">
-                    <img src="../assets/img/folder.png" class="doc-img">
+                <div class="nav-folder-circle">
+                    <img src="../assets/img/folder.png" class="icon-nav-folder">
                 </div>
             </div>
         </div>

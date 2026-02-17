@@ -65,12 +65,12 @@ session_start();
         <div class="bottom-nav-full">
             <div class="nav-item">
                 <div class="nav-home-circle">
-                    <img src="../assets/img/home.png" class="doc-img">
+                    <img src="../assets/img/home.png" class="icon-nav-home">
                 </div>
             </div>
             <div class="nav-item">
                 <a href="../qc/dokumenQc.php">
-                    <img src="../assets/img/folder.png" class="doc-img">
+                    <img src="../assets/img/folder.png" class="icon-nav-folder">
                 </a>
             </div>
         </div>
