@@ -15,7 +15,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     <title>Input Laporan QC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../assets/css/styleInputQc.css">
+    <link rel="stylesheet" href="../assets/css/styleDokumenQc.css">
 </head>
 <body>
 
@@ -81,7 +81,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 
             <div class="mb-3">
                 <label class="form-label">Catatan Temuan :</label>
-                <textarea class="form-control custom-input" rows="4" placeholder="Tulis Detail Catatan"></textarea>
+                <input type="text" class="form-control custom-input" placeholder="Tulis Detail Catatan">
             </div>
 
             <div class="mb-3">
