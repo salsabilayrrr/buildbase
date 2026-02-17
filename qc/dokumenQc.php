@@ -98,12 +98,12 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 
 <footer class="footer-nav">
     <div class="footer-content">
-        <a href="../qc.php" class="footer-item text-decoration-none">
-            <img src="../../assets/img/home.png" class="footer-icon footer-home">
+        <a href="qc.php" class="footer-item text-decoration-none">
+            <img src="../assets/img/home.png" class="footer-icon footer-home">
             <div class="footer-text">Home</div>
         </a>
         <a href="dokumenQc.php" class="footer-item text-decoration-none">
-            <img src="../../assets/img/folder.png" class="footer-icon">
+            <img src="../assets/img/folder.png" class="footer-icon">
             <div class="footer-text">Dokumen</div>
         </a>
     </div>
