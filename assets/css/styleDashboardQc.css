@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: #e0e0e0;
+    background:#8A8BFC;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,10 +17,6 @@ body {
 .device-wrapper {
     width: 393px;
     height: 852px;
-    background: #1c1c1c;
-    border-radius: 55px;
-    padding: 12px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
 .device-screen {
