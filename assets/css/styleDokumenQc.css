@@ -1,0 +1,125 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.top-bar {
+    background: linear-gradient(135deg, #8A8BFC, #B0B1EA);
+    padding: 12px 0;
+}
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
+
+.role-title {
+    color: rgb(15, 15, 15);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.main-wrapper {
+    padding-bottom: 120px !important; 
+    min-height: calc(100vh - 70px);
+}
+
+.form-card-qc {
+    background-color: #B0B1EA;
+    border: 3px solid #C4B0EA; 
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.custom-input {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 15px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.btn-save-qc {
+    background-color: #2D1A9C;
+    color: white;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-save-qc:hover {
+    background-color: #1a0f63;
+    transform: translateY(-2px);
+}
+
+/* --- FOOTER NAV BASE --- */
+.bottom-nav-full {
+    background: #8A8BFC;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0; 
+    z-index: 1000;
+}
+
+.nav-folder-circle {
+    background: #4E5FE1;
+    width: 65px; 
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #ffffff; 
+    margin-top: -45px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.icon-nav-folder {
+    width: 50px; 
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1); 
+}
+
+.icon-nav-home {
+    width: 70px !important; 
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1); 
+    opacity: 1;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}

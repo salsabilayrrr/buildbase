@@ -15,25 +15,28 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     <title>Input Laporan QC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../assets/css/styleInputQc.css">
+    <link rel="stylesheet" href="../assets/css/styleDokumenQc.css">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg top-bar px-3">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            <img src="../../assets/img/logo.jpg" class="logo-small me-2" style="width: 60px !important; height: auto;">
+            <img src="../assets/img/logo.jpg" class="logo-small me-2" style="width: 60px !important; height: auto;">
             <span class="role-title">Quality Control</span>
         </div>
-        <a href="../../logout.php" class="btn btn-light btn-sm">
-            <i class="bi bi-box-arrow-right"></i> Logout
-        </a>
+        <a href="../logout.php" class="btn-logout-pill">
+                <div class="logout-icon-box">
+                    <img src="../assets/img/logout.png" alt="icon">
+                </div>
+                <span class="logout-text">Logout</span>
+            </a>
     </div>
 </nav>
 
 <main class="main-wrapper container py-4">
     <div class="text-center mb-3">
-        <img src="../../assets/img/doc.png" class="doc-header-icon" style="width: 80px;">
+        <img src="../assets/img/doc.png" class="doc-header-icon" style="width: 80px;">
     </div>
 
     <h4 class="text-center title-text mb-4">
@@ -81,7 +84,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 
             <div class="mb-3">
                 <label class="form-label">Catatan Temuan :</label>
-                <textarea class="form-control custom-input" rows="4" placeholder="Tulis Detail Catatan"></textarea>
+                <input type="text" class="form-control custom-input" placeholder="Tulis Detail Catatan">
             </div>
 
             <div class="mb-3">
@@ -96,18 +99,18 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     </div>
 </main>
 
-<footer class="footer-nav">
-    <div class="footer-content">
-        <a href="../qc.php" class="footer-item text-decoration-none">
-            <img src="../../assets/img/home.png" class="footer-icon footer-home">
-            <div class="footer-text">Home</div>
-        </a>
-        <a href="dokumenQc.php" class="footer-item text-decoration-none">
-            <img src="../../assets/img/folder.png" class="footer-icon">
-            <div class="footer-text">Dokumen</div>
-        </a>
-    </div>
-</footer>
+        <div class="bottom-nav-full">
+            <div class="nav-item">
+                <a href="../dashboard/qc.php">
+                    <img src="../assets/img/home.png" class="icon-nav-home">
+                </a>
+            </div>
+            <div class="nav-item">
+                <div class="nav-folder-circle">
+                    <img src="../assets/img/folder.png" class="icon-nav-folder">
+                </div>
+            </div>
+        </div>
 
 </body>
 </html>
