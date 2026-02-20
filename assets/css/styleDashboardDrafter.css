@@ -1,0 +1,172 @@
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Font Utama Roboto */
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f8f9fa; /* Background luar lebih terang agar shadow terlihat */
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: #8A8BFC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 0 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    width: 40px;
+    height: auto;
+}
+
+.header-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #000;
+}
+
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
+/* --- CONTENT AREA & SCROLL --- */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 15px 120px;
+}
+
+.greeting-text {
+    font-family: 'Pacifico', cursive;
+    color: #2D1A9C;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* --- TASK CONTAINER (Box per Kategori) --- */
+.task-container-main {
+    border: 1px solid #000;
+    border-radius: 0px; /* Sesuai figma cenderung kotak */
+    overflow: hidden;
+    background-color: #B0B1EA;
+    max-width: 450px;
+    margin: 0 auto 25px; /* Jarak antar box kategori */
+    box-shadow: 1px 1px 0px rgba(0,0,0,1); /* Shadow tegas hitam sesuai style retro figma */
+}
+
+.task-header-top {
+    background-color: #B0B1EA;
+    padding: 10px;
+    text-align: center;
+    font-weight: 900;
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.task-category-header {
+    background-color: transparent;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+}
+
+.task-card {
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    padding: 15px 12px;
+}
+
+.task-card:last-child { border-bottom: none; }
+
+.task-id { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+.task-status, .task-note { font-size: 11px; margin-bottom: 5px; color: #000; }
+
+.task-action {
+    text-decoration: none;
+    color: #000;
+    font-weight: 800;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.arrow { color: #ff0000; margin-left: auto; font-size: 18px; }
+
+/* --- FOOTER NAV --- */
+.bottom-nav-full {
+    background: #8A8BFC;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed; 
+    bottom: 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-home-circle {
+    background: #4E5FE1;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffffff; 
+    margin-top: -40px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.icon-nav-home { width: 55px !important; filter: brightness(0) invert(1); }
+.icon-nav-folder { width: 40px !important; filter: brightness(0) invert(1); opacity: 0.9; }
+.icon-nav-load { width: 70px !important; filter: brightness(0) invert(1); opacity: 0.9; }
+.icon-nav-rev { width: 60px !important; filter: brightness(0) invert(1); opacity: 0.9; }
+/* Scrollbar styling */
+.scroll-content::-webkit-scrollbar { width: 5px; }
+.scroll-content::-webkit-scrollbar-thumb { background: #8A8BFC; border-radius: 10px; }

@@ -19,20 +19,19 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg top-bar px-3">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center">
-            <img src="../assets/img/logo.jpg" class="logo-small me-2" style="width: 60px !important; height: auto;">
-            <span class="role-title">Quality Control</span>
-        </div>
-        <a href="../logout.php" class="btn-logout-pill">
-                <div class="logout-icon-box">
-                    <img src="../assets/img/logout.png" alt="icon">
-                </div>
-                <span class="logout-text">Logout</span>
-            </a>
+<div class="dashboard-header">
+    <div class="header-left">
+        <img src="../assets/img/logo.png" class="header-logo">
+        <span class="header-title">Quality Control</span>
     </div>
-</nav>
+    
+    <a href="../logout.php" class="btn-logout-pill">
+        <div class="logout-icon-box">
+            <img src="../assets/img/logout.png" alt="icon">
+        </div>
+        <span class="logout-text">Logout</span>
+    </a>
+</div>
 
 <main class="main-wrapper container py-4">
     <div class="text-center mb-3">
