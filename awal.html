@@ -9,26 +9,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 
-        body,
-        html {
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
             width: 100%;
-            font-family: 'Inter', sans-serif;
+            height: 100%;
             overflow: hidden;
+            height: -webkit-fill-available; 
         }
 
-        /* --- BACKGROUND IMAGE FULLSCREEN --- */
         .bg-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            /* Memanggil gambar login dari folder assets */
+            width: 105%;
+            height: 105%;
             background-image: url('assets/img/bg.png');
-            background-size: cover;
+            background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
             z-index: -1;
@@ -36,9 +33,8 @@
 
         /* Responsif untuk Smartphone */
         @media (max-width: 640px) {
-            .bg-container {
-                /* Kamu bisa ganti ke file yang lebih potrait jika ada */
-                background-position: center top;
+            .bg-full {
+                background-size: cover; 
             }
         }
 
@@ -90,7 +86,6 @@
             }
         }
 
-        /* Glassmorphism Effect untuk Konten (Opsional agar teks jelas) */
         .content-card {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -101,32 +96,32 @@
     </style>
 </head>
 
-<body class="flex flex-col items-center justify-center p-4">
+<body class="flex flex-col items-center justify-center">
 
     <div class="bg-container"></div>
 
-    <div class="flex flex-col items-center z-10">
-        <div class="flex flex-col items-center mb-6">
-            <img src="assets/img/logo.png" alt="BuildBase Logo" class="w-24 h-auto mb-2">
-            <h1 class="text-5xl font-[900] text-black tracking-tight">BuildBase</h1>
+    <div class="main-content z-10 w-full flex flex-col px-10">
+
+        <div class="flex flex-col items-start mb-4">
+            <img src="assets/img/logo.png" alt="BuildBase Logo" class="w-28 h-auto mb-3">
+            <h1 class="text-5xl font-[900] text-black tracking-tighter -ml-1.5">BuildBase</h1>
         </div>
 
-        <div class="w-72 md:w-96 h-auto mb-6">
-            <img src="assets/img/civil.png" alt="Engineer Illustration" class="w-full h-auto drop-shadow-2xl">
+        <div class="w-full flex justify-center -mt-16 mb-6">
+            <div class="w-72 md:w-96 h-auto">
+                <img src="assets/img/civil.png" alt="Engineer Illustration" class="w-full h-auto drop-shadow-2xl">
+            </div>
         </div>
 
-        <div class="loader-wrapper">
-            <div class="dot-main"></div>
-            <div class="dot-sub"></div>
+        <div class="flex flex-col items-center w-full">
+            <div class="loader-wrapper">
+                <div class="dot-main"></div>
+                <div class="dot-sub"></div>
+            </div>
         </div>
-
-        <p class="mt-4 text-gray-600 font-bold uppercase tracking-widest text-xs opacity-80">
-            System Loading...
-        </p>
     </div>
-
     <script>
-        // Redirect ke index.php setelah 15 detik
+        // Redirect otomatis setelah 15 detik
         setTimeout(() => {
             window.location.href = 'index.php';
         }, 15000);
