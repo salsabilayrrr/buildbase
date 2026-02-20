@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2026 at 09:20 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Waktu pembuatan: 20 Feb 2026 pada 05.36
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,15 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
---
--- Error reading structure for table buildbase_db.pelanggan: #1932 - Table 'buildbase_db.pelanggan' doesn't exist in engine
--- Error reading data for table buildbase_db.pelanggan: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `buildbase_db`.`pelanggan`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -45,12 +37,12 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`, `created_at`) VALUES
 (1, 'Salsabila Yufli Ramadhani', 'salsabilayufli@gmail.com', '12345', 'manager', '2026-02-13 06:32:51'),
-(2, 'Sarah Amalia', 'sarah.cs@buildbase.com', 'sarah123', 'cs', '2026-02-14 04:13:05'),
+(2, 'Dyah Nayla Amalia Putri', 'dyahnayla425@gmail.com', 'nayla123', 'cs', '2026-02-14 04:13:05'),
 (3, 'Lee Jeno', 'jeno.estimator@buildbase.com', 'jeno123', 'estimator', '2026-02-14 04:13:05'),
 (4, 'Anh Keonho', 'keonho.drafter@buildbase.com', 'keonho123', 'drafter', '2026-02-14 04:13:05'),
 (5, 'Kim Juhoon', 'juhoon.engineer@buildbase.com', 'juhoon123', 'engineer', '2026-02-14 04:13:05'),
@@ -63,17 +55,17 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`, `created_at`) VA
 --
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
