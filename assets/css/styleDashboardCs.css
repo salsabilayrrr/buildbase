@@ -92,3 +92,40 @@ body {
     transform: translateY(-25px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-icon-box img {
+    width: 20px;
+}
+
+.logout-text {
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.logout-icon-img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
