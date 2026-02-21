@@ -1,0 +1,228 @@
+/* Mengimpor Font bergaya tulisan tangan untuk "Halo Estimator" */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    padding-bottom: 100px;
+    /* Jarak untuk bottom nav */
+}
+
+/* Header */
+.top-bar {
+    background: linear-gradient(to bottom, #8389f7, #a2a7fb);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.logo-text {
+    color: black;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.logout-btn {
+    background: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* Main Content */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.welcome-text {
+    font-family: 'Pacifico', cursive;
+    color: #1a237e;
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 15px 5px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-purple {
+    background-color: #b1b5f9;
+}
+
+.card-blue {
+    background-color: #a7bcfd;
+}
+
+.card-light-blue {
+    background-color: #b9c8fd;
+}
+
+.icon-stats {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #4a54f1;
+}
+
+.card p {
+    font-size: 10px;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.count {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    flex: 1;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #bdc5f9;
+    color: white;
+    font-weight: 600;
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 1.2rem;
+}
+
+.filter-btn {
+    background-color: #bdc5f9;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* Table */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 15px 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+thead th {
+    background-color: #b1b5f9;
+}
+
+tbody tr {
+    background-color: #bdc5f9;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, #8389f7, #a2a7fb);
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding: 0 10px;
+}
+
+.nav-item {
+    font-size: 24px;
+    color: white;
+}
+
+.active-home {
+    background: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a54f1;
+    border: 5px solid #8389f7;
+    margin-top: -50px;
+    /* Membuat efek menonjol ke atas */
+}
