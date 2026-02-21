@@ -30,7 +30,7 @@
 
         <div class="info-card">
             <div class="card-body">
-                <img src="../assets/img/chat_bubble.png" alt="Icon" class="card-icon">
+                <img src="../assets/img/assetfinance.png" alt="Icon" class="card-icon">
                 <p class="card-text">5 Bill of Quantity Baru</p>
             </div>
         </div>
