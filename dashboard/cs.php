@@ -14,7 +14,7 @@
         <span class="text-2xl font-black text-black tracking-tighter -ml-2">BuildBase</span>
     </div>
 
-    <a href="index.php" class="logout-btn">
+    <a href="../index.php" class="logout-btn">
         <div class="icon-circle">
             <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
