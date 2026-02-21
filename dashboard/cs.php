@@ -14,10 +14,12 @@
         <span class="text-2xl font-black text-black tracking-tighter -ml-2">BuildBase</span>
     </div>
 
-    <button class="btn-logout">
-        <i class="fa-solid fa-right-from-bracket text-indigo-900"></i>
-        <span class="font-bold text-sm text-indigo-900 uppercase">Logout</span>
-    </button>
+    <a href="index.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+        </div>
+        <span class="logout-text">Logout</span>
+    </a>
     </header>
 
     <main class="p-6 space-y-6">

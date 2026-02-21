@@ -93,39 +93,41 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* --- LOGOUT --- */
-.btn-logout-pill {
-    background: #fff;
-    padding: 4px 12px 4px 4px;
-    border-radius: 20px;
+/* Container Utama (Kapsul Putih) */
+.logout-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
     text-decoration: none;
+    background-color: white;
+    padding: 4px 20px 4px 4px;
+    /* Padding minimal di kiri agar lingkaran biru mepet */
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.logout-icon-box {
-    background: #4E5FE1;
-    width: 25px;
-    height: 25px;
+/* Lingkaran Biru di belakang Ikon */
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
 }
 
-.logout-icon-box img {
-    width: 20px;
+/* Warna Ikon FontAwesome di dalam lingkaran */
+.logout-icon-fa {
+    color: black;
+    font-size: 18px;
 }
 
+/* Teks Logout */
 .logout-text {
-    color: #000;
-    font-size: 11px;
+    color: black;
     font-weight: 800;
-}
-
-.logout-icon-img {
-    width: 80px;
-    height: auto;
-    display: block;
+    /* Tebal sesuai font Plus Jakarta Sans */
+    font-size: 16px;
 }
