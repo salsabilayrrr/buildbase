@@ -1,0 +1,304 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+    padding-bottom: 120px;
+    /* Spasi untuk bottom nav */
+}
+
+/* Navbar */
+.navbar-custom {
+    background-color: #8B93FF;
+        padding: 10px 10px;
+        border-radius: 0;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 60px;
+    .navbar-custom {
+    background-color: #8B93FF;
+    padding: 10px 10px;
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}height: auto;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: -1.5px;
+    margin-left: -5px;
+}
+
+/* Content Area */
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.halo-text {
+    font-family: 'Pacifico', cursive;
+    color: #1e1b4b;
+    font-size: 36px;
+    margin: 20px 0 10px;
+}
+
+.section-title {
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Card Info */
+.info-card {
+    background-color: #C2C7FF;
+    border-radius: 30px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card-icon {
+    width: 80px;
+}
+
+.card-text {
+    font-weight: 800;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Pagination */
+.pagination {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    flex-grow: 1;
+    background-color: #C2C7FF;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-weight: bold;
+    color: #555;
+}
+
+.search-box i {
+    color: white;
+    font-size: 24px;
+}
+
+.filter-btn {
+    background-color: #C2C7FF;
+    border: 2px solid #000;
+    border-radius: 12px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Table */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1.5px solid #000;
+    padding: 12px 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.custom-table th {
+    background-color: #FFC2C2;
+    /* Warna pink header table */
+    font-size: 14px;
+}
+
+.pdf-icon {
+    color: #e11d48;
+    font-size: 24px;
+}
+
+.delete-icon {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+    background-color: #8B93FF;
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 85px;
+        z-index: 100;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        /* Transisi halus saat hilang/muncul */
+        transition: all 0.2s ease-in-out;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.home-btn-container {
+    position: relative;
+    top: -25px;
+}
+
+.home-btn {
+    background-color: white;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 6px solid #8B93FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.home-btn i {
+    color: #8B93FF;
+    font-size: 40px;
+}
+
+/* Bottom Nav - Tetap Fixed di Bawah */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* Floating Home Button */
+.home-button {
+    background-color: #ffffff;
+    border: 5px solid #8B93FF;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-25px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Container Utama (Kapsul Putih) */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 20px 4px 4px;
+    /* Padding minimal di kiri agar lingkaran biru mepet */
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+/* Lingkaran Biru di belakang Ikon */
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* Warna Ikon FontAwesome di dalam lingkaran */
+.logout-icon-fa {
+    color: black;
+    font-size: 18px;
+}
+
+/* Teks Logout */
+.logout-text {
+    color: black;
+    font-weight: 800;
+    /* Tebal sesuai font Plus Jakarta Sans */
+    font-size: 16px;
+}

@@ -92,3 +92,42 @@ body {
     transform: translateY(-25px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Container Utama (Kapsul Putih) */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 20px 4px 4px;
+    /* Padding minimal di kiri agar lingkaran biru mepet */
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+/* Lingkaran Biru di belakang Ikon */
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* Warna Ikon FontAwesome di dalam lingkaran */
+.logout-icon-fa {
+    color: black;
+    font-size: 18px;
+}
+
+/* Teks Logout */
+.logout-text {
+    color: black;
+    font-weight: 800;
+    /* Tebal sesuai font Plus Jakarta Sans */
+    font-size: 16px;
+}
