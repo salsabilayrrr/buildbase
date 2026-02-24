@@ -18,7 +18,7 @@ session_start();
         <div class="dashboard-header">
             <div class="header-left">
                 <img src="../assets/img/logo.png" class="header-logo">
-                <span class="header-title">Quality Control</span>
+                <span class="header-title">Dashboard</span>
             </div>
             <a href="../logout.php" class="btn-logout-pill">
                 <div class="logout-icon-box">

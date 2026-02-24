@@ -22,7 +22,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
     <header class="dashboard-header px-3">
         <div class="header-left">
             <img src="../assets/img/logo.png" class="header-logo">
-            <span class="header-title">Drafter</span>
+            <span class="header-title">Dashboard</span>
         </div>
         <a href="../logout.php" class="btn-logout-pill">
             <div class="logout-icon-box">

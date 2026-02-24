@@ -1,9 +1,8 @@
-/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif; /* Font Utama Roboto */
+    font-family: 'Roboto', sans-serif; 
 }
 
 body {
@@ -11,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-color: #f8f9fa; /* Background luar lebih terang agar shadow terlihat */
+    background-color: #f8f9fa; 
 }
 
 /* --- HEADER --- */
@@ -86,15 +85,14 @@ body {
     margin-bottom: 25px;
 }
 
-/* --- TASK CONTAINER (Box per Kategori) --- */
 .task-container-main {
     border: 1px solid #000;
-    border-radius: 0px; /* Sesuai figma cenderung kotak */
+    border-radius: 0px; 
     overflow: hidden;
     background-color: #B0B1EA;
     max-width: 450px;
-    margin: 0 auto 25px; /* Jarak antar box kategori */
-    box-shadow: 1px 1px 0px rgba(0,0,0,1); /* Shadow tegas hitam sesuai style retro figma */
+    margin: 0 auto 25px; 
+    box-shadow: 1px 1px 0px rgba(0,0,0,1); 
 }
 
 .task-header-top {
@@ -138,7 +136,7 @@ body {
 
 .arrow { color: #ff0000; margin-left: auto; font-size: 18px; }
 
-/* --- FOOTER NAV --- */
+
 .bottom-nav-full {
     background: #8A8BFC;
     height: 70px;
@@ -167,6 +165,6 @@ body {
 .icon-nav-folder { width: 40px !important; filter: brightness(0) invert(1); opacity: 0.9; }
 .icon-nav-load { width: 70px !important; filter: brightness(0) invert(1); opacity: 0.9; }
 .icon-nav-rev { width: 60px !important; filter: brightness(0) invert(1); opacity: 0.9; }
-/* Scrollbar styling */
+
 .scroll-content::-webkit-scrollbar { width: 5px; }
 .scroll-content::-webkit-scrollbar-thumb { background: #8A8BFC; border-radius: 10px; }
