@@ -81,7 +81,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
             <img src="../assets/img/berkas.png" class="nav-icon-side">
         </div>
         <div class="nav-item">
-            <img src="../assets/img/arsip.png" class="nav-icon-side">
+            <img src="../assets/img/arsip.jpg" class="nav-icon-side">
         </div>
         <div class="nav-item">
             <div class="home-circle">
@@ -89,7 +89,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
             </div>
         </div>
         <div class="nav-item">
-            <img src="../assets/img/akun.png" class="nav-icon-side">
+            <img src="../assets/img/akun.jpg" class="nav-icon-side">
         </div>
     </nav>
 
