@@ -1,0 +1,132 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background-color: #8A8BFC;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.header-left { display: flex; align-items: center; gap: 10px; }
+.header-logo { width: 40px; height: auto; }
+.header-title { font-weight: 900; font-size: 18px; color: #000; }
+
+.btn-logout-pill {
+    background: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logout-icon-box {
+    background: #000;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+}
+.logout-icon-box img { width: 14px; filter: brightness(0) invert(1); }
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+/* --- CONTENT --- */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+}
+
+.greeting-text {
+    font-family: 'Pacifico', cursive;
+    color: #001253;
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+.char-image {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.summary-label {
+    background-color: #B0B1EA;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 900;
+    font-size: 14px;
+    display: inline-block;
+    width: 85%;
+    margin-bottom: 25px;
+}
+
+/* --- CARDS --- */
+.stat-card {
+    background-color: #B0B1EA;
+    border-radius: 0; /* Bentuk kotak sesuai gambar */
+    padding: 15px 5px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    height: 100%;
+}
+
+.stat-icon { width: 35px; margin-bottom: 10px; }
+.stat-text { font-size: 11px; font-weight: 700; margin-bottom: 5px; }
+.stat-number { font-size: 18px; font-weight: 900; }
+
+/* --- REPORT BOX --- */
+.report-box {
+    background-color: #B0B1EA;
+    border-radius: 25px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+.report-title { font-weight: 800; font-size: 13px; margin-bottom: 10px; }
+.report-item { font-size: 12px; font-weight: 500; margin-bottom: 5px; color: #000; }
+.report-divider { height: 1.5px; background-color: #000; margin: 15px 0; opacity: 0.5; }
+
+/* --- FOOTER --- */
+.bottom-nav {
+    background-color: #8A8BFC;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0; width: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.home-circle {
+    background-color: #4E5FE1;
+    width: 65px; height: 65px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    display: flex; justify-content: center; align-items: center;
+    margin-top: -45px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.nav-icon-home { width: 30px; filter: brightness(0) invert(1); }
+.nav-icon-side { width: 25px; filter: brightness(0) invert(1); }

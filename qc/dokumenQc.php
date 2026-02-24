@@ -19,19 +19,18 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 </head>
 <body>
 
-<div class="dashboard-header">
-    <div class="header-left">
-        <img src="../assets/img/logo.png" class="header-logo">
-        <span class="header-title">Quality Control</span>
-    </div>
-    
-    <a href="../logout.php" class="btn-logout-pill">
-        <div class="logout-icon-box">
-            <img src="../assets/img/logout.png" alt="icon">
+        <div class="dashboard-header">
+            <div class="header-left">
+                <img src="../assets/img/logo.png" class="header-logo">
+                <span class="header-title">Quality Control</span>
+            </div>
+            <a href="../logout.php" class="btn-logout-pill">
+                <div class="logout-icon-box">
+                    <img src="../assets/img/logout.png" alt="icon">
+                </div>
+                <span class="logout-text">Logout</span>
+            </a>
         </div>
-        <span class="logout-text">Logout</span>
-    </a>
-</div>
 
 <main class="main-wrapper container py-4">
     <div class="text-center mb-3">
@@ -98,18 +97,36 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     </div>
 </main>
 
-        <div class="bottom-nav-full">
-            <div class="nav-item">
-                <a href="../dashboard/qc.php">
-                    <img src="../assets/img/home.png" class="icon-nav-home">
-                </a>
-            </div>
-            <div class="nav-item">
-                <div class="nav-folder-circle">
-                    <img src="../assets/img/folder.png" class="icon-nav-folder">
-                </div>
-            </div>
+<div class="bottom-nav-full" id="navbar">
+    <div class="nav-item">
+        <a href="../dashboard/qc.php">
+            <img src="../assets/img/home.png" class="icon-nav-home">
+        </a>
+    </div>
+    <div class="nav-item">
+        <div class="nav-folder-circle">
+            <img src="../assets/img/folder.png" class="icon-nav-folder">
         </div>
+    </div>
+</div>
+
+<script>
+    // Pilih elemen navbar berdasarkan ID
+    const navbar = document.getElementById('navbar');
+    // Pilih semua input dan textarea
+    const inputs = document.querySelectorAll('input, textarea');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            // Sembunyikan navbar ke bawah sejauh 100px
+            navbar.style.transform = 'translateY(100px)';
+        });
+        input.addEventListener('blur', () => {
+            // Tampilkan kembali navbar ke posisi semula
+            navbar.style.transform = 'translateY(0)';
+        });
+    });
+</script>
 
 </body>
 </html>

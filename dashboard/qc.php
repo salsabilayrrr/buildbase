@@ -63,11 +63,13 @@ session_start();
         </div>
 
         <div class="bottom-nav-full">
-            <div class="nav-item">
+        <div class="nav-item">
+            <a href="qc.php">
                 <div class="nav-home-circle">
                     <img src="../assets/img/home.png" class="icon-nav-home">
                 </div>
-            </div>
+            </a>
+        </div>
             <div class="nav-item">
                 <a href="../qc/dokumenQc.php">
                     <img src="../assets/img/folder.png" class="icon-nav-folder">
