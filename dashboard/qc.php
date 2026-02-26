@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -18,7 +19,7 @@ session_start();
         <div class="dashboard-header">
             <div class="header-left">
                 <img src="../assets/img/logo.png" class="header-logo">
-                <span class="header-title">Quality Control</span>
+                <span class="header-title">Dashboard</span>
             </div>
             <a href="../logout.php" class="btn-logout-pill">
                 <div class="logout-icon-box">
@@ -63,11 +64,13 @@ session_start();
         </div>
 
         <div class="bottom-nav-full">
-            <div class="nav-item">
+        <div class="nav-item">
+            <a href="qc.php">
                 <div class="nav-home-circle">
                     <img src="../assets/img/home.png" class="icon-nav-home">
                 </div>
-            </div>
+            </a>
+        </div>
             <div class="nav-item">
                 <a href="../qc/dokumenQc.php">
                     <img src="../assets/img/folder.png" class="icon-nav-folder">

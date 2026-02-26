@@ -1,0 +1,203 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #8A8BFC; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- FRAME IPHONE SIMULATION --- */
+.device-wrapper {
+    width: 393px;
+    height: 852px;
+    background: #fff;
+    border-radius: 0px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.device-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: #8A8BFC;
+    padding: 20px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    height: 80px; 
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 45px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.header-title {
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+}
+
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
+
+/* --- CONTENT --- */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+}
+
+.greeting-text {
+    font-family: 'Pacifico', cursive;
+    color: #1A1A54;
+    font-size: 32px;
+    margin: 35px 0 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.search-section {
+    display: flex;
+    gap: 12px;
+    padding: 0 20px;
+    margin-bottom: 35px;
+}
+
+.search-container {
+    flex: 1;
+    background: #B0B1EA;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+}
+
+.search-container input::placeholder { color: rgba(255,255,255,0.8); }
+.search-icon { color: #fff; font-size: 18px; }
+
+.filter-btn {
+    background: #B0B1EA;
+    border: 1px solid #8A8BFC;
+    border-radius: 8px;
+    width: 45px; height: 45px;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
+}
+
+.filter-arrow { color: #1A1A54; font-size: 12px; }
+
+/* --- CARDS --- */
+.doc-card {
+    background-color: #B0B1EA;
+    border-radius: 20px; /* Engineer style: Membulat */
+    padding: 20px 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.2s;
+}
+
+.doc-card:active { transform: scale(0.95); }
+
+.doc-icon-wrapper {
+    width: 60px; height: 60px;
+    border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.doc-icon { width: 90px; height: auto; }
+
+.doc-text {
+    font-size: 12px;
+    font-weight: 800;
+    color: #000;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- FOOTER --- */
+.bottom-nav {
+    background-color: #8A8BFC;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0; width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.home-circle {
+    background: #4E5FE1;
+    width: 75px; height: 75px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex; justify-content: center; align-items: center;
+    margin-top: -55px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.nav-icon-home { width: 55px; filter: brightness(0) invert(1); }
+.nav-icon-side { width: 55px; filter: brightness(0) invert(1); }
