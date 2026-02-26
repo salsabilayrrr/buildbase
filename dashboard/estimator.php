@@ -15,11 +15,14 @@ session_start();
 
     <header class="top-bar">
         <div class="logo-section">
-            <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Logo" class="logo-img">
+            <img src="../assets/img/logo.png" alt="Logo" class="logo-img">
             <span class="logo-text">Dashboard</span>
         </div>
         <button class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
+            <div class="icon-circle">
+                <i class="fas fa-sign-out-alt logout-icon-fa"></i>
+            </div>
+            <span class="logout-text">Logout</span>
         </button>
     </header>
 
