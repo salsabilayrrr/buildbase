@@ -1,9 +1,40 @@
 <?php
 session_start();
-// Pastikan pengecekan session dan role sudah benar
+
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     header("Location: ../../index.php");
     exit;
+}
+
+include "../koneksi.php";
+
+if(isset($_POST['simpan'])){
+
+    $id_produksi = $_POST['id_produksi'];
+    $hasil = isset($_POST['hasil']) ? $_POST['hasil'] : '';
+    $catatan = $_POST['catatan_temuan'];
+
+    $dimensi = isset($_POST['dimensi_sesuai']) ? 1 : 0;
+    $material = isset($_POST['kualitas_material']) ? 1 : 0;
+    $finishing = isset($_POST['finishing_rapi']) ? 1 : 0;
+
+    $nama_file = "";
+
+    if(isset($_FILES['bukti_foto']) && $_FILES['bukti_foto']['name'] != ""){
+        $nama_file = $_FILES['bukti_foto']['name'];
+        $tmp = $_FILES['bukti_foto']['tmp_name'];
+
+        move_uploaded_file($tmp, "../uploads/".$nama_file);
+    }
+
+    $query = "INSERT INTO pemeriksaan_qc (id_produksi, hasil, dimensi_sesuai, kualitas_material, finishing_rapi, catatan_temuan, bukti_foto)
+                VALUES ('$id_produksi','$hasil','$dimensi','$material','$finishing','$catatan','$nama_file')";
+
+    if(mysqli_query($conn,$query)){
+        echo "<script>alert('Laporan berhasil disimpan!');</script>";
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>
 
@@ -42,21 +73,22 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
     </h4>
 
     <div class="form-card-qc p-4">
-        <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
+
             <div class="mb-3">
                 <label class="form-label">ID Produksi :</label>
-                <input type="text" class="form-control custom-input" placeholder="PROD-2025-X">
+                <input type="text" name="id_produksi" class="form-control custom-input" placeholder="PROD-2025-X" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Hasil Pemeriksaan :</label>
                 <div class="ms-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="hasil" id="lolos">
+                        <input class="form-check-input" type="radio" name="hasil" id="lolos" value="Lolos" required>
                         <label class="form-check-label" for="lolos">Lolos</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="hasil" id="revisi">
+                        <input class="form-check-input" type="radio" name="hasil" id="revisi" value="Revisi">
                         <label class="form-check-label" for="revisi">Gagal / Revisi</label>
                     </div>
                 </div>
@@ -66,15 +98,15 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
                 <label class="form-label">Parameter Cek :</label>
                 <div class="ms-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="c1">
+                        <input class="form-check-input" type="checkbox" name="dimensi_sesuai" value="1" id="c1">
                         <label class="form-check-label" for="c1">Dimensi Sesuai</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="c2">
+                        <input class="form-check-input" type="checkbox" name="kualitas_material" value="1" id="c2">
                         <label class="form-check-label" for="c2">Kualitas Material</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="c3">
+                        <input class="form-check-input" type="checkbox" name="finishing_rapi" value="1" id="c3">
                         <label class="form-check-label" for="c3">Finishing Rapi</label>
                     </div>
                 </div>
@@ -82,17 +114,20 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'qc'){
 
             <div class="mb-3">
                 <label class="form-label">Catatan Temuan :</label>
-                <input type="text" class="form-control custom-input" placeholder="Tulis Detail Catatan">
+                <input type="text" name="catatan_temuan" class="form-control custom-input" placeholder="Tulis Detail Catatan">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Bukti Foto :</label>
-                <input type="file" class="form-control custom-input">
+                <input type="file" name="bukti_foto" class="form-control custom-input">
             </div>
 
             <div class="text-center mt-4">
-                <button type="submit" class="btn-save-qc">Simpan Laporan</button>
+                <button type="submit" name="simpan" class="btn-save-qc">
+                    Simpan Laporan
+                </button>
             </div>
+
         </form>
     </div>
 </main>

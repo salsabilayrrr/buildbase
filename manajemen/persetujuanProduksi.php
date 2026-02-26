@@ -80,14 +80,14 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
         <nav class="bottom-nav">
             <div class="nav-item">
                 <div class="active-extra-circle">
-                    <a href="persetujuan_produksi.php">
+                    <a href="persetujuanProduksi.php">
                         <img src="../assets/img/berkas.png" class="nav-icon-main">
                     </a>
                 </div>
             </div>
 
             <div class="nav-item">
-                <a href="#"><img src="../assets/img/arsip.jpg" class="nav-icon-side"></a>
+                <a href="dataProyek.php"><img src="../assets/img/arsip.jpg" class="nav-icon-side"></a>
             </div>
 
             <div class="nav-item">
