@@ -43,17 +43,17 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
         </div>
         </div>
 
-            <div class="row g-3 justify-content-center mb-4">
-                <div class="col-5">
+            <div class="row g-3 justify-content-center mb-4 h-100">
+                <div class="col-5 h-100">
                     <div class="stat-card">
                         <img src="../assets/img/dok.png" class="stat-icon">
                         <p class="stat-text">RFQ yang Masuk</p>
                         <p class="stat-number">5</p>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-5 h-100">
                     <div class="stat-card">
-                        <img src="../assets/img/proyek.png" class="stat-icon">
+                        <img src="../assets/img/proyek.png" class="stat-icon-proyek">
                         <p class="stat-text">Proyek yang Sedang Dikerjakan</p>
                         <p class="stat-number">4</p>
                     </div>
@@ -77,9 +77,10 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     </main>
 
     <nav class="bottom-nav">
-        <div class="nav-item">
-            <img src="../assets/img/berkas.png" class="nav-icon-side">
-        </div>
+
+        <a href="../manajemen/persetujuanProduksi.php">
+                    <img src="../assets/img/berkas.png" class="nav-icon-side">
+        </a>
         <div class="nav-item">
             <img src="../assets/img/arsip.jpg" class="nav-icon-side">
         </div>

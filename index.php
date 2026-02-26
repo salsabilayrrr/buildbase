@@ -63,7 +63,7 @@
                             <option value="drafter">Drafter</option>
                             <option value="engineer">Engineer</option>
                             <option value="finance">Finance</option>
-                            <option value="manager">Manajer</option>
+                            <option value="manager">Manager</option>
                             <option value="qc">Quality Control</option>
                         </select>
                     </div>

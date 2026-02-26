@@ -29,7 +29,7 @@ body {
 }
 
 .header-logo {
-    width: 45px;
+    width: 55px;
     height: auto;
     border-radius: 5px;
 }
@@ -106,7 +106,7 @@ body {
     position: absolute;
     left: 0;
     bottom: 35px;
-    width: 80px;     /* diperkecil */
+    width: 80px;     
     height: auto;
     z-index: 1;
     opacity: 0.9;
@@ -129,23 +129,25 @@ body {
 /* --- CARDS --- */
 .stat-card {
     background-color: #B0B1EA;
-    border-radius: 0;   /* Kotak sempurna sesuai desain */
-    padding: 25px 10px;
+    border-radius: 0;   
+    padding: 10px 5px;
     border: 1.5px solid rgba(0,0,0,0.1);
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.1); /* Shadow kaku tanpa blur */
-    height: 100%;
+    box-shadow: 1px 1px 0px #AC8E8E; 
+    height: 100%;           
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.stat-icon { width: 45px; margin-bottom: 12px; }
-.stat-text { font-size: 12px; font-weight: 800; margin-bottom: 5px; line-height: 1.2; color: #000; }
+.stat-icon { width: 50px; margin-bottom: 12px; }
+.stat-icon-proyek {padding-left: 15px;  width: 90px; margin-bottom: 12px; }
+.stat-text { font-size: 12px; font-weight: 800; margin-bottom: 5px; line-height: 1.2; color: #000; text-align: center;}
 .stat-number { font-size: 24px; font-weight: 900; margin: 0; color: #000; }
 
 .report-box {
-    background-color: #B0B1EA;
+    background-color: #C4B0EA;
     border-radius: 30px;
     width: 95%;
     margin: 0 auto;
@@ -196,3 +198,4 @@ body {
 
 .nav-icon-home { width: 50px; filter: brightness(0) invert(1); }
 .nav-icon-side { width: 50px; filter: brightness(0) invert(1); }
+
