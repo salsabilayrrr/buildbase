@@ -51,7 +51,6 @@ body {
     display: block;
 }
 
-
 /* --- CONTENT AREA --- */
 .scroll-content { flex: 1; overflow-y: auto; padding-bottom: 110px; }
 .top-icon-container { margin: 20px 0; }

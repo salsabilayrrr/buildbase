@@ -82,15 +82,21 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                     <img src="../assets/img/berkas.png" class="nav-icon-side">
         </a>
         <div class="nav-item">
-            <img src="../assets/img/arsip.jpg" class="nav-icon-side">
+            <a href = "../manajemen/penolakan.php"> 
+                <img src="../assets/img/arsip.jpg" class="nav-icon-side">
+            </a>
         </div>
         <div class="nav-item">
             <div class="home-circle">
+            <a href = "manager.php"> 
                 <img src="../assets/img/home.png" class="nav-icon-home">
+            </a>
             </div>
         </div>
         <div class="nav-item">
-            <img src="../assets/img/akun.jpg" class="nav-icon-side">
+            <a href = "../manajemen/kelolaPengguna.php"> 
+                <img src="../assets/img/akun.jpg" class="nav-icon-side">
+            </a>
         </div>
     </nav>
 

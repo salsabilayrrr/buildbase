@@ -87,7 +87,9 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
             </div>
 
             <div class="nav-item">
-                <a href="dataProyek.php"><img src="../assets/img/arsip.jpg" class="nav-icon-side"></a>
+                <a href="penolakan.php">
+                    <img src="../assets/img/arsip.jpg" class="nav-icon-side">
+                </a>
             </div>
 
             <div class="nav-item">
@@ -97,7 +99,9 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
             </div>
 
             <div class="nav-item">
-                <a href="#"><img src="../assets/img/akun.jpg" class="nav-icon-side"></a>
+                <a href="../manajemen/kelolaPengguna.php">
+                    <img src="../assets/img/akun.jpg" class="nav-icon-side">
+                </a>
             </div>
         </nav>
 
