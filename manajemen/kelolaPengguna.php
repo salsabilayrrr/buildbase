@@ -1,9 +1,18 @@
 <?php
 session_start();
+$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
+
+$query = "SELECT * FROM users ORDER BY id DESC";
+$result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -36,12 +45,12 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
         <main class="scroll-content">
             <div class="container text-center pt-4">
                 
-                <div class="header-title-container">
-                    <h2 class="main-page-title">Kelola Data Pengguna</h2>
-                    <div class="icon-right-box">
-                        <img src="../assets/img/inputUser.png" alt="User Icon" width="40">
-                    </div>
+            <div class="header-title-container">
+                <div class="icon-top-box">
+                    <img src="../assets/img/user.png" alt="User Icon" width="60">
                 </div>
+                <h2 class="main-page-title">Kelola Data Pengguna</h2>
+            </div>
 
                 <div class="add-user-section mb-4">
                     <a href="inputUser.php" class="btn-add-link">
@@ -57,39 +66,36 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                 <h3 class="section-subtitle">Daftar Pengguna Aktif</h3>
 
                 <div class="table-responsive px-2">
-                    <table class="table table-bordered custom-table">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Peran</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Jeno</td>
-                                <td>Warehouse</td>
-                                <td>
-                                    <div class="action-icons">
+                <table class="table table-bordered custom-table" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Peran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($row = mysqli_fetch_assoc($result)) : ?>
+                        <tr>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['role']; ?></td>
+                            <td>
+                                <div class="action-icons">
+                                    <a href="edit_user.php?id=<?php echo $row['id']; ?>">
                                         <img src="../assets/img/edit.png" alt="Edit">
+                                    </a>
+                                    <a href="proses_hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin ingin menghapus?')">
                                         <img src="../assets/img/sampah.png" alt="Delete">
+                                    </a>
+                                    <a href="reset_pass.php?id=<?php echo $row['id']; ?>">
                                         <img src="../assets/img/key.png" alt="Key">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Haechan</td>
-                                <td>Customer Service</td>
-                                <td>
-                                    <div class="action-icons">
-                                        <img src="../assets/img/edit.png" alt="Edit">
-                                        <img src="../assets/img/sampah.png" alt="Delete">
-                                        <img src="../assets/img/key.png" alt="Key">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </main>

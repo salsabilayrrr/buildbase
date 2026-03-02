@@ -4,11 +4,12 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    height: 100vh;
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    overflow: hidden;
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 /* --- HEADER --- */
@@ -68,19 +69,37 @@ body {
 }
 
 /* --- CONTENT --- */
-.scroll-content { flex: 1; overflow-y: auto; padding-bottom: 120px; }
+.scroll-content { 
+    flex: 1; 
+    margin-top: 10px; 
+    padding-bottom: 120px; 
+    overflow-y: visible; 
+}
 .header-title-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;    
+    gap: 10px;             
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.icon-top-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; 
-    margin-bottom: 30px;
 }
 
+.icon-top-box img {
+    display: block;
+    height: auto;
+}
 .main-page-title {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 22px;
     margin: 0;
+    color: #000;
+    text-align: center;
 }
 
 .add-user-section {
@@ -123,9 +142,11 @@ body {
 .search-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #fff; }
 
 /* Table */
-.table-responsive {
-    padding: 0 15px; 
-    width: 100%;
+.table-container-scroll {
+    max-height: 400px; 
+    overflow-y: auto;
+    border: 2px solid #000;
+    border-radius: 10px;
 }
 
 .custom-table {
