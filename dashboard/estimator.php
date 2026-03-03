@@ -1,5 +1,34 @@
 <?php
 session_start();
+$current_page = basename($_SERVER['PHP_SELF']);
+
+// Koneksi Database
+$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Ambil Data RFQ + Nama Pelanggan
+$query = "
+    SELECT 
+        data_rfq.id_rfq,
+        data_rfq.nama_proyek,
+        pelanggan.nama_perusahaan,
+        data_rfq.tanggal_rfq
+    FROM data_rfq
+    JOIN pelanggan ON data_rfq.id_pelanggan = pelanggan.id_pelanggan
+    ORDER BY data_rfq.tanggal_rfq DESC
+";
+
+$query_sd = "SELECT COUNT(*) as total_sd FROM shop_drawing";
+$result_sd = mysqli_query($conn, $query_sd);
+$data_sd = mysqli_fetch_assoc($result_sd);
+$total_sd = $data_sd['total_sd'];
+$result = mysqli_query($conn, $query);
+
+// Hitung total RFQ
+$total_rfq = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -13,17 +42,17 @@ session_start();
 </head>
 <body>
 
-    <header class="top-bar">
+    <header class="navbar-custom">
         <div class="logo-section">
             <img src="../assets/img/logo.png" alt="Logo" class="logo-img">
             <span class="logo-text">Dashboard</span>
         </div>
-        <button class="logout-btn">
+        <a href="index.php" class="logout-btn">
             <div class="icon-circle">
                 <i class="fas fa-sign-out-alt logout-icon-fa"></i>
             </div>
             <span class="logout-text">Logout</span>
-        </button>
+        </a>
     </header>
 
     <main class="container">
@@ -34,7 +63,7 @@ session_start();
             <div class="card card-purple">
                 <i class="fas fa-file-alt icon-stats"></i>
                 <p>Total RFQ yang masuk</p>
-                <span class="count">5</span>
+                <span class="count"><?= $total_rfq ?></span>
             </div>
             <div class="card card-blue">
                 <i class="fas fa-file-invoice-dollar icon-stats"></i>
@@ -44,7 +73,7 @@ session_start();
             <div class="card card-light-blue">
                 <i class="fas fa-file-signature icon-stats"></i>
                 <p>Total Shop Drawing yang masuk</p>
-                <span class="count">4</span>
+                <span class="count"><?= $total_sd ?></span>
             </div>
         </div>
 
@@ -69,35 +98,54 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>RFQ-005</td>
-                        <td>Proyek Jendela</td>
-                        <td>PT. Maju</td>
-                        <td>13/11/2025</td>
-                    </tr>
-                    <tr>
-                        <td>RFQ-004</td>
-                        <td>Renovasi Pintu</td>
-                        <td>PT. Abadi</td>
-                        <td>12/11/2025</td>
-                    </tr>
-                    <tr>
-                        <td>RFQ-003</td>
-                        <td>Proyek Ventilasi</td>
-                        <td>PT. Shiyong</td>
-                        <td>11/11/2025</td>
-                    </tr>
-                </tbody>
+                <tbody>
+            <?php
+            if ($total_rfq > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    // Format ID RFQ-001
+                    $id_format = "RFQ-" . str_pad($row['id_rfq'], 3, "0", STR_PAD_LEFT);
+
+                    // Format tanggal
+                    $tgl_format = date("d/m/Y", strtotime($row['tanggal_rfq']));
+            ?>
+                <tr>
+                    <td><?= $id_format ?></td>
+                    <td><?= $row['nama_proyek'] ?></td>
+                    <td><?= $row['nama_perusahaan'] ?></td>
+                    <td><?= $tgl_format ?></td>
+                </tr>
+            <?php
+                }
+            } else {
+            ?>
+                <tr>
+                    <td colspan="4">Belum ada data RFQ</td>
+                </tr>
+            <?php } ?>
+            </tbody>
             </table>
         </div>
     </main>
 
     <nav class="bottom-nav">
-        <div class="nav-item"><i class="fas fa-th-large"></i></div>
-        <div class="nav-item active-home"><i class="fas fa-home"></i></div>
-        <div class="nav-item"><i class="fas fa-file-check"></i></div>
-        <div class="nav-item"><i class="fas fa-list-ul"></i></div>
-    </nav>
+    
+    <a href="../estimator/verif.php" class="nav-item <?= ($current_page == 'verif.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/est1.png" class="nav-icon">
+    </a>
 
+    <a href="verifikasi_shop_drawing.php" class="nav-item <?= ($current_page == 'verifikasi_shop_drawing.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/verifikasi.png" class="nav-icon">
+    </a>
+
+    <a href="estimator.php" class="nav-item <?= ($current_page == 'estimator.php') ? 'active-home' : '' ?>">
+        <img src="../assets/img/home.png" class="nav-icon">
+    </a>
+
+    <a href="dokumen.php" class="nav-item <?= ($current_page == 'dokumen.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/dokumen.png" class="nav-icon">
+    </a>
+
+</nav>
 </body>
 </html>
