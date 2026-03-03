@@ -134,16 +134,16 @@ $total_rfq = mysqli_num_rows($result);
         <img src="../assets/img/est1.png" class="nav-icon">
     </a>
 
-    <a href="verifikasi_shop_drawing.php" class="nav-item <?= ($current_page == 'verifikasi_shop_drawing.php') ? 'active-side' : '' ?>">
-        <img src="../assets/img/verifikasi.png" class="nav-icon">
-    </a>
-
     <a href="estimator.php" class="nav-item <?= ($current_page == 'estimator.php') ? 'active-home' : '' ?>">
         <img src="../assets/img/home.png" class="nav-icon">
     </a>
 
-    <a href="dokumen.php" class="nav-item <?= ($current_page == 'dokumen.php') ? 'active-side' : '' ?>">
-        <img src="../assets/img/dokumen.png" class="nav-icon">
+    <a href="../estimator/daftarrfq.php" class="nav-item <?= ($current_page == '../estimator/daftarrfq.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/est2.png" class="nav-icon">
+    </a>
+
+    <a href="../estimator/buatboq.php" class="nav-item <?= ($current_page == '../estimator/buatboq.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/est3.png" class="nav-icon">
     </a>
 
 </nav>

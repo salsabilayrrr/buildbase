@@ -266,7 +266,7 @@ tbody tr {
 }
 
 .active-home {
-    background: white;
+    background: rgb(95, 22, 147);
     width: 70px;
     height: 70px;
     border-radius: 50%;
