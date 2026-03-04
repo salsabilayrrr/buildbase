@@ -14,6 +14,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styleDataProyekManager.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -78,8 +79,27 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                     <div class="action-section text-center mt-4">
                         <p class="question-text">Apakah Produksi Disetujui?</p>
                         <div class="d-flex justify-content-center gap-4">
-                            <button class="btn-action btn-ya">YA</button>
-                            <button class="btn-action btn-tidak">TIDAK</button>
+                        <button class="btn-action btn-ya" id="btnYa">YA</button>
+
+<script>
+    document.getElementById('btnYa').addEventListener('click', function() {
+        Swal.fire({
+            title: 'Berhasil!',
+            text: 'Produksi telah disetujui.',
+            icon: 'success',
+            confirmButtonColor: '#8A8BFC',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Arahkan ke halaman daftar setelah klik OK
+                window.location.href = 'persetujuanProduksi.php';
+            }
+        });
+    });
+</script>
+                            <a href="penolakan.php" class="btn-action btn-tidak">
+                                TIDAK
+                            </a>
                         </div>
                     </div>
                 </div>

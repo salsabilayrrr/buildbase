@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: #8A8BFC;
+    padding: 20px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    height: 80px; 
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 55px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.header-title {
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+}
+
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
+
+/* --- CONTENT AREA --- */
+.scroll-content {
+    flex: 1;
+    margin-top: 10px; 
+    padding-bottom: 120px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- JUDUL & ICON (RAPAT) --- */
+.header-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px; 
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.icon-top-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -5px; 
+}
+
+.main-page-title {
+    font-weight: 600;
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* --- FORM CONTAINER (UNGU MUDA) --- */
+.form-card-container {
+    background-color: #E2E3F8; 
+    width: 100%;
+    max-width: none;
+    border-radius: 40px 40px 0 0; 
+    padding: 40px 25px;
+    min-height: 60vh;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #000;  
+    border-bottom: none;     
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+/* --- INPUT PILL STYLE --- */
+.form-input-pill {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.form-input-pill::placeholder {
+    color: #aaa;
+}
+
+/* --- TEXTAREA KHUSUS ALASAN --- */
+textarea.form-input-pill {
+    height: 150px;
+    border-radius: 25px;
+    resize: none;
+    padding-top: 15px;
+}
+
+/* --- TOMBOL SUBMIT --- */
+.btn-submit-pill {
+    width: 160px;
+    padding: 12px;
+    background-color: #8A8BFC;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    font-weight: 900;
+    font-size: 15px;
+    margin-top: 15px;
+    box-shadow: 0 5px 12px rgba(138, 139, 252, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-submit-pill:active {
+    transform: scale(0.95);
+}
+
+/* --- BOTTOM NAVIGATION (FIXED) --- */
+.bottom-nav {
+    background-color: #8A8BFC;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-icon-active { 
+    width: 60px;
+    filter: brightness(0) invert(1);
+}
+
+.nav-icon-side { 
+    width: 55px;
+    filter: brightness(0) invert(1); 
+    opacity: 0.9;
+}
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* --- LINGKARAN AKTIF (FLOATING EFFECT) --- */
+.active-extra-circle {
+    background-color: #4E5FE1; 
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 5px solid #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -45px; /* Membuat efek melayang keluar dari bar */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-height: 600px) {
+    .form-card-container {
+        padding: 20px 20px;
+    }
+    .active-extra-circle {
+        width: 65px;
+        height: 65px;
+        margin-top: -35px;
+    }
+}

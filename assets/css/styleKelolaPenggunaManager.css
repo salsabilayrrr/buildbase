@@ -243,8 +243,6 @@ body {
     bottom: 0; 
     width: 100%;
     z-index: 1000;
-    
-    /* TAMBAHKAN INI */
     transition: transform 0.3s ease-in-out; 
     will-change: transform;
 }
