@@ -296,11 +296,24 @@ $file_pdf = $data_header['file_path'] ?? '#'; // Mengambil path file dari tabel 
     </main>
 
     <nav class="bottom-nav">
-        <a href="verif.php" class="nav-item"><img src="../assets/img/est1.png"></a>
-        <a href="estimator.php" class="nav-item"><img src="../assets/img/home.png"></a>
-        <a href="daftarrfq.php" class="nav-item"><img src="../assets/img/est2.png"></a>
-        <a href="buatboq.php" class="nav-item active-boq"><img src="../assets/img/est3.png"></a>
-    </nav>
+    
+    <a href="../estimator/verif.php" class="nav-item <?= ($current_page == 'verif.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/est1.png" class="nav-icon">
+    </a>
+
+    <a href="estimator.php" class="nav-item <?= ($current_page == 'estimator.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/home.png" class="nav-icon">
+    </a>
+
+    <a href="../estimator/daftarrfq.php" class="nav-item <?= ($current_page == '../estimator/daftarrfq.php') ? 'active-side' : '' ?>">
+        <img src="../assets/img/est2.png" class="nav-icon">
+    </a>
+
+    <a href="../estimator/buatboq.php" class="nav-item <?= ($current_page == '../estimator/buatboq.php') ? 'active-home' : '' ?>">
+        <img src="../assets/img/est3.png" class="nav-icon">
+    </a>
+
+</nav>
 
     <script>
         // JS untuk Tambah Baris
