@@ -80,9 +80,21 @@ body {
 .card-footer-item { display: flex; justify-content: space-between; align-items: center; }
 .status-text { font-size: 12px; font-weight: 700; }
 .btn-detail {
-    background: #D6D7F5; border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 15px; padding: 5px 15px;
-    font-size: 10px; font-weight: 800; cursor: pointer;
+    background: #D6D7F5; 
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px; 
+    padding: 5px 15px;
+    font-size: 10px; 
+    font-weight: 800; 
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    color: #000 !important; 
+    text-decoration: none;
+}  
+.btn-detail:hover {
+    background-color: #3f3a60;
+    color: white; 
 }
 
 /* --- FOOTER NAV BASE --- */

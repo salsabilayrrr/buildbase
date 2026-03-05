@@ -86,7 +86,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
 
         <nav class="bottom-nav" id="mainNavbar">
             <div class="nav-item">
-                <a href="#"><img src="../assets/img/validasi.png" class="nav-icon-side"></a>
+                <a href="../engineer/validasi.php"><img src="../assets/img/validasi.png" class="nav-icon-side"></a>
             </div>
             <div class="nav-item">
                 <div class="home-circle">

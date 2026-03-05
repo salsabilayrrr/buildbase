@@ -1,0 +1,93 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Validasi - Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styleValidasiEngineer.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="header-left">
+            <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
+            <span class="header-title">Engineer</span>
+        </div>
+        <div class="btn-logout-pill">
+            <div class="logout-icon-box">
+                <img src="../assets/img/logout.png" alt="Logout">
+            </div>
+            <span class="logout-text">Logout</span>
+        </div>
+    </header>
+
+    <main class="scroll-content">
+        <h2 class="main-page-title">Validasi</h2>
+
+        <div class="info-card">
+            <p>
+                📁 <strong>Proyek: Proyek Jembatan A (ID: PROYEK-001)</strong><br>
+                File: JembatanA_v1.1.pdf<br>
+                Oleh: Drafter (13 Nov 2025, 10:00)<br>
+                Riwayat Versi: [v1.1 (Current)] [v1.0]
+            </p>
+        </div>
+
+        <div class="form-card-container">
+            <div class="image-preview-box">
+                <img src="../assets/img/jembatan.png" alt="Jembatan" class="img-fluid rounded-4 border-black">
+            </div>
+            
+            <div class="decision-panel">
+                <p class="panel-subtitle">PANEL KEPUTUSAN (Sesuai UC-2)</p>
+                <p class="label-bold">Keputusan Anda :</p>
+                
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="keputusan" value="setuju" checked> Setujui
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="keputusan" value="tolak"> Tolak & Minta Revisi
+                    </label>
+                </div>
+
+                <p class="label-bold" style="margin-top: 15px;">Catatan Validasi (Wajib diisi jika Tolak) :</p>
+                <input type="text" class="form-input-pill" placeholder="Ukuran kolom tidak ...">
+                
+                <button class="btn-send-action">
+                    <img src="../assets/img/send.png" alt="Send" width="24">
+                    <span>KIRIM HASIL VALIDASI</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <nav class="bottom-nav" id="mainNavbar">
+        <div class="nav-item">
+            <div class="active-extra-circle">
+                <img src="../assets/img/validasi.png" class="nav-icon-active" alt="Validasi">
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="../dashboard/engineer.php"><img src="../assets/img/home.png" class="nav-icon-side" alt="Home">
+        </div>
+        <div class="nav-item">
+            <img src="../assets/img/database.png" class="nav-icon-side" alt="Edit">
+        </div>
+    </nav>
+
+    <script>
+        const navbar = document.getElementById('mainNavbar');
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => { navbar.style.transform = 'translateY(120px)'; });
+            input.addEventListener('blur', () => { navbar.style.transform = 'translateY(0)'; });
+        });
+    </script>
+</body>
+</html>

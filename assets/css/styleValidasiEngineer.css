@@ -1,0 +1,167 @@
+/* --- Global Style --- */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: #8A8BFC;
+    padding: 20px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    height: 80px; 
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 55px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.header-title {
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+}
+
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-icon-box img { width: 20px;}
+.logout-text { color: #000; font-size: 11px; font-weight: 800; }
+
+.logout-icon-img {
+    width: 80px; 
+    height: auto;
+    display: block;
+}
+
+
+/* --- Main Content --- */
+.scroll-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 120px;
+}
+
+.main-page-title {
+    font-weight: 600;
+    font-size: 28px;
+    margin: 30px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- Cards --- */
+.info-card {
+    background-color: #B0B1EA; /* Warna sesuai instruksi */
+    width: 92%;
+    border-radius: 8px; /* Kotak dengan radius kecil */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow halus */
+}
+
+.info-card p { font-size: 12px; font-weight: 700; line-height: 1.6; }
+
+.form-card-container {
+    background-color: #B0B1EA;
+    width: 90%;
+    border: 1px solid #000;
+    border-bottom: none;
+    border-radius: 5px;
+    padding: 30px 25px;
+    flex: 1;
+}
+
+.image-preview-box img {
+    border: 2px solid #000;
+    margin-bottom: 20px;
+}
+
+/* --- Panel Decisions --- */
+.panel-subtitle { font-weight: 900; font-size: 14px; margin-bottom: 10px; }
+.label-bold { font-weight: 700; font-size: 13px; }
+
+.radio-group { margin: 10px 0; }
+.radio-item { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; margin-bottom: 5px; }
+
+.form-input-pill {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 2px solid #000;
+    margin-top: 10px;
+    background: #fff;
+    font-weight: 600;
+}
+
+.btn-send-action {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.btn-send-action span { font-weight: 900; font-size: 15px; }
+
+/* --- Bottom Nav --- */
+.bottom-nav {
+    background-color: #8A8BFC;
+    height: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.active-extra-circle {
+    background-color: #4E5FE1;
+    width: 75px; height: 75px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    display: flex; justify-content: center; align-items: center;
+    margin-top: -45px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.nav-icon-active { width: 65px; padding-left: 15px; filter: brightness(0) invert(1); }
+.nav-icon-side { width: 55px; filter: brightness(0) invert(1); opacity: 0.8; }

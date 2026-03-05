@@ -69,7 +69,9 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                             <div class="divider"></div>
                             <div class="card-footer-item">
                                 <span class="status-text">Status : Menunggu Persetujuan</span>
-                                <button class="btn-detail">Lihat Detail</button>
+                                <a href="dataProyek.php" class="btn-detail">
+                                    Lihat Detail
+                                </a>
                             </div>
                         </div>
                     </div>
