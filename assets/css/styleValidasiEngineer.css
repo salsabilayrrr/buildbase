@@ -1,4 +1,3 @@
-/* --- Global Style --- */
 * {
     margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -86,13 +85,13 @@ body {
 
 /* --- Cards --- */
 .info-card {
-    background-color: #B0B1EA; /* Warna sesuai instruksi */
+    background-color: #B0B1EA; 
     width: 92%;
-    border-radius: 8px; /* Kotak dengan radius kecil */
+    border-radius: 8px; 
     padding: 20px;
     margin-bottom: 20px;
     border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow halus */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
 .info-card p { font-size: 12px; font-weight: 700; line-height: 1.6; }

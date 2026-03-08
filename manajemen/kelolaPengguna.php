@@ -5,7 +5,6 @@ $conn = mysqli_connect("localhost", "root", "", "buildbase_db");
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
-
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
@@ -59,7 +58,7 @@ $result = mysqli_query($conn, $query);
                 </div>
 
                 <div class="search-container mb-4">
-                    <input type="text" placeholder="Ketik Nama Pengguna..." class="search-input">
+                    <input type="text" id="searchInput" placeholder="Ketik Nama Pengguna..." class="search-input">
                     <span class="search-icon">🔍</span>
                 </div>
 
@@ -101,54 +100,84 @@ $result = mysqli_query($conn, $query);
         </main>
 
         <nav class="bottom-nav" id="navbar">
-    <div class="nav-item">
-        <a href="persetujuanProduksi.php">
-            <img src="../assets/img/berkas.png" class="nav-icon-side">
-        </a>
-    </div>
-    <div class="nav-item">
-        <a href="penolakan.php">
-            <img src="../assets/img/arsip.jpg" class="nav-icon-side">
-        </a>
-    </div>
-    <div class="nav-item">
-        <a href="../dashboard/manager.php">
-            <img src="../assets/img/home.png" class="nav-icon-side">
-        </a>
-    </div>
-    <div class="nav-item">
-        <div class="active-extra-circle">
-            <a href="kelolaPengguna.php">
-                <img src="../assets/img/akun.jpg" class="nav-icon-active">
-            </a>
-        </div>
-    </div>
-</nav>
+            <div class="nav-item">
+                <a href="persetujuanProduksi.php">
+                    <img src="../assets/img/berkas.png" class="nav-icon-side">
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="penolakan.php">
+                    <img src="../assets/img/arsip.jpg" class="nav-icon-side">
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="../dashboard/manager.php">
+                    <img src="../assets/img/home.png" class="nav-icon-side">
+                </a>
+            </div>
+            <div class="nav-item">
+                <div class="active-extra-circle">
+                    <a href="kelolaPengguna.php">
+                        <img src="../assets/img/akun.jpg" class="nav-icon-active">
+                    </a>
+                </div>
+            </div>
+        </nav>
 
     </div>
 </div>
 
 <script>
-    // Memilih elemen footer dengan ID 'navbar'
     const footer = document.getElementById('navbar');
-    // Pilih semua input (termasuk search bar)
-    const inputs = document.querySelectorAll('input, textarea');
+    const searchInput = document.getElementById('searchInput');
+    const table = document.getElementById('userTable');
+    const tr = table.getElementsByTagName('tr');
 
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            // Sembunyikan footer ke bawah saat mengetik agar tidak terangkat keyboard
-            if (footer) {
-                footer.style.transform = 'translateY(150px)';
-                footer.style.transition = 'transform 0.3s ease'; // Tambah efek halus
+    // --- SEARCHING (NAMA & ROLE) ---
+    searchInput.addEventListener('input', function() {
+        const filter = this.value.toLowerCase();
+        for (let i = 1; i < tr.length; i++) {
+            const tdNama = tr[i].getElementsByTagName('td')[0];
+            const tdRole = tr[i].getElementsByTagName('td')[1];
+            if (tdNama || tdRole) {
+                const textNama = (tdNama.textContent || tdNama.innerText).toLowerCase();
+                const textRole = (tdRole.textContent || tdRole.innerText).toLowerCase();
+                tr[i].style.display = (textNama.includes(filter) || textRole.includes(filter)) ? "" : "none";
             }
-        });
+        }
+    });
+
+    const toggleFooter = (isVisible) => {
+        if (!footer) return;
+        if (isVisible) {
+            footer.classList.remove('hidden-footer');
+        } else {
+            footer.classList.add('hidden-footer');
+        }
+    };
+
+    searchInput.addEventListener('focus', () => toggleFooter(false));
+    searchInput.addEventListener('blur', () => {
         
-        input.addEventListener('blur', () => {
-            // Munculkan kembali saat selesai mengetik
-            if (footer) {
-                footer.style.transform = 'translateY(0)';
+        setTimeout(() => toggleFooter(true), 150);
+    });
+
+    const originalHeight = window.innerHeight;
+    
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            if (window.visualViewport.height < originalHeight - 150) {
+                toggleFooter(false);
+            } else {
+                toggleFooter(true);
             }
         });
+    }
+
+    window.addEventListener('scroll', () => {
+        if (document.activeElement === searchInput) {
+            toggleFooter(false);
+        }
     });
 </script>
 
