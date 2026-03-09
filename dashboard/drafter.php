@@ -79,7 +79,9 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
 
     <nav class="bottom-nav-full">
         <div class="nav-item">
-            <img src="../assets/img/folder.png" class="icon-nav-folder">
+            <a href="../drafter/upShopDrawing.php">
+                <img src="../assets/img/folder.png" class="icon-nav-folder" alt="Folder Proyek">
+            </a>
         </div>
         <div class="nav-item">
             <div class="nav-home-circle">
