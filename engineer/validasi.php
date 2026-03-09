@@ -1,5 +1,33 @@
 <?php
 session_start();
+
+$conn = mysqli_connect("localhost","root","","buildbase_db");
+
+if(!$conn){
+    die("Koneksi gagal: ".mysqli_connect_error());
+}
+
+if(isset($_POST['kirim_validasi'])){
+
+    $id_proyek = "PROYEK-001";
+    $keputusan = $_POST['keputusan'];
+    $catatan = $_POST['catatan'];
+
+    if($keputusan == "tolak" && empty($catatan)){
+        echo "<script>alert('Catatan wajib diisi jika menolak!');</script>";
+    } else {
+
+        $query = "INSERT INTO validasi_engineer (id_proyek, keputusan, catatan) VALUES
+                    ('$id_proyek','$keputusan','$catatan')";
+
+        mysqli_query($conn,$query);
+
+        echo "<script>
+        alert('Validasi berhasil disimpan');
+        window.location.href='../dashboard/engineer.php';
+        </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -18,12 +46,12 @@ session_start();
             <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
             <span class="header-title">Engineer</span>
         </div>
-        <div class="btn-logout-pill">
-            <div class="logout-icon-box">
-                <img src="../assets/img/logout.png" alt="Logout">
-            </div>
-            <span class="logout-text">Logout</span>
-        </div>
+            <a href="../logout.php" class="btn-logout-pill" style="text-decoration: none;">
+                <div class="logout-icon-box">
+                    <img src="../assets/img/logout.png" alt="Logout">
+                </div>
+                <span class="logout-text">Logout</span>
+            </a>
     </header>
 
     <main class="scroll-content">
@@ -43,6 +71,7 @@ session_start();
                 <img src="../assets/img/jembatan.png" alt="Jembatan" class="img-fluid rounded-4 border-black">
             </div>
             
+            <form method="POST">
             <div class="decision-panel">
                 <p class="panel-subtitle">PANEL KEPUTUSAN (Sesuai UC-2)</p>
                 <p class="label-bold">Keputusan Anda :</p>
@@ -57,13 +86,14 @@ session_start();
                 </div>
 
                 <p class="label-bold" style="margin-top: 15px;">Catatan Validasi (Wajib diisi jika Tolak) :</p>
-                <input type="text" class="form-input-pill" placeholder="Ukuran kolom tidak ...">
+                <input type="text" name="catatan" class="form-input-pill" placeholder="Ukuran kolom tidak ...">
                 
-                <button class="btn-send-action">
-                    <img src="../assets/img/send.png" alt="Send" width="24">
+                <button type="submit" name="kirim_validasi" class="btn-send-action">
+                    <img src="../assets/img/send.png" width="24">
                     <span>KIRIM HASIL VALIDASI</span>
                 </button>
             </div>
+            </form>
         </div>
     </main>
 
@@ -74,7 +104,9 @@ session_start();
             </div>
         </div>
         <div class="nav-item">
-            <a href="../dashboard/engineer.php"><img src="../assets/img/home.png" class="nav-icon-side" alt="Home">
+            <a href="../dashboard/engineer.php">
+                <img src="../assets/img/home.png" class="nav-icon-side" alt="Home">
+            </a>
         </div>
         <div class="nav-item">
             <img src="../assets/img/database.png" class="nav-icon-side" alt="Edit">

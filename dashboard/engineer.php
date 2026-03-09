@@ -1,5 +1,6 @@
 <?php
 session_start();
+// Proteksi halaman
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
     header("Location: ../index.php");
     exit;
@@ -25,7 +26,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
                 <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
                 <span class="header-title">Dashboard</span>
             </div>
-            <a href="../logout.php" class="btn-logout-pill">
+            <a href="../logout.php" class="btn-logout-pill" style="text-decoration: none;">
                 <div class="logout-icon-box">
                     <img src="../assets/img/logout.png" alt="Logout">
                 </div>
@@ -47,16 +48,20 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
                     </button>
                 </div>
 
-                <div class="row g-4 justify-content-center px-2">
-                    <div class="col-6">
+                <div class="row g-4 justify-content-center px-2" id="projectList">
+                    
+                <div class="col-6 project-item">
+                    <a href="../engineer/validasi.php?id=PROYEK-001" style="text-decoration: none; color: inherit;">
                         <div class="doc-card">
                             <div class="doc-icon-wrapper">
                                 <img src="../assets/img/dataProyek.png" class="doc-icon" alt="Doc">
                             </div>
                             <p class="doc-text">Shop Drawing Proyek Jembatan</p>
                         </div>
-                    </div>
-                    <div class="col-6">
+                    </a>
+                </div>
+
+                    <div class="col-6 project-item">
                         <div class="doc-card">
                             <div class="doc-icon-wrapper">
                                 <img src="../assets/img/dataProyek.png" class="doc-icon" alt="Doc">
@@ -64,7 +69,8 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
                             <p class="doc-text">Shop Drawing Proyek Gedung</p>
                         </div>
                     </div>
-                    <div class="col-6">
+
+                    <div class="col-6 project-item">
                         <div class="doc-card">
                             <div class="doc-icon-wrapper">
                                 <img src="../assets/img/dataProyek.png" class="doc-icon" alt="Doc">
@@ -72,7 +78,8 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
                             <p class="doc-text">Shop Drawing Proyek Pintu Kaca</p>
                         </div>
                     </div>
-                    <div class="col-6">
+
+                    <div class="col-6 project-item">
                         <div class="doc-card">
                             <div class="doc-icon-wrapper">
                                 <img src="../assets/img/dataProyek.png" class="doc-icon" alt="Doc">
@@ -80,21 +87,21 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
                             <p class="doc-text">Shop Drawing Proyek Jendela</p>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                </div> </div>
         </main>
 
         <nav class="bottom-nav" id="mainNavbar">
             <div class="nav-item">
-                <a href="../engineer/validasi.php"><img src="../assets/img/validasi.png" class="nav-icon-side"></a>
+                <a href="../engineer/validasi.php"><img src="../assets/img/validasi.png" class="nav-icon-side" alt="Validasi"></a>
             </div>
             <div class="nav-item">
                 <div class="home-circle">
-                    <a href="#"><img src="../assets/img/home.png" class="nav-icon-home"></a>
+                    <a href="#"><img src="../assets/img/home.png" class="nav-icon-home" alt="Home"></a>
                 </div>
             </div>
             <div class="nav-item">
-                <a href="#"><img src="../assets/img/database.png" class="nav-icon-side"></a>
+                <a href="../engineer/database.php"><img src="../assets/img/database.png" class="nav-icon-side" alt="Database"></a>
             </div>
         </nav>
 
@@ -103,21 +110,39 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'engineer'){
 
 <script>
     const navbar = document.getElementById('mainNavbar');
-    const inputs = document.querySelectorAll('input, textarea');
+    const searchInput = document.getElementById('searchInput');
+    const projectItems = document.querySelectorAll('.project-item');
 
+    // 1. Fitur Pencarian Real-time
+    searchInput.addEventListener('input', function() {
+        const filter = searchInput.value.toLowerCase();
+
+        projectItems.forEach(item => {
+            const text = item.querySelector('.doc-text').textContent.toLowerCase();
+            if (text.includes(filter)) {
+                item.style.display = ""; 
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+
+    // 2. Animasi Navbar saat Keyboard muncul (Mobile UX)
+    const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
-            // Sembunyikan navbar ke bawah saat mengetik
             navbar.style.transform = 'translateY(120px)';
             navbar.style.opacity = '0';
         });
         input.addEventListener('blur', () => {
-            // Munculkan kembali navbar saat selesai mengetik
             navbar.style.transform = 'translateY(0)';
             navbar.style.opacity = '1';
         });
     });
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
