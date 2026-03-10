@@ -85,14 +85,20 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
         </div>
         <div class="nav-item">
             <div class="nav-home-circle">
-                <img src="../assets/img/home.png" class="icon-nav-home">
+                <a href="../dashboard/drafter.php">
+                    <img src="../assets/img/home.png" class="icon-nav-home">
+                </a>
             </div>
         </div>
         <div class="nav-item">
-            <img src="../assets/img/load.png" class="icon-nav-load">
+            <a href="../drafter/revisi.php">
+                <img src="../assets/img/load.png" class="icon-nav-load">
+            </a>
         </div>
         <div class="nav-item">
-            <img src="../assets/img/revisi.png" class="icon-nav-rev">
+            <a href="../drafter/perbaikan.php">
+                <img src="../assets/img/revisi.png" class="icon-nav-rev">
+            </a>
         </div>
     </nav>
 

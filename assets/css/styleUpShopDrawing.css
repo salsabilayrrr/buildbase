@@ -1,6 +1,5 @@
-/* --- GLOBAL --- */
 body { 
-    background-color: #f8f9fa; /* Cerah */
+    background-color: #f8f9fa;
     font-family: 'Roboto', sans-serif; 
     margin: 0; padding: 0;
     min-height: 100vh;
@@ -10,7 +9,7 @@ body {
 
 .container-main {
     flex: 1;
-    padding-bottom: 120px; /* Ruang agar tidak tertutup footer */
+    padding-bottom: 120px; 
 }
 
 /* --- HEADER --- */
@@ -81,7 +80,6 @@ body {
     z-index: 1000; border-top: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Sembunyikan footer otomatis jika layar mendadak pendek (keyboard muncul) */
 @media screen and (max-height: 550px) {
     .bottom-nav-full { display: none; }
 }
