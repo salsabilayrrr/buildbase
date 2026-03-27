@@ -4,6 +4,19 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
+
+// Logika menangkap aksi dari tombol
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'approve') {
+        $_SESSION['status_rfq_011'] = 'Disetujui';
+        header("Location: persetujuanProduksi.php");
+        exit;
+    } elseif ($_GET['action'] == 'reject') {
+        $_SESSION['status_rfq_011'] = 'Tidak Disetujui';
+        header("Location: persetujuanProduksi.php");
+        exit;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -35,14 +48,14 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
         </header>
 
         <main class="scroll-content">
-            <div class="container pt-4">
+            <div class="container pt-4 pb-5">
                 
-            <div class="header-title-wrapper">
-                <div class="icon-blue-box">
-                    <img src="../assets/img/data.png" alt="Icon" width="35">
-                </div>
+                <div class="header-title-wrapper">
+                    <div class="icon-blue-box">
+                        <img src="../assets/img/data.png" alt="Icon" width="35">
+                    </div>
                     <h2 class="main-page-title">Data Permintaan Produksi</h2>
-            </div>
+                </div>
 
                 <div class="project-detail-card">
                     <h3 class="sub-title-center">Persetujuan RFQ</h3>
@@ -79,27 +92,8 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                     <div class="action-section text-center mt-4">
                         <p class="question-text">Apakah Produksi Disetujui?</p>
                         <div class="d-flex justify-content-center gap-4">
-                        <button class="btn-action btn-ya" id="btnYa">YA</button>
-
-<script>
-    document.getElementById('btnYa').addEventListener('click', function() {
-        Swal.fire({
-            title: 'Berhasil!',
-            text: 'Produksi telah disetujui.',
-            icon: 'success',
-            confirmButtonColor: '#8A8BFC',
-            confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Arahkan ke halaman daftar setelah klik OK
-                window.location.href = 'persetujuanProduksi.php';
-            }
-        });
-    });
-</script>
-                            <a href="penolakan.php" class="btn-action btn-tidak">
-                                TIDAK
-                            </a>
+                            <button class="btn-action btn-ya" id="btnYa">YA</button>
+                            <a href="dataProyek.php?action=reject" class="btn-action btn-tidak">TIDAK</a>
                         </div>
                     </div>
                 </div>
@@ -114,19 +108,16 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                     </a>
                 </div>
             </div>
-
             <div class="nav-item">
                 <a href="penolakan.php">
                     <img src="../assets/img/arsip.jpg" class="nav-icon-side">
                 </a>
             </div>
-
             <div class="nav-item">
                 <a href="../dashboard/manager.php">
                     <img src="../assets/img/home.png" class="nav-icon-side">
                 </a>
             </div>
-
             <div class="nav-item">
                 <a href="kelolaPengguna.php">
                     <img src="../assets/img/akun.jpg" class="nav-icon-side">
@@ -136,6 +127,22 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
 
     </div>
 </div>
+
+<script>
+    document.getElementById('btnYa').addEventListener('click', function() {
+        Swal.fire({
+            title: 'Berhasil!',
+            text: 'Produksi telah disetujui.',
+            icon: 'success',
+            confirmButtonColor: '#8A8BFC',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'dataProyek.php?action=approve';
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

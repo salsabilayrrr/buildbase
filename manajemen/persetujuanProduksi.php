@@ -4,7 +4,15 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
+
+$status_011 = isset($_SESSION['status_rfq_011']) ? $_SESSION['status_rfq_011'] : 'Menunggu Persetujuan';
+
+$status_class = "";
+if($status_011 == 'Disetujui') $status_class = "text-success";
+if($status_011 == 'Tidak Disetujui') $status_class = "text-danger";
+$status_rfq_011 = isset($_SESSION['status_rfq_011']) ? $_SESSION['status_rfq_011'] : 'Menunggu Persetujuan';
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -68,11 +76,12 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
                             <p class="label-id">ID: RFQ-011 (Proyek Pagar)</p>
                             <div class="divider"></div>
                             <div class="card-footer-item">
-                                <span class="status-text">Status : Menunggu Persetujuan</span>
-                                <a href="dataProyek.php" class="btn-detail">
-                                    Lihat Detail
-                                </a>
+                            <span class="status-text" style="color: #000 !important; font-weight: bold;">
+                                Status : <?php echo $status_rfq_011; ?>
+                            </span>
+                                    <a href="dataProyek.php" class="btn-detail">Lihat Detail</a>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
