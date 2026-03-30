@@ -62,7 +62,6 @@ body {
     background-color: #C2C7FF;
 }
 
-/* Bottom Nav - Tetap Fixed di Bawah */
 .bottom-nav {
     background-color: #8B93FF;
     border-top-left-radius: 40px;
@@ -72,27 +71,50 @@ body {
     left: 0;
     right: 0;
     height: 85px;
-    z-index: 100;
+    z-index: 1000;
+    /* Pastikan paling depan */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    /* Mengatur jarak antar 5 item secara otomatis */
     align-items: center;
+    padding: 0 5px;
     transition: transform 0.3s ease;
+    width: 100vw;
+    /* Paksa lebar sesuai layar browser */
 }
 
-/* Floating Home Button */
+.nav-item {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    /* Ini kunci agar 5 menu membagi ruang layar jadi 5 bagian sama besar */
+    min-width: 0;
+}
+
 .home-button {
     background-color: #ffffff;
     border: 5px solid #8B93FF;
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    /* Perkecil sedikit agar memberi ruang bagi ikon lain */
+    height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: translateY(-25px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    /* WAJIB: Agar tombol home tidak kegencet ikon lain */
+    z-index: 1100;
 }
 
+/* Tambahan: Pastikan ikon FontAwesome tidak memiliki margin bawaan yang merusak layout */
+.bottom-nav i {
+    margin: 0;
+    padding: 0;
+}
 /* Container Utama (Kapsul Putih) */
 .logout-btn {
     display: flex;

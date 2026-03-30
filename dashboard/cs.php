@@ -13,16 +13,17 @@ session_start();
 </head>
 <body>
     <header class="navbar-custom">
-    <div class="flex items-center"> <img src="../assets/img/logo.png" alt="BuildBase" class="w-20 h-20">
-        <span class="text-2xl font-black text-black tracking-tighter -ml-2">BuildBase</span>
-    </div>
-
-    <a href="../index.php" class="logout-btn">
-        <div class="icon-circle">
-            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+        <div class="flex items-center"> 
+            <img src="../assets/img/logo.png" alt="BuildBase" class="w-20 h-20">
+            <span class="text-2xl font-black text-black tracking-tighter -ml-2">BuildBase</span>
         </div>
-        <span class="logout-text">Logout</span>
-    </a>
+
+        <a href="../index.php" class="logout-btn">
+            <div class="icon-circle">
+                <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+            </div>
+            <span class="logout-text">Logout</span>
+        </a>
     </header>
 
     <main class="p-6 space-y-6">
@@ -39,12 +40,14 @@ session_start();
             </div>
         </div>
 
-        <button class="bg-btn-purple w-full py-4 rounded-2xl flex items-center justify-center space-x-3 shadow-md active:scale-95 transition">
-            <div class="bg-white w-8 h-8 rounded-lg flex items-center justify-center">
-                <i class="fa-solid fa-plus text-[#B2B9FF] text-xl"></i>
-            </div>
-            <span class="font-black text-black text-lg">Tambahkan RFQ Baru</span>
-        </button>
+        <a href="../cs/inputrfq.php" class="block">
+            <button class="bg-btn-purple w-full py-4 rounded-2xl flex items-center justify-center space-x-3 shadow-md active:scale-95 transition">
+                <div class="bg-white w-8 h-8 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-plus text-[#B2B9FF] text-xl"></i>
+                </div>
+                <span class="font-black text-black text-lg">Tambahkan RFQ Baru</span>
+            </button>
+        </a>
 
         <div class="flex space-x-2">
             <div class="bg-light-purple flex-grow flex items-center px-5 py-3 rounded-2xl shadow-inner">
@@ -84,8 +87,6 @@ session_start();
                             <td>Proses</td>
                             <td><i class="fa-solid fa-pencil text-white"></i></td>
                         </tr>
-                        <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-                        <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -93,27 +94,36 @@ session_start();
     </main>
 
     <nav id="navbar" class="bottom-nav">
-        <i class="fa-solid fa-file-circle-plus text-white text-3xl"></i>
-        <i class="fa-solid fa-file-lines text-white text-3xl"></i>
-        <div class="home-button">
-            <i class="fa-solid fa-house text-[#8B93FF] text-3xl"></i>
-        </div>
-        <i class="fa-solid fa-paper-plane text-white text-3xl"></i>
-        <i class="fa-solid fa-user-group text-white text-3xl"></i>
-    </nav>
+    <a href="input_rfq.php" class="nav-item">
+        <i class="fa-solid fa-file-circle-plus text-white text-2xl"></i>
+    </a>
+
+    <a href="daftar_rfq.php" class="nav-item">
+        <i class="fa-solid fa-file-lines text-white text-2xl"></i>
+    </a>
+
+    <a href="dashboard.php" class="home-button">
+        <i class="fa-solid fa-house text-[#8B93FF] text-3xl"></i>
+    </a>
+
+    <a href="status.php" class="nav-item">
+        <i class="fa-solid fa-paper-plane text-white text-2xl"></i>
+    </a>
+
+    <a href="pelanggan.php" class="nav-item">
+        <i class="fa-solid fa-user-group text-white text-2xl"></i>
+    </a>
+</nav>
 
     <script>
-        // SCRIPT AGAR NAVBAR TENGGELAM SAAT MENGETIK
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
 
         inputs.forEach(input => {
             input.addEventListener('focus', () => {
-                // Sembunyikan navbar (tenggelam)
                 navbar.style.transform = 'translateY(100px)';
             });
             input.addEventListener('blur', () => {
-                // Tampilkan kembali navbar
                 navbar.style.transform = 'translateY(0)';
             });
         });

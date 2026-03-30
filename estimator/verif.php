@@ -299,24 +299,22 @@ body{
 
 </div>
 
- <nav class="bottom-nav">
+  <nav class="bottom-nav">
     
-    <a href="../estimator/verif.php" class="nav-item <?= ($current_page == 'verif.php') ? 'active-home' : '' ?>">
+    <a href="../estimator/verif.php" class="nav-item <?= ($current_page == 'verif.php') ? 'active-side' : '' ?>">
         <img src="../assets/img/est1.png" class="nav-icon">
     </a>
 
-    <a href="../dashboard/estimator.php" class="nav-item <?= ($current_page == '../dashboard/estimator.php') ? 'active-side' : '' ?>">
+    <a href="estimator.php" class="nav-item <?= ($current_page == 'estimator.php') ? 'active-side' : '' ?>">
         <img src="../assets/img/home.png" class="nav-icon">
     </a>
 
-     <a href="verifikasi_shop_drawing.php" class="nav-item <?= ($current_page == 'verifikasi_shop_drawing.php') ? 'active-side' : '' ?>">
+    <a href="../estimator/daftarrfq.php" class="nav-item <?= ($current_page == '../estimator/daftarrfq.php') ? 'active-side' : '' ?>">
         <img src="../assets/img/est2.png" class="nav-icon">
     </a>
 
-    <a href="dokumen.php" class="nav-item <?= ($current_page == 'dokumen.php') ? 'active-side' : '' ?>">
+    <a href="../estimator/buatboq.php" class="nav-item <?= ($current_page == '../estimator/buatboq.php') ? 'active-home' : '' ?>">
         <img src="../assets/img/est3.png" class="nav-icon">
     </a>
-
-</nav>
 </body>
 </html>
