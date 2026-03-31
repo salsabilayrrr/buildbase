@@ -8,8 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuildBase - Customer Service Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleDashboardCs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    <link rel="stylesheet" href="../assets/css/styleDashboardCs.css">
 </head>
 <body>
     <header class="navbar-custom">
@@ -94,8 +93,8 @@ session_start();
     </main>
 
     <nav id="navbar" class="bottom-nav">
-    <a href="input_rfq.php" class="nav-item">
-        <i class="fa-solid fa-file-circle-plus text-white text-2xl"></i>
+    <a href="../cs/inputrfq.php" class="nav-item">
+        <i class="fa-solid fa-file-circle-check text-white text-2xl"></i>
     </a>
 
     <a href="daftar_rfq.php" class="nav-item">

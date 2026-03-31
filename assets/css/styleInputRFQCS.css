@@ -131,7 +131,7 @@ body {
     font-size: 14px;
 }
 
-/* Bottom Nav */
+/* --- BOTTOM NAVIGATION FIXED --- */
 .bottom-nav {
     background-color: #8B93FF;
     border-top-left-radius: 40px;
@@ -141,31 +141,49 @@ body {
     left: 0;
     right: 0;
     height: 85px;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 0 10px;
 }
 
-.home-button {
+/* Class untuk Ikon yang SEDANG AKTIF (Paling Kiri) */
+.active-cycle {
     background-color: #ffffff;
     border: 5px solid #8B93FF;
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-30px);
+    transform: translateY(-25px);
+    /* Melayang ke atas */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-decoration: none;
+    flex-shrink: 0;
+    z-index: 1100;
 }
 
+/* Class untuk 4 Ikon Lainnya yang tidak aktif */
 .nav-item {
     text-decoration: none;
-    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: white;
+    /* Ikon lainnya tetap putih */
 }
 
-.nav-item:hover {
-    opacity: 0.7;
+.nav-item i {
+    font-size: 24px;
 }
+
+/* Warna ikon di dalam lingkaran putih harus ungu agar terlihat */
+.active-cycle i {
+    color: #8B93FF;
+    font-size: 30px;
+}
+
