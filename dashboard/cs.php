@@ -97,7 +97,7 @@ session_start();
         <i class="fa-solid fa-file-circle-check text-white text-2xl"></i>
     </a>
 
-    <a href="daftar_rfq.php" class="nav-item">
+    <a href="../cs/kelolarfq.php" class="nav-item">
         <i class="fa-solid fa-file-lines text-white text-2xl"></i>
     </a>
 
