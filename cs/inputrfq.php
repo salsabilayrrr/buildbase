@@ -141,7 +141,7 @@ if (isset($_GET['id'])) {
         <a href="status.php" class="nav-item">
             <i class="fa-solid fa-paper-plane"></i>
         </a>
-        <a href="pelanggan.php" class="nav-item">
+        <a href="dataklien.php" class="nav-item">
             <i class="fa-solid fa-user-group"></i>
         </a>
     </nav>

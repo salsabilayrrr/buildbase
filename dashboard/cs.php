@@ -109,7 +109,7 @@ session_start();
         <i class="fa-solid fa-paper-plane text-white text-2xl"></i>
     </a>
 
-    <a href="pelanggan.php" class="nav-item">
+    <a href="../cs/dataklien.php" class="nav-item">
         <i class="fa-solid fa-user-group text-white text-2xl"></i>
     </a>
 </nav>
