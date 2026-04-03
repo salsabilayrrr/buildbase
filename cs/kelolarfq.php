@@ -74,7 +74,7 @@
         <a href="../dashboard/cs.php" class="nav-item">
             <i class="fa-solid fa-house text-white" style="font-size: 24px;"></i>
         </a>
-        <a href="status.php" class="nav-item">
+        <a href="laporannegoisasi.php" class="nav-item">
             <i class="fa-solid fa-paper-plane text-white" style="font-size: 24px;"></i>
         </a>
         <a href="dataklien.php" class="active-cycle">

@@ -105,7 +105,7 @@ session_start();
         <i class="fa-solid fa-house text-[#8B93FF] text-3xl"></i>
     </a>
 
-    <a href="status.php" class="nav-item">
+    <a href="../cs/laporannegoisasi.php" class="nav-item">
         <i class="fa-solid fa-paper-plane text-white text-2xl"></i>
     </a>
 

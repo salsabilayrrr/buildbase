@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $query);
         <a href="inputrfq.php" class="nav-item"><i class="fa-solid fa-file-circle-check text-white" style="font-size: 24px;"></i></a>
         <a href="kelolarfq.php" class="nav-item"><i class="fa-solid fa-file-lines text-white" style="font-size: 24px;"></i></a>
         <a href="../dashboard/cs.php" class="nav-item"><i class="fa-solid fa-house text-white" style="font-size: 24px;"></i></a>
-        <a href="status.php" class="nav-item"><i class="fa-solid fa-paper-plane text-white" style="font-size: 24px;"></i></a>
+        <a href="laporannegoisasi.php" class="nav-item"><i class="fa-solid fa-paper-plane text-white" style="font-size: 24px;"></i></a>
         <a href="dataklien.php" class="active-cycle"><i class="fa-solid fa-user-group" style="color: #8B93FF; font-size: 30px;"></i></a>
     </nav>
 </body>
