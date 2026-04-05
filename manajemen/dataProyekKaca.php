@@ -1,27 +1,27 @@
 <?php
 session_start();
-
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
 
-// Proses aksi approve / reject
 if (isset($_GET['action'])) {
-
     if ($_GET['action'] == 'approve') {
         $_SESSION['status_rfq_014'] = 'Disetujui';
         header("Location: persetujuanProduksi.php");
         exit;
-    }
-
-    if ($_GET['action'] == 'reject') {
+    } elseif ($_GET['action'] == 'reject') {
+        $_SESSION['reject_data'] = [
+            'perusahaan' => 'PT Kaca Indah Jaya',
+            'proyek'     => 'Proyek Pintu Kaca (RFQ-014)'
+        ];
         $_SESSION['status_rfq_014'] = 'Tidak Disetujui';
-        header("Location: persetujuanProduksi.php");
+        header("Location: penolakan.php");
         exit;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -153,21 +153,22 @@ if (isset($_GET['action'])) {
 
     // Konfirmasi untuk tombol TIDAK (Tolak)
     document.getElementById('btnTidak').addEventListener('click', function() {
-        Swal.fire({
-            title: 'Konfirmasi Tolak?',
-            text: "Permintaan produksi ini akan ditolak.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#e74c3c', 
-            cancelButtonColor: '#aaa',
-            confirmButtonText: 'Ya, Tolak!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'dataProyekKaca.php?action=reject';
-            }
-        });
+    Swal.fire({
+        title: 'Konfirmasi Tolak?',
+        text: "Permintaan produksi ini akan ditolak.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c', 
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Ya, Tolak!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Ini akan memicu logika PHP 'reject' di atas
+            window.location.href = 'dataProyekKaca.php?action=reject'; 
+        }
     });
+});
 </script>
 
 </body>

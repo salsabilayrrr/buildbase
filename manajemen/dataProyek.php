@@ -5,19 +5,23 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     exit;
 }
 
-// Logika menangkap aksi dari tombol
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'approve') {
         $_SESSION['status_rfq_011'] = 'Disetujui';
         header("Location: persetujuanProduksi.php");
         exit;
     } elseif ($_GET['action'] == 'reject') {
+        $_SESSION['reject_data'] = [
+            'perusahaan' => 'PT Abadi Sejahtera',
+            'proyek'     => 'Proyek Pagar (RFQ-011)'
+        ];
         $_SESSION['status_rfq_011'] = 'Tidak Disetujui';
-        header("Location: persetujuanProduksi.php");
+        header("Location: penolakan.php");
         exit;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -149,21 +153,22 @@ if (isset($_GET['action'])) {
 
     // Konfirmasi untuk tombol TIDAK (Tolak)
     document.getElementById('btnTidak').addEventListener('click', function() {
-        Swal.fire({
-            title: 'Konfirmasi Tolak?',
-            text: "Permintaan produksi ini akan ditolak.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#e74c3c', 
-            cancelButtonColor: '#aaa',
-            confirmButtonText: 'Ya, Tolak!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'dataProyek.php?action=reject';
-            }
-        });
+    Swal.fire({
+        title: 'Konfirmasi Tolak?',
+        text: "Permintaan produksi ini akan ditolak.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c', 
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Ya, Tolak!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Ini akan memicu logika PHP 'reject' di atas
+            window.location.href = 'dataProyek.php?action=reject'; 
+        }
     });
+});
 </script>
 
 </body>
