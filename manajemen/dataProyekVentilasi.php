@@ -1,18 +1,22 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
 
-// Logika menangkap aksi dari tombol
+// Proses aksi approve / reject
 if (isset($_GET['action'])) {
+
     if ($_GET['action'] == 'approve') {
-        $_SESSION['status_rfq_011'] = 'Disetujui';
+        $_SESSION['status_rfq_012'] = 'Disetujui';
         header("Location: persetujuanProduksi.php");
         exit;
-    } elseif ($_GET['action'] == 'reject') {
-        $_SESSION['status_rfq_011'] = 'Tidak Disetujui';
+    }
+
+    if ($_GET['action'] == 'reject') {
+        $_SESSION['status_rfq_012'] = 'Tidak Disetujui';
         header("Location: persetujuanProduksi.php");
         exit;
     }
@@ -23,10 +27,10 @@ if (isset($_GET['action'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Permintaan Produksi - Manajemen</title>
+    <title>Data Permintaan Produksi - RFQ 012</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styleDataProyekManager.css">
+    <link rel="stylesheet" href="../assets/css/styleDataProyekVentilasi.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -36,12 +40,12 @@ if (isset($_GET['action'])) {
         
         <header class="dashboard-header">
             <div class="header-left">
-                <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
+                <img src="../assets/img/logo.png" class="header-logo">
                 <span class="header-title">Manajemen</span>
             </div>
             <a href="../logout.php" class="btn-logout-pill">
                 <div class="logout-icon-box">
-                    <img src="../assets/img/logout.png" alt="Logout">
+                    <img src="../assets/img/logout.png">
                 </div>
                 <span class="logout-text">Logout</span>
             </a>
@@ -52,7 +56,7 @@ if (isset($_GET['action'])) {
                 
                 <div class="header-title-wrapper">
                     <div class="icon-blue-box">
-                        <img src="../assets/img/data.png" alt="Icon" width="35">
+                        <img src="../assets/img/data.png" width="35">
                     </div>
                     <h2 class="main-page-title">Data Permintaan Produksi</h2>
                 </div>
@@ -61,32 +65,32 @@ if (isset($_GET['action'])) {
                     <h3 class="sub-title-center">Persetujuan RFQ</h3>
                     
                     <div class="info-top px-3">
-                        <p><strong>ID:</strong> RFQ-011 (Proyek Pagar)</p>
-                        <p><strong>Perusahaan:</strong> PT Abadi Sejahtera</p>
-                        <p><strong>Material:</strong> Pagar</p>
+                        <p><strong>ID:</strong> RFQ-012 (Proyek Ventilasi Kaca)</p>
+                        <p><strong>Perusahaan:</strong> PT Ventilasi Sejuk Abadi</p>
+                        <p><strong>Material:</strong> Ventilasi Kaca Aluminium</p>
                     </div>
 
                     <div class="white-info-box">
                         <p class="box-label">DATA UMUM PROYEK</p>
-                        <p>Lokasi Proyek : Jl. Kawadan Industri, Cikarang</p>
-                        <p>Total Panjang Pagar : Estimasi 250 Meter</p>
-                        <p>Target Selesai : 45 Hari</p>
+                        <p>Lokasi Proyek : Bandung</p>
+                        <p>Jumlah Unit : 30 Ventilasi</p>
+                        <p>Target Selesai : 20 Hari</p>
                     </div>
 
                     <div class="white-info-box">
                         <p class="box-label">Kriteria yang Diharapkan</p>
                         <ul class="list-unstyled">
-                            <li>• Kualitas produk/jasa yang sesuai standar</li>
-                            <li>• Harga kompetitif dan syarat pembayaran yang fleksibel</li>
-                            <li>• Tersedia garansi 1 tahun</li>
+                            <li>• Kaca bening kualitas tinggi</li>
+                            <li>• Rangka aluminium anti karat</li>
+                            <li>• Sistem buka-tutup lancar</li>
                         </ul>
                     </div>
 
                     <div class="white-info-box">
                         <p class="box-label">Syarat Komersial</p>
                         <p>Mata Uang : IDR (Rupiah)</p>
-                        <p>Skema Pembayaran : Termin (DP, Retensi)</p>
-                        <p>Masa Retensi : 1 Bulan (5% Nilai Proyek)</p>
+                        <p>Skema Pembayaran : DP 40% + Pelunasan</p>
+                        <p>Masa Garansi : 3 Bulan</p>
                     </div>
 
                     <div class="action-section text-center mt-4">
@@ -96,6 +100,7 @@ if (isset($_GET['action'])) {
                             <button class="btn-action btn-tidak" id="btnTidak">TIDAK</button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </main>
@@ -142,7 +147,7 @@ if (isset($_GET['action'])) {
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'dataProyek.php?action=approve';
+                window.location.href = 'dataProyekVentilasi.php?action=approve';
             }
         });
     });
@@ -160,7 +165,7 @@ if (isset($_GET['action'])) {
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = 'dataProyek.php?action=reject';
+                window.location.href = 'dataProyekVentilasi.php?action=reject';
             }
         });
     });

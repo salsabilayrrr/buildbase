@@ -1,16 +1,26 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");
     exit;
 }
 
-$status_011 = isset($_SESSION['status_rfq_011']) ? $_SESSION['status_rfq_011'] : 'Menunggu Persetujuan';
-
-$status_class = "";
-if($status_011 == 'Disetujui') $status_class = "text-success";
-if($status_011 == 'Tidak Disetujui') $status_class = "text-danger";
 $status_rfq_011 = isset($_SESSION['status_rfq_011']) ? $_SESSION['status_rfq_011'] : 'Menunggu Persetujuan';
+$status_rfq_012 = isset($_SESSION['status_rfq_012']) ? $_SESSION['status_rfq_012'] : 'Menunggu Persetujuan';
+$status_rfq_014 = isset($_SESSION['status_rfq_014']) ? $_SESSION['status_rfq_014'] : 'Menunggu Persetujuan';
+
+$status_class_011 = "text-warning"; 
+if($status_rfq_011 == 'Disetujui') $status_class_011 = "text-success";
+if($status_rfq_011 == 'Tidak Disetujui') $status_class_011 = "text-danger";
+
+$status_class_012 = "text-warning"; 
+if($status_rfq_012 == 'Disetujui') $status_class_012 = "text-success";
+if($status_rfq_012 == 'Tidak Disetujui') $status_class_012 = "text-danger";
+
+$status_class_014 = "text-warning";
+if($status_rfq_014 == 'Disetujui') $status_class_014 = "text-success";
+if($status_rfq_014 == 'Tidak Disetujui') $status_class_014 = "text-danger";
 ?>
 
 <!DOCTYPE html>
@@ -51,25 +61,29 @@ $status_rfq_011 = isset($_SESSION['status_rfq_011']) ? $_SESSION['status_rfq_011
                     <h2 class="page-title">Persetujuan Produksi</h2>
 
                     <div class="approval-list">
-                        <div class="approval-card-item">
-                            <p class="label-type">Persetujuan RFQ</p>
-                            <p class="label-id">ID: RFQ-014 (Proyek Pintu Kaca)</p>
-                            <div class="divider"></div>
-                            <div class="card-footer-item">
-                                <span class="status-text">Status : Disetujui</span>
-                                <button class="btn-detail">Lihat Detail</button>
-                            </div>
+                    <div class="approval-card-item">
+                        <p class="label-type">Persetujuan RFQ</p>
+                        <p class="label-id">ID: RFQ-014 (Proyek Pintu Kaca)</p>
+                        <div class="divider"></div>
+                        <div class="card-footer-item">
+                            <span class="status-text" style="color: #000 !important; font-weight: bold;">
+                                Status : <?php echo $status_rfq_014; ?>
+                            </span>
+                            <a href="dataProyekKaca.php" class="btn-detail">Lihat Detail</a>
                         </div>
+                    </div>
 
-                        <div class="approval-card-item">
-                            <p class="label-type">Persetujuan RFQ</p>
-                            <p class="label-id">ID: RFQ-012 (Proyek Ventilasi Kaca)</p>
-                            <div class="divider"></div>
-                            <div class="card-footer-item">
-                                <span class="status-text">Status : Tidak Disetujui</span>
-                                <button class="btn-detail">Lihat Detail</button>
-                            </div>
+                    <div class="approval-card-item">
+                        <p class="label-type">Persetujuan RFQ</p>
+                        <p class="label-id">ID: RFQ-012 (Proyek Ventilasi Kaca)</p>
+                        <div class="divider"></div>
+                        <div class="card-footer-item">
+                            <span class="status-text" style="color: #000 !important; font-weight: bold;">
+                                Status : <?php echo $status_rfq_012; ?>
+                            </span>
+                            <a href="dataProyekVentilasi.php" class="btn-detail">Lihat Detail</a>
                         </div>
+                    </div>
 
                         <div class="approval-card-item">
                             <p class="label-type">Persetujuan RFQ</p>

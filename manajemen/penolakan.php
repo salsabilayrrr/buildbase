@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $nama_petugas    = mysqli_real_escape_string($conn, $_POST['nama_petugas']);
     $alasan          = mysqli_real_escape_string($conn, $_POST['alasan']);
 
-    $query = "INSERT INTO penolakan (perusahaan, proyek, tanggal, petugas, alasan) 
+    $query = "INSERT INTO alasan_penolakan (perusahaan, proyek, tanggal, petugas, alasan) 
                 VALUES ('$nama_perusahaan', '$nama_proyek', '$tgl_penolakan', '$nama_petugas', '$alasan')";
 
     if (mysqli_query($conn, $query)) {

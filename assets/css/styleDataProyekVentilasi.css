@@ -1,0 +1,223 @@
+/* --- RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #eef3ff; /* lebih soft biru */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- DEVICE WRAPPER --- */
+.device-wrapper {
+    width: 393px;
+    height: 852px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.device-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: linear-gradient(135deg, #8A8BFC, #6F7BF7);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 55px;
+    border-radius: 6px;
+}
+
+.header-title {
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+}
+
+/* --- LOGOUT --- */
+.btn-logout-pill {
+    background: #fff;
+    padding: 4px 12px 4px 4px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logout-icon-box {
+    background: #4E5FE1;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-icon-box img { width: 20px; }
+
+.logout-text {
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* --- CONTENT --- */
+.scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+}
+
+.header-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 25px;
+}
+
+.main-page-title {
+    font-weight: 900;
+    font-size: 20px;
+    color: #1A1A54;
+}
+
+/* --- PROJECT CARD --- */
+.project-detail-card {
+    background: linear-gradient(135deg, #B0B1EA, #D7D8FF);
+    border-radius: 35px;
+    padding: 25px 15px;
+    margin-bottom: 20px;
+}
+
+.sub-title-center {
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.info-top p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* --- WHITE BOX --- */
+.white-info-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.box-label {
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: #4E5FE1;
+}
+
+/* --- BUTTON ACTION --- */
+.question-text {
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.btn-action {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 35px;
+    font-weight: 900;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Hijau (Setuju) */
+.btn-ya {
+    background-color: #C8F7C5;
+    color: #000;
+}
+
+.btn-ya:hover {
+    transform: translateY(-2px);
+}
+
+/* Merah (Tolak) */
+.btn-tidak {
+    background-color: #F5B7B1;
+    color: #000;
+    text-decoration: none;
+}
+
+.btn-tidak:hover {
+    transform: translateY(-2px);
+}
+
+/* --- FOOTER NAV --- */
+.bottom-nav {
+    background-color: #8A8BFC;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.active-extra-circle {
+    background-color: #4E5FE1;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -45px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.nav-icon-main {
+    width: 55px;
+    filter: brightness(0) invert(1);
+}
+
+.nav-icon-side {
+    width: 50px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
