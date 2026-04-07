@@ -36,7 +36,7 @@
     </nav>
 
     <div class="container mt-4 mb-5">
-        <h2 class="text-center fw-black mb-4" style="font-weight: 900;">BUAT LAPORAN EVALUASI</h2>
+        <h2 class="text-center fw-black mb-4" style="font-weight: 900;">INPUT LAPORAN KEUANGAN</h2>
 
         <div class="main-card">
             <form id="formLaporan" action="proses_laporan_finance.php" method="POST">
@@ -92,11 +92,23 @@
         </div>
     </div>
 
-    <nav class="bottom-nav">
-        <a href="laporankeuangan.php" class="active-cycle"><i class="fa-solid fa-file-invoice-dollar"></i></a>
-        <a href="dashboard_finance.php" class="nav-item"><i class="fa-solid fa-house text-white"></i></a>
-        <a href="laporannegoisasi.php" class="nav-item"><i class="fa-solid fa-handshake text-white"></i></a>
-        <a href="profile.php" class="nav-item"><i class="fa-solid fa-shield-halved text-white"></i></a>
+    
+    <nav id="navbar" class="bottom-nav">
+        <a href="laporankeuangan.php" class="nav-item">
+            <i class="fa-solid fa-file-invoice-dollar" style="color: #8B93FF; font-size: 30px;"></i>
+        </a>
+
+        <a href="../dashboard/finance.php" class="active-cycle">
+            <i class="fa-solid fa-house text-white" style="font-size: 24px;"></i>
+        </a>
+
+        <a href="laporannegoisasi.php" class="nav-item">
+            <i class="fa-solid fa-handshake text-white" style="font-size: 24px;"></i>
+        </a>
+
+        <a href="profile.php" class="nav-item">
+            <i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i>
+        </a>
     </nav>
 
     <script>

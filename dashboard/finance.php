@@ -123,7 +123,7 @@ $result = mysqli_query($conn, $query);
             <i class="fa-solid fa-house" style="color: #8B93FF; font-size: 30px;"></i>
         </a>
 
-        <a href="../financelaporannegoisasi.php" class="nav-item">
+        <a href="../finance/riwayatnegoisasi.php" class="nav-item">
             <i class="fa-solid fa-file-export text-white" style="font-size: 24px;"></i>
         </a>
 
