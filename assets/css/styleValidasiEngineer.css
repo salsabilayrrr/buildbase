@@ -153,10 +153,10 @@ body {
 }
 
 .active-extra-circle {
-    background-color: #4E5FE1;
+    background-color: #fcfcfd;
     width: 75px; height: 75px;
     border-radius: 50%;
-    border: 5px solid #fff;
+    border: 5px solid #8A8BFC;
     display: flex; justify-content: center; align-items: center;
     margin-top: -45px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -164,3 +164,20 @@ body {
 
 .nav-icon-active { width: 65px; padding-left: 15px; filter: brightness(0) invert(1); }
 .nav-icon-side { width: 55px; filter: brightness(0) invert(1); opacity: 0.8; }
+
+.pdf-preview-container {
+    width: 100%;
+    height: 450px;
+    background: #fff;
+    border-radius: 15px;
+    border: 2px solid #000;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+

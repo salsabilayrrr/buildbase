@@ -54,18 +54,6 @@ if(isset($_POST['kirim_validasi'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styleValidasiEngineer.css">
-    <style>
-        .pdf-preview-container {
-            width: 100%;
-            height: 450px;
-            background: #fff;
-            border-radius: 15px;
-            border: 2px solid #000;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        iframe { width: 100%; height: 100%; border: none; }
-    </style>
 </head>
 <body>
 
