@@ -1,15 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
 body { 
     background-color: #f8f9fa;
     font-family: 'Roboto', sans-serif; 
-    margin: 0; padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.container-main {
-    flex: 1;
-    padding-bottom: 120px; 
 }
 
 /* --- HEADER --- */
@@ -20,15 +20,14 @@ body {
     align-items: center;
     height: 70px;
     width: 100%;
-    padding: 0 15px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .header-left { display: flex; align-items: center; gap: 10px; }
-.header-logo { width: 55px; height: auto; }
-.header-title { font-weight: 700; font-size: 18px; color: #000; }
+.header-logo { width: 50px; height: auto; }
+.header-title { font-weight: 900; font-size: 18px; color: #000; }
 
 .btn-logout-pill {
     background: #fff; padding: 4px 12px 4px 4px;
@@ -38,86 +37,91 @@ body {
     background: #4E5FE1; width: 25px; height: 25px; border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
 }
-.logout-icon-box img { width: 20px; }
+.logout-icon-box img { width: 15px; filter: brightness(0) invert(1); }
 .logout-text { color: #000; font-size: 11px; font-weight: 800; }
 
-/* Konten Utama */
-.container-main { padding: 15px 20px; }
+/* --- SCROLLABLE CONTENT --- */
+.container-main {
+    flex: 1;
+    overflow-y: auto; 
+    padding: 20px 20px 120px 20px; 
+    -webkit-overflow-scrolling: touch;
+}
+
 .page-title {
     text-align: center;
     font-weight: 900;
-    font-size: 22px;
-    margin: 25px 0;
-    letter-spacing: 3px;
-    color: #444;
+    font-size: 20px;
+    margin: 20px 0;
+    letter-spacing: 4px;
+    color: #333;
 }
 
-/* Card dengan Gradasi */
+/* --- CARDS --- */
 .card-gradient {
     background: linear-gradient(180deg, #B9BAFD 0%, #D6D8F9 100%);
     border-radius: 25px;
-    padding: 18px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .card-label { 
     font-weight: 900; 
     margin-bottom: 12px; 
-    font-size: 14px; 
-    color: #333;
+    font-size: 12px; 
+    color: #000;
     text-transform: uppercase;
 }
 
 .inner-white-box {
     background: #ffffff;
     border-radius: 18px;
-    padding: 20px;
-    min-height: 100px;
+    padding: 15px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(0,0,0,0.05);
+    text-align: center;
 }
 
-.revisi-note { 
-    font-size: 13px; 
-    font-weight: 500; 
-    line-height: 1.6;
-    color: #444; 
-    margin: 0;
-}
+.revisi-note { font-size: 13px; font-weight: 600; color: #444; margin: 0; line-height: 1.5; }
+.date-stamp { color: #8A8BFC; font-weight: 900; display: block; margin-top: 5px; font-size: 11px; }
 
-.date-stamp { color: #8A8BFC; font-weight: 900; margin-left: 5px; }
-
-/* Tabel Riwayat */
+/* --- TABLE RESPONSIVE --- */
 .table-responsive-custom {
     background: #ffffff;
     border-radius: 15px;
-    padding: 5px;
     border: 1px solid #8A8BFC;
+    overflow-x: auto; 
+    width: 100%;
 }
 
 .table-revisi {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    min-width: 350px; 
 }
 
 .table-revisi th {
-    background: #f1f2ff;
+    background: #F1F2FF;
     color: #8A8BFC;
-    padding: 12px 8px;
-    border-bottom: 2px solid #8A8BFC;
+    padding: 12px;
+    font-size: 11px;
+    font-weight: 900;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .table-revisi td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #eee;
+    padding: 12px;
+    font-size: 12px;
     color: #555;
+    text-align: center;
+    border-bottom: 1px solid #F1F2FF;
 }
 
-/* --- FOOTER --- */
 .bottom-nav-full {
     background: #8A8BFC;
     height: 70px; width: 100%;

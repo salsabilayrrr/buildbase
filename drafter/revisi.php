@@ -11,7 +11,6 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
     exit;
 }
 
-// Gunakan 'status_validasi' sesuai kolom yang ada di tabel Anda
 $sql = "SELECT * FROM shop_drawing WHERE status_validasi = 'revisi' ORDER BY id DESC LIMIT 1";
 $query_revisi = mysqli_query($conn, $sql);
 
@@ -98,19 +97,25 @@ $data = mysqli_fetch_assoc($query_revisi);
     </div>
 
     <nav class="bottom-nav-full">
+            <a href="../drafter/upShopDrawing.php">
+                <img src="../assets/img/folder.png" class="icon-nav-folder" alt="Folder Proyek">
+            </a>
         <div class="nav-item">
-            <a href="upShopDrawing.php"><img src="../assets/img/folder.png" class="icon-nav-folder"></a>
-        </div>
-        <div class="nav-item">
-            <a href="../dashboard/drafter.php"><img src="../assets/img/home.png" class="icon-nav-home"></a>
-        </div>
-        <div class="nav-folder-circle">
-            <a href="revisi.php">
-                <img src="../assets/img/load.png" class="icon-nav-load">
+            <a href="../dashboard/drafter.php">
+                <img src="../assets/img/home.png" class="icon-nav-home">
             </a>
         </div>
         <div class="nav-item">
-            <a href="perbaikan.php"><img src="../assets/img/revisi.png" class="icon-nav-rev"></a>
+            <div class="nav-folder-circle">
+                <a href="../drafter/revisi.php">
+                    <img src="../assets/img/load.png" class="icon-nav-load">
+                </a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="../drafter/perbaikan.php">
+                <img src="../assets/img/revisi.png" class="icon-nav-rev">
+            </a>
         </div>
     </nav>
 

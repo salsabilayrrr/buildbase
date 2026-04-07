@@ -83,26 +83,27 @@ if (isset($_POST['submit_revisi'])) {
         </div>
 
         <form action="" method="POST" enctype="multipart/form-data">
-            <div class="card-gradient">
-                <h6 class="card-label">UNGGAH REVISI ANDA (Versi Baru: v1.2)</h6>
-                
-                <label for="fileInput" class="drop-area">
-                    <img src="../assets/img/upload_arrow.png" width="20">
-                    <p id="fileStatus" class="drop-text">SERET FILE (.DWG / .PDF) ATAU BROWSER KE SINI</p>
-                    <input type="file" name="file_drawing" id="fileInput" hidden required>
-                </label>
+    <div class="card-gradient">
+        <h6 class="card-label">UNGGAH REVISI ANDA (Versi Baru: v1.2)</h6>
+        
+        <label for="fileInput" class="drop-area">
+            <img src="../assets/img/up.png" width="25" class="mb-2">
+            <p id="fileStatus" style="font-size: 9px; font-weight: bold; color: #444; margin: 0;">
+                SERET FILE (.DWG / .PDF) ATAU BROWSER KE SINI
+            </p>
+            <input type="file" name="file_drawing" id="fileInput" hidden required>
+        </label>
 
-                <div class="text-start">
-                    <label class="input-label" style="font-weight: 900; font-size: 11px;">
-                        Catatan untuk Revisi Ini (v1.2): <span class="text-danger" style="font-size: 9px;">*wajib diisi</span>
-                    </label>
-                    <input type="text" name="catatan_revisi" class="form-input-catatan" placeholder="Perbaikan ukuran ..." required>
-                </div>
+        <div class="text-start mt-3">
+            <label class="fw-bold" style="font-size: 13px; color: #333; margin-left: 5px;">Catatan untuk Revisi Ini:</label>
+            <textarea name="catatan_revisi" class="form-input-catatan" placeholder="Tuliskan detail perbaikan yang dilakukan..."></textarea>
+        </div>
 
-                <p style="font-size: 9px; font-weight: 900; color: #000; margin-top: 15px; text-align: center;">KIRIM ULANG UNTUK VALIDASI</p>
-                <button type="submit" name="submit_revisi" class="btn-submit">SUBMIT</button>
-            </div>
-        </form>
+        <p style="font-size: 9px; font-weight: 900; color: #000; margin-top: 20px; text-align: center; letter-spacing: 1px;">KIRIM ULANG UNTUK VALIDASI</p>
+        
+        <button type="submit" name="submit_revisi" class="btn-submit">SUBMIT REVISI</button>
+    </div>
+</form>
     </div>
 </main>
 

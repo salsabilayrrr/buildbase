@@ -68,7 +68,7 @@ if (isset($_POST['submit_upload'])) {
                 <h6 class="text-start fw-bold mb-3" style="font-size: 13px;">UNGGAH GAMBAR</h6>
                 
                 <label for="fileInput" class="drop-area">
-                    <img src="../assets/img/upload_icon.png" width="25" class="mb-2">
+                    <img src="../assets/img/up.png" width="25" class="mb-2">
                     <p id="fileStatus" style="font-size: 9px; font-weight: bold; color: #444; margin: 0;">
                         SERET FILE (.DWG / .PDF) ATAU BROWSER KE SINI
                     </p>
