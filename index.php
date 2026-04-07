@@ -79,9 +79,16 @@
                     </div>
 
                     <div class="form-options">
-                        <input type="checkbox" id="rem">
-                        <label for="rem">Remember me</label>
+                        <div class="remember-me-group">
+                            <input type="checkbox" id="rem">
+                            <label for="rem">Remember me</label>
+                        </div>
+
+                        <div class="forgot-link">
+                            <a href="forgot_password.php">Lupa Password?</a>
+                        </div>
                     </div>
+
 
                     <button type="submit" name="login" class="btn-login-submit">LOGIN</button>
                 </form>

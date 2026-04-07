@@ -3,7 +3,7 @@
     include "koneksi.php";
 
     $message = "";
-    $status = ""; // Untuk menentukan warna alert (error/success)
+    $status = ""; 
 
     if(isset($_POST['reset'])){
         $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -45,10 +45,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styleLogin.css">
     <style>
-        /* Tambahan CSS khusus untuk pesan status */
-        .success-msg { background: #d4edda; color: #155724; padding: 10px; border-radius: 10px; margin-bottom: 15px; font-weight: bold; text-align: center; border: 1px solid #c3e6cb; }
-        .error-msg { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 10px; margin-bottom: 15px; font-weight: bold; text-align: center; border: 1px solid #f5c6cb; }
-        .back-link { display: block; text-align: center; margin-top: 15px; color: #1e1b4b; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .login-title {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 800;     
+            font-size: 17px;      
+            letter-spacing: 0.8px;
+            margin-top: -20px;         
+            margin-bottom: 30px;  
+            text-align: center;
+            color: #000;
+            text-transform: uppercase;
+        }
+        
+        .success-msg, .error-msg, .back-link, label, input, button {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .success-msg { 
+            background: #d4edda; 
+            color: #155724; 
+            padding: 12px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            text-align: center; 
+            border: 1px solid #c3e6cb; 
+            font-size: 13px;
+        }
+
+        .error-msg { 
+            background: #f8d7da; 
+            color: #721c24; 
+            padding: 12px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            text-align: center; 
+            border: 1px solid #f5c6cb; 
+            font-size: 13px;
+        }
+
+        .back-link { 
+            display: block; 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #4E5FE1; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 13px; 
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
