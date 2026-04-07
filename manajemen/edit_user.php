@@ -2,29 +2,29 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "buildbase_db");
 
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-//     $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
-//     $user = mysqli_fetch_assoc($result);
-// }
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
+    $user = mysqli_fetch_assoc($result);
+}
 
-// if (isset($_POST['update_profile'])) {
-//     $id = $_POST['id'];
-//     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-//     $email = mysqli_real_escape_string($conn, $_POST['email']);
-//     $role = mysqli_real_escape_string($conn, $_POST['role']);
+if (isset($_POST['update_profile'])) {
+    $id = $_POST['id'];
+    $nama = mysqli_real_escape_string($conn, $_POST['nama']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $role = mysqli_real_escape_string($conn, $_POST['role']);
 
-//     $query = "UPDATE users SET nama='$nama', email='$email', role='$role' WHERE id='$id'";
+    $query = "UPDATE users SET nama='$nama', email='$email', role='$role' WHERE id='$id'";
     
-//     if (mysqli_query($conn, $query)) {
-//         echo "<script>
-//                 alert('Berhasil! Data pengguna telah diperbarui.'); 
-//                 window.location.href='kelolaPengguna.php';
-//               </script>";
-//     } else {
-//         echo "<script>alert('Gagal memperbarui data.');</script>";
-//     }
-// }
+    if (mysqli_query($conn, $query)) {
+        echo "<script>
+                alert('Berhasil! Data pengguna telah diperbarui.'); 
+                window.location.href='kelolaPengguna.php';
+              </script>";
+    } else {
+        echo "<script>alert('Gagal memperbarui data.');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>

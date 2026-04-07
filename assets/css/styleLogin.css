@@ -110,3 +110,27 @@ body {
 .btn-login-submit:active {
     transform: scale(0.97);
 }
+.form-options {
+    display: flex;
+    justify-content: space-between; /* Membuat satu ke kiri, satu ke kanan */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.remember-me label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+    color: #8A8BFC;
+}
