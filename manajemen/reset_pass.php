@@ -2,23 +2,32 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "buildbase_db");
 
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-//     $result = mysqli_query($conn, "SELECT nama FROM users WHERE id = '$id'");
-//     $user = mysqli_fetch_assoc($result);
-// }
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $result = mysqli_query($conn, "SELECT nama FROM users WHERE id = '$id'");
+    $user = mysqli_fetch_assoc($result);
+}
 
-// if (isset($_POST['reset_now'])) {
-//     $id = $_POST['id'];
-//     $password_baru = mysqli_real_escape_string($conn, $_POST['password']);
-    
-//     $hashed_password = password_hash($password_baru, PASSWORD_DEFAULT);
+if (isset($_POST['reset_now'])) {
+    $id = $_POST['id'];
+    $password_baru = $_POST['password'];
+    $konfirmasi_password = $_POST['konfirmasi_password'];
 
-//     $query = "UPDATE users SET password='$hashed_password' WHERE id='$id'";
-//     if (mysqli_query($conn, $query)) {
-//         echo "<script>alert('Password Berhasil Direset!'); window.location.href='kelolaPengguna.php';</script>";
-//     }
-// }
+    // Validasi: Cek apakah password dan konfirmasi sama
+    if ($password_baru !== $konfirmasi_password) {
+        echo "<script>alert('Gagal! Konfirmasi password tidak cocok.'); window.history.back();</script>";
+    } else {
+        // Jika sama, lakukan hashing dan update
+        $hashed_password = password_hash($password_baru, PASSWORD_DEFAULT);
+        $query = "UPDATE users SET password='$hashed_password' WHERE id='$id'";
+        
+        if (mysqli_query($conn, $query)) {
+            echo "<script>alert('Password Berhasil Direset!'); window.location.href='kelolaPengguna.php';</script>";
+        } else {
+            echo "<script>alert('Terjadi kesalahan pada database.');</script>";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,29 +40,38 @@ $conn = mysqli_connect("localhost", "root", "", "buildbase_db");
     <link rel="stylesheet" href="../assets/css/styleInputUserManager.css">
 </head>
 <body>
-        <header class="dashboard-header">
-            <div class="header-left">
-                <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
-                <span class="header-title">Manajemen</span>
+    <header class="dashboard-header">
+        <div class="header-left">
+            <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
+            <span class="header-title">Manajemen</span>
+        </div>
+        <a href="../logout.php" class="btn-logout-pill">
+            <div class="logout-icon-box">
+                <img src="../assets/img/logout.png" alt="Logout">
             </div>
-            <a href="../logout.php" class="btn-logout-pill">
-                <div class="logout-icon-box">
-                    <img src="../assets/img/logout.png" alt="Logout">
-                </div>
-                <span class="logout-text">Logout</span>
-            </a>
-        </header>
+            <span class="logout-text">Logout</span>
+        </a>
+    </header>
 
     <main class="scroll-content">
         <div class="title-section">
             <h2 class="main-title">Reset Password <img src="../assets/img/key.png" width="30"></h2>
-            <p class="text-muted">User: <strong><?= $user['nama']; ?></strong></p>
+            <p class="text-muted">User: <strong><?= $user['nama'] ?? 'Tidak Ditemukan'; ?></strong></p>
         </div>
 
         <div class="form-container text-center">
             <form action="" method="POST">
                 <input type="hidden" name="id" value="<?= $_GET['id']; ?>">
-                <input type="password" name="password" placeholder="Masukkan Password Baru *" class="form-input-pill" required>
+                
+                <div class="password-container">
+                    <input type="password" name="password" id="pass1" placeholder="Masukkan Password Baru *" class="form-input-pill" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" class="toggle-password" onclick="togglePass('pass1', this)">
+                </div>
+                
+                <div class="password-container">
+                    <input type="password" name="konfirmasi_password" id="pass2" placeholder="Konfirmasi Password Baru *" class="form-input-pill" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/159/159604.png" class="toggle-password" onclick="togglePass('pass2', this)">
+                </div>
                 
                 <button type="submit" name="reset_now" class="btn-submit">Update Password</button>
                 <a href="kelolaPengguna.php" class="d-block mt-3 text-secondary" style="text-decoration:none;">Batal</a>
@@ -62,42 +80,47 @@ $conn = mysqli_connect("localhost", "root", "", "buildbase_db");
     </main>
 
     <nav class="bottom-nav" id="navbar">
-            <div class="nav-item">
-                <a href="persetujuanProduksi.php">
-                    <img src="../assets/img/berkas.png" class="nav-icon-side">
-                </a>
+        <div class="nav-item">
+            <a href="persetujuanProduksi.php"><img src="../assets/img/berkas.png" class="nav-icon-side"></a>
+        </div>
+        <div class="nav-item">
+            <a href="penolakan.php"><img src="../assets/img/arsip.jpg" class="nav-icon-side"></a>
+        </div>
+        <div class="nav-item">
+            <a href="../dashboard/manager.php"><img src="../assets/img/home.png" class="nav-icon-side"></a>
+        </div>
+        <div class="nav-item">
+            <div class="active-extra-circle">
+                <a href="kelolaPengguna.php"><img src="../assets/img/akun.jpg" class="nav-icon-active"></a>
             </div>
-            <div class="nav-item">
-                <a href="penolakan.php">
-                    <img src="../assets/img/arsip.jpg" class="nav-icon-side">
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="../dashboard/manager.php">
-                    <img src="../assets/img/home.png" class="nav-icon-side">
-                </a>
-            </div>
-            <div class="nav-item">
-                <div class="active-extra-circle">
-                    <a href="kelolaPengguna.php">
-                        <img src="../assets/img/akun.jpg" class="nav-icon-active">
-                    </a>
-                </div>
-            </div>
-        </nav>
+        </div>
+    </nav>
 
     <script>
-        const navbar = document.getElementById('navbar');
-        const inputs = document.querySelectorAll('input');
+    function togglePass(inputId, iconElement) {
+        const passwordInput = document.getElementById(inputId);
+        
+        // Ikon Mata Terbuka & Tertutup (Ganti URL ini dengan file lokalmu jika ada)
+        const eyeOpen = "https://cdn-icons-png.flaticon.com/512/159/159604.png";
+        const eyeClosed = "https://cdn-icons-png.flaticon.com/512/565/565655.png";
 
-        inputs.forEach(input => {
-            input.addEventListener('focus', () => {
-                navbar.classList.add('hidden-nav'); 
-            });
-            input.addEventListener('blur', () => {
-                navbar.classList.remove('hidden-nav');
-            });
-        });
-    </script>
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            iconElement.src = eyeClosed; // Ubah ke ikon mata coret
+        } else {
+            passwordInput.type = "password";
+            iconElement.src = eyeOpen; // Kembali ke ikon mata terbuka
+        }
+    }
+
+    // Script sembunyikan nav tetap dipertahankan
+    const navbar = document.getElementById('navbar');
+    const inputs = document.querySelectorAll('input');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => navbar.classList.add('hidden-nav'));
+        input.addEventListener('blur', () => navbar.classList.remove('hidden-nav'));
+    });
+</script>
 </body>
 </html>

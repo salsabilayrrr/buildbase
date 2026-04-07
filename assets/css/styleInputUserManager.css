@@ -141,6 +141,32 @@ select.form-input-pill {
     cursor: pointer;
     width: 100%;
 }
+.password-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Sesuaikan dengan lebar form-input-pill kamu */
+    margin: 0 auto 15px;
+}
+
+.password-container .form-input-pill {
+    padding-right: 45px; /* Beri ruang di kanan agar teks tidak tertutup ikon */
+    margin-bottom: 0;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
 
 /* --- FOOTER / BOTTOM NAV --- */
 .bottom-nav {

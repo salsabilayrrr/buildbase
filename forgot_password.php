@@ -10,13 +10,11 @@
         $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
         $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
-        // 1. Cek apakah email terdaftar
         $query = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
         $user = mysqli_fetch_assoc($query);
 
         if($user){
             if($new_password === $confirm_password){
-                // 2. Update Password di database
                 $update = mysqli_query($conn, "UPDATE users SET password='$new_password' WHERE email='$email'");
                 if($update){
                     $status = "success";
