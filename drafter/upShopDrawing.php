@@ -26,7 +26,7 @@ if (isset($_POST['submit_upload'])) {
             echo "<script>
                     alert('Berhasil Diupload!'); 
                     window.location.href='../dashboard/drafter.php'; 
-                  </script>";
+                    </script>";
             exit;
         }
     } else {

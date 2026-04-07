@@ -13,15 +13,17 @@ body {
     background-color: #fff;
 }
 
-/* --- HEADER --- */
+/* --- HEADER (Warna Ungu Khas BuildBase) --- */
 .dashboard-header {
     background: #8A8BFC;
     padding: 20px 20px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0;
     height: 80px; 
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
 
 .header-left {
@@ -42,7 +44,7 @@ body {
     color: #000;
 }
 
-/* --- LOGOUT --- */
+/* --- LOGOUT PILL --- */
 .btn-logout-pill {
     background: #fff;
     padding: 4px 12px 4px 4px;
@@ -60,14 +62,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.logout-icon-box img { width: 20px;}
+.logout-icon-box img { width: 20px; }
 .logout-text { color: #000; font-size: 11px; font-weight: 800; }
-
-.logout-icon-img {
-    width: 80px; 
-    height: auto;
-    display: block;
-}
 
 /* --- CONTENT AREA --- */
 .scroll-content { 
@@ -90,7 +86,16 @@ body {
     gap: 12px; 
 }
 
-/* --- FORM CONTAINER --- */
+.sub-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #4E5FE1;
+    display: block;
+    text-align: left;
+    margin: 0 0 8px 20px;
+}
+
+/* --- FORM CONTAINER (Background Ungu Muda Melengkung) --- */
 .form-container { 
     background: #E2E3F7; 
     flex: 1;
@@ -102,6 +107,7 @@ body {
     margin: 10px auto 0 auto; 
 }
 
+/* Input & Select Lonjong */
 .form-input-pill {
     width: 100%;
     padding: 16px 25px;
@@ -112,8 +118,16 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     font-weight: 700;
     font-size: 14px;
+    outline: none;
 }
 
+/* Tambahan untuk dropdown agar tetap lonjong */
+select.form-input-pill {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* --- TOMBOL SUBMIT --- */
 .btn-submit {
     background: #8A8BFC;
     border: none;
@@ -124,21 +138,23 @@ body {
     font-size: 16px;
     margin-top: 20px;
     box-shadow: 0 6px 15px rgba(138, 139, 252, 0.4);
+    cursor: pointer;
+    width: 100%;
 }
 
-/* --- FOOTER PERBAIKAN --- */
+/* --- FOOTER / BOTTOM NAV --- */
 .bottom-nav {
     background-color: #8A8BFC;
     height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: fixed; 
+    position: fixed;
     bottom: 0; 
     width: 100%;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out; 
+    will-change: transform;
 }
 
 .active-extra-circle {
@@ -164,22 +180,15 @@ body {
     filter: brightness(0) invert(1); 
     opacity: 0.9;
 }
+
 .nav-item {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
 }
-.bottom-nav {
-    background-color: #8A8BFC;
-    height: 80px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0; 
-    width: 100%;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out; 
-    will-change: transform;
+
+/* Utility untuk JS hide navbar */
+.hidden-nav {
+    transform: translateY(100px);
 }

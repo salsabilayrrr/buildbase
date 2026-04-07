@@ -7,18 +7,25 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-if (isset($_POST['submit'])) {
+// --- AMBIL DATA DARI SESSION ---
+$session_perusahaan = $_SESSION['reject_data']['perusahaan'] ?? '';
+$session_proyek     = $_SESSION['reject_data']['proyek'] ?? '';
+// -------------------------------
 
+if (isset($_POST['submit'])) {
     $nama_perusahaan = mysqli_real_escape_string($conn, $_POST['nama_perusahaan']);
     $nama_proyek     = mysqli_real_escape_string($conn, $_POST['nama_proyek']);
     $tgl_penolakan   = mysqli_real_escape_string($conn, $_POST['tgl_penolakan']);
     $nama_petugas    = mysqli_real_escape_string($conn, $_POST['nama_petugas']);
     $alasan          = mysqli_real_escape_string($conn, $_POST['alasan']);
 
-    $query = "INSERT INTO penolakan (perusahaan, proyek, tanggal, petugas, alasan) 
+    $query = "INSERT INTO alasan_penolakan (perusahaan, proyek, tanggal, petugas, alasan) 
                 VALUES ('$nama_perusahaan', '$nama_proyek', '$tgl_penolakan', '$nama_petugas', '$alasan')";
 
     if (mysqli_query($conn, $query)) {
+        // Hapus session data reject setelah berhasil simpan agar bersih
+        unset($_SESSION['reject_data']);
+        
         echo "<script>
                 alert('Data Penolakan Berhasil Disimpan!');
                 window.location.href='penolakan.php';
@@ -61,19 +68,29 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="form-card-container">
-            <form action="" method="POST">
-                <div class="form-body">
-                    <input type="text" name="nama_perusahaan" placeholder="Nama Perusahaan *" class="form-input-pill" required>
-                    <input type="text" name="nama_proyek" placeholder="Nama Proyek *" class="form-input-pill" required>
-                    <input type="text" name="tgl_penolakan" placeholder="Tanggal Penolakan *" class="form-input-pill" onfocus="(this.type='date')" required>
-                    <input type="text" name="nama_petugas" placeholder="Nama Petugas *" class="form-input-pill" required>
-                    
-                    <textarea name="alasan" placeholder="Alasan Penolakan *" class="form-input-pill" style="height: 150px; border-radius: 20px; resize: none;" required></textarea>
-                    
-                    <button type="submit" name="submit" class="btn-submit-pill">Submit</button>
-                </div>
-            </form>
+    <form action="" method="POST">
+        <div class="form-body">
+            <label style="font-size: 12px; color: #666; margin-left: 15px;">Nama Perusahaan</label>
+            <input type="text" name="nama_perusahaan" 
+                   value="<?php echo $session_perusahaan; ?>" 
+                   class="form-input-pill" readonly required>
+
+            <label style="font-size: 12px; color: #666; margin-left: 15px; margin-top: 10px;">Nama Proyek</label>
+            <input type="text" name="nama_proyek" 
+                   value="<?php echo $session_proyek; ?>" 
+                   class="form-input-pill" readonly required>
+            
+            <hr>
+
+            <input type="text" name="tgl_penolakan" placeholder="Tanggal Penolakan *" class="form-input-pill" onfocus="(this.type='date')" required>
+            <input type="text" name="nama_petugas" placeholder="Nama Petugas *" class="form-input-pill" required>
+            
+            <textarea name="alasan" placeholder="Alasan Penolakan *" class="form-input-pill" style="height: 150px; border-radius: 20px; resize: none;" required></textarea>
+            
+            <button type="submit" name="submit" class="btn-submit-pill">Submit</button>
         </div>
+    </form>
+</div>
     </main>
 
     <nav class="bottom-nav" id="navbar">
