@@ -1,5 +1,6 @@
 <?php
 include '../koneksi.php';
+session_start();
 
 // Statistik
 $q_pending = mysqli_query($conn, "SELECT COUNT(*) as total FROM shop_drawing WHERE status_verifikasi = 'Pending'");
@@ -22,6 +23,7 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Database Engineer - BuildBase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styleRiwayatEngineer.css">
@@ -29,12 +31,21 @@ $result = mysqli_query($conn, $query);
 <body>
 
     <header class="navbar-custom">
-        <img src="../assets/img/logo.png" class="header-logo" alt="Logo">
-        <span class="header-title">Engineer</span>
+        <div class="flex items-center"> 
+            <img src="../assets/img/logo.png" alt="BuildBase" class="w-16 h-16">
+            <span class="text-2xl font-black text-black tracking-tighter -ml-2">Engineer</span>
+        </div>
+
+        <a href="../logout.php" class="logout-btn">
+            <div class="icon-circle">
+                <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+            </div>
+            <span class="logout-text">Logout</span>
+        </a>
     </header>
 
-    <main>
-        <h1 class="main-title">Database</h1>
+    <main class="mt-4">
+        <h1 class="text-center font-black text-2xl mb-4 uppercase tracking-tighter">Database</h1>
 
         <div class="stat-wrapper">
             <div class="stat-card">
@@ -47,7 +58,7 @@ $result = mysqli_query($conn, $query);
             </div>
         </div>
 
-        <div class="table-container">
+        <div class="table-container mb-5">
             <table class="custom-table">
                 <thead>
                     <tr>
@@ -82,11 +93,17 @@ $result = mysqli_query($conn, $query);
     </main>
 
     <nav class="bottom-nav">
-        <a href="validasi.php" class="nav-item"><i class="fa-solid fa-file-circle-check"></i></a>
-        <a href="../dashboard/engineer.php" class="nav-item"><i class="fa-solid fa-house"></i></a>
-        <div class="active-cycle">
-            <i class="fa-solid fa-file-signature"></i>
-        </div>
+        <a href="validasi.php" class="nav-item">
+            <i class="fa-solid fa-file-circle-check text-white text-2xl"></i>
+        </a>
+
+        <a href="../dashboard/engineer.php" class="nav-item">
+            <i class="fa-solid fa-house text-white text-2xl"></i>
+        </a>
+
+        <a href="database.php" class="home-button">
+            <i class="fa-solid fa-file-signature text-[#8B93FF] text-3xl"></i>
+        </a>
     </nav>
 
 </body>

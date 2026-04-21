@@ -1,192 +1,208 @@
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+/* assets/css/styleRiwayatEngineer.css */
 
-  body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding-bottom: 90px;
-      /* Ruang agar konten bawah tidak tertutup navbar */
-      overflow-x: hidden;
-  }
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&family=Pacifico&display=swap');
 
-  /* Navbar Top */
-  .navbar-custom {
-      background-color: #8B93FF;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+/* Global Styles */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8faff;
+    margin: 0;
+    overflow-x: hidden;
+    padding-bottom: 120px;
+}
 
-  .header-logo {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-  }
+.navbar-custom {
+    background-color: #8B93FF;
+    padding: 10px 10px;
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
 
-  .header-title {
-      color: #000;
-      font-weight: 800;
-      font-size: 1.2rem;
-  }
+/* Logout Button Style */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 20px 4px 4px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
 
-  .main-title {
-      font-weight: 800;
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.5rem;
-  }
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
 
-  /* Stats Card */
-  .stat-wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 0 15px;
-      margin-bottom: 25px;
-  }
+.logout-icon-fa {
+    color: black;
+    font-size: 18px;
+}
 
-  .stat-card {
-      background-color: #C2C7FF;
-      border-radius: 20px;
-      width: 145px;
-      height: 165px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 4px 4px 0px #000;
-      /* Border shadow gaya gambar 2 */
-      border: 1.5px solid #000;
-  }
+.logout-text {
+    color: black;
+    font-weight: 800;
+    font-size: 16px;
+}
 
-  .stat-card i {
-      font-size: 2.5rem;
-      color: white;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 0px #000;
-  }
+/* Stats Card */
+.stat-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 15px;
+    margin-bottom: 25px;
+}
 
-  .stat-card p {
-      font-weight: 800;
-      color: #000;
-      margin: 0;
-      font-size: 0.9rem;
-      text-align: center;
-      line-height: 1.2;
-  }
+.stat-card {
+    background-color: #C2C7FF;
+    border-radius: 20px;
+    width: 145px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0px #000;
+    border: 1.5px solid #000;
+}
 
-  /* Tabel */
-  .table-container {
-      padding: 0 15px;
-  }
+.stat-card i {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px #000;
+}
 
-  .custom-table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1.5px solid #000;
-      background: white;
-      box-shadow: 4px 4px 0px #000;
-  }
+.stat-card p {
+    font-weight: 800;
+    color: #000;
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
 
-  .custom-table th {
-      background-color: #C2C7FF !important;
-      border: 1.5px solid #000;
-      padding: 12px;
-      font-weight: 800;
-      text-align: center;
-  }
+/* Table Style */
+.table-container {
+    padding: 0 15px;
+}
 
-  .custom-table td {
-      border: 1.5px solid #000;
-      padding: 12px;
-      vertical-align: middle;
-      font-weight: 700;
-      background: #fff;
-  }
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1.5px solid #000;
+    background: white;
+    box-shadow: 4px 4px 0px #000;
+}
 
-  .id-drawing-pill {
-      background: #fff;
-      border: 1px solid #000;
-      padding: 5px 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #ff6b6b;
-      font-size: 0.8rem;
-      font-weight: 800;
-  }
+.custom-table th {
+    background-color: #B2B9FF !important;
+    border: 1.5px solid #000;
+    padding: 12px;
+    font-weight: 800;
+    text-align: center;
+}
 
-  .btn-validate {
-      background: #1e1b4b;
-      color: white;
-      border-radius: 8px;
-      padding: 8px 12px;
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: bold;
-      display: inline-block;
-  }
+.custom-table td {
+    border: 1.5px solid #000;
+    padding: 12px;
+    vertical-align: middle;
+    font-weight: 700;
+    background: #fff;
+    font-size: 0.8rem;
+}
 
-  .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #8B93FF;
-      height: 65px;
-      /* Tinggi standar navbar */
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 1000;
-      /* Menghapus radius agar lurus sempurna */
-      border-top: 2px solid #000;
-      /* Memberi garis tegas di atas */
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-  }
+.id-drawing-pill {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ff6b6b;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
 
-  .nav-item {
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
-      transition: 0.2s;
-  }
+.btn-validate {
+    background: #1e1b4b;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
 
-  /* Lingkaran Aktif - Tetap Menjol Keluar tapi Navbarnya Lurus */
-  .active-cycle {
-      width: 65px;
-      height: 65px;
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid #000;
-      /* Border hitam agar kontras dengan navbar lurus */
-      margin-top: -35px;
-      /* Tetap menonjol ke atas */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+/* --- BOTTOM NAV (PENYESUAIAN PRESISI) --- */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    z-index: 1000;
+    display: flex;
+    /* Ubah space-evenly menjadi space-between agar bisa diatur dengan padding */
+    justify-content: space-between;
+    align-items: center;
+    /* Tambahkan padding samping agar tidak terlalu mepet tembok tapi tetap padat */
+    padding: 0 25px;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
 
-  .active-cycle i {
-      color: #8B93FF;
-      font-size: 28px;
-  }
+.nav-item {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Hapus flex: 1 agar ikon tidak memaksakan ruang lebar yang sama */
+    flex: none;
+    width: 50px;
+    /* Atur lebar tetap untuk ikon samping */
+}
 
-  .active-cycle {
-      width: 70px;
-      height: 70px;
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 5px solid #8B93FF;
-      margin-top: -45px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+.home-button {
+    background-color: #ffffff;
+    border: 5px solid #8B93FF;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Mengangkat lingkaran ke atas */
+    transform: translateY(-25px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    z-index: 1100;
+}
 
-  .active-cycle i {
-      color: #8B93FF;
-      font-size: 32px;
-  }
+/* Pastikan ikon di dalam home-button berwarna biru */
+.home-button i {
+    color: #8B93FF !important;
+    font-size: 30px;
+}
+
+/* Ikon samping tetap putih */
+.nav-item i {
+    color: #ffffff;
+    font-size: 24px;
+}
