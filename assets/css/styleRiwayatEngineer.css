@@ -160,10 +160,10 @@ body {
     z-index: 1000;
     display: flex;
     /* Ubah space-evenly menjadi space-between agar bisa diatur dengan padding */
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     /* Tambahkan padding samping agar tidak terlalu mepet tembok tapi tetap padat */
-    padding: 0 25px;
+    padding: 0 25px; 
     transition: transform 0.3s ease;
     width: 100%;
 }
@@ -174,9 +174,8 @@ body {
     align-items: center;
     justify-content: center;
     /* Hapus flex: 1 agar ikon tidak memaksakan ruang lebar yang sama */
-    flex: none;
-    width: 50px;
-    /* Atur lebar tetap untuk ikon samping */
+    flex: none; 
+    width: 50px; /* Atur lebar tetap untuk ikon samping */
 }
 
 .home-button {
@@ -189,7 +188,7 @@ body {
     align-items: center;
     justify-content: center;
     /* Mengangkat lingkaran ke atas */
-    transform: translateY(-25px);
+    transform: translateY(-25px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
     z-index: 1100;
