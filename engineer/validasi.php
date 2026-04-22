@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost","root","","buildbase_db");
+include "../koneksi.php";
 
 // 1. TANGKAP ID DARI URL
 $id_drawing = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';

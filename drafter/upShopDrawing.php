@@ -1,7 +1,7 @@
 <?php
 session_start();
-// Koneksi Database
-$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+
+include "../koneksi.php";
 
 // Proteksi Halaman
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){

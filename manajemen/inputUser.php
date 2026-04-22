@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+include "../koneksi.php";
 
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());

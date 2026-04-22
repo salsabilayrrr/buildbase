@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+include "../koneksi.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
