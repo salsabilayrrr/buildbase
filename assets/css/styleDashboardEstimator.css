@@ -1,76 +1,47 @@
-/* Mengimpor Font bergaya tulisan tangan untuk "Halo Estimator" */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+/* assets/css/styleDashboardEstimator.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&family=Pacifico&display=swap');
 
 body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8faff;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    padding-bottom: 100px;
-    /* Jarak untuk bottom nav */
+    overflow-x: hidden;
+    padding-bottom: 120px;
 }
 
-/* Navbar */
+/* Font Sebutan (Sama dengan CS/Finance) */
+.halo-text {
+    font-family: 'Pacifico', cursive;
+    color: #1e1b4b;
+    font-size: 2.2rem;
+    margin: 30px 0 20px;
+    text-align: center;
+    display: block;
+    /* Memastikan dia mengambil baris sendiri */
+}
+
+/* --- NAVBAR ATAS --- */
 .navbar-custom {
     background-color: #8B93FF;
     padding: 10px 10px;
-    border-radius: 0;
-    position: relative;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 50;
 }
 
-.logo-section {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    width: 60px;
-
-    .navbar-custom {
-        background-color: #8B93FF;
-        padding: 10px 10px;
-        border-radius: 0;
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 50;
-    }
-
-    height: auto;
-}
-
-.logo-text {
-    font-size: 32px;
-    font-weight: 900;
-    color: #000;
-    letter-spacing: -1.5px;
-    margin-left: -5px;
-}
-/* Container Utama (Kapsul Putih) */
 .logout-btn {
     display: flex;
     align-items: center;
     text-decoration: none;
     background-color: white;
     padding: 4px 20px 4px 4px;
-    /* Padding minimal di kiri agar lingkaran biru mepet */
     border-radius: 50px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
 }
 
-/* Lingkaran Biru di belakang Ikon */
-.icon-circle {
+.icon-circle-logout {
     background-color: #5c7cfa;
     width: 40px;
     height: 40px;
@@ -81,202 +52,121 @@ body {
     margin-right: 10px;
 }
 
-/* Warna Ikon FontAwesome di dalam lingkaran */
-.logout-icon-fa {
-    color: black;
-    font-size: 18px;
-}
-
-/* Teks Logout */
 .logout-text {
     color: black;
     font-weight: 800;
-    /* Tebal sesuai font Plus Jakarta Sans */
     font-size: 16px;
 }
 
-/* Main Content */
-.container {
-    padding: 20px;
-    text-align: center;
-}
-
-.welcome-text {
-    font-family: 'Pacifico', cursive;
-    color: #1a237e;
-    font-size: 2.5rem;
-    margin-top: 20px;
-}
-
-.section-title {
-    font-weight: 700;
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-/* Stats Cards */
+/* --- STATS CARD --- */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
 }
 
 .card {
-    border-radius: 10px;
-    padding: 15px 5px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #C2C7FF;
+    border-radius: 25px;
+    padding: 20px;
+    text-align: center;
+    border: 1.5px solid #000;
+    box-shadow: 4px 4px 0px #000;
 }
 
-.card-purple {
-    background-color: #b1b5f9;
-}
-
-.card-blue {
-    background-color: #a7bcfd;
-}
-
-.card-light-blue {
-    background-color: #b9c8fd;
-}
-
-.icon-stats {
-    font-size: 40px;
+.card i {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
     margin-bottom: 10px;
-    color: #4a54f1;
 }
 
 .card p {
     font-size: 10px;
-    font-weight: 600;
-    margin: 5px 0;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 5px;
 }
 
-.count {
+.card .count {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 900;
+    color: #000;
 }
 
-/* Search Bar */
-.search-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.search-box {
-    flex: 1;
-    position: relative;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 12px 20px;
-    border-radius: 30px;
-    border: none;
-    background-color: #bdc5f9;
-    color: white;
-    font-weight: 600;
-    outline: none;
-}
-
-.search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.search-icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 1.2rem;
-}
-
-.filter-btn {
-    background-color: #bdc5f9;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 0 15px;
-    cursor: pointer;
-}
-
-/* Table */
+/* --- TABLE --- */
 .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+    padding: 0 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid black;
+    border: 1.5px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    background: white;
 }
 
-th,
+th {
+    background-color: #B2B9FF;
+    border: 1.5px solid #000;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 12px;
+}
+
 td {
-    border: 1px solid black;
-    padding: 15px 8px;
+    border: 1.5px solid #000;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 11px;
     text-align: center;
-    font-size: 14px;
-    font-weight: 600;
 }
 
-thead th {
-    background-color: #b1b5f9;
-}
-
-tbody tr {
-    background-color: #bdc5f9;
-}
-
-/* Bottom Navigation */
+/* --- BOTTOM NAV --- */
 .bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, #8389f7, #a2a7fb);
-    height: 80px;
+    height: 85px;
     display: flex;
-    /* UBAH DARI space-around MENJADI center */
-    justify-content: center; 
-    /* TAMBAHKAN GAP UNTUK MENGATUR JARAK ANTAR MENU */
-    gap: 30px; 
+    justify-content: space-evenly;
     align-items: center;
-    padding: 0 10px;
-    z-index: 9999;
+    z-index: 1000;
 }
 
 .nav-item {
-    font-size: 24px;
-    color: white;
-    text-decoration: none;
+    flex: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
-.active-home {
-    background: rgb(95, 22, 147);
+.nav-item i {
+    color: white;
+    font-size: 24px;
+}
+
+.home-button {
+    background-color: #ffffff;
+    border: 5px solid #8B93FF;
     width: 70px;
     height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4a54f1 !important;
-    border: 5px solid #8389f7;
-    margin-top: -50px; /* Efek menonjol */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    /* Pastikan z-index tinggi agar lingkaran tidak terpotong */
-    z-index: 10000; 
+    transform: translateY(-25px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+}
+
+.home-button i {
+    color: #8B93FF !important;
+    font-size: 32px;
 }
