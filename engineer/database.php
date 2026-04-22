@@ -105,6 +105,18 @@ $result = mysqli_query($conn, $query);
             <i class="fa-solid fa-file-signature text-[#8B93FF] text-3xl"></i>
         </a>
     </nav>
+<script>
+        const navbar = document.getElementById('navbar');
+        const inputs = document.querySelectorAll('input');
 
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                navbar.style.transform = 'translateY(100px)';
+            });
+            input.addEventListener('blur', () => {
+                navbar.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>

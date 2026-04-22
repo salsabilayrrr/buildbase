@@ -1,23 +1,23 @@
 <?php
-include '../koneksi.php'; // Pastikan koneksi ke database buildbase_db sudah benar
+include '../koneksi.php'; 
 
-// 1. Ambil jumlah Bill of Quantity (BoQ) baru (Status Draft atau Belum Selesai)
+// 1. Ambil jumlah Bill of Quantity (BoQ) baru (Status Draft)
 $q_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM boq WHERE status_boq = 'Draft'");
 $boq_baru = mysqli_fetch_assoc($q_count)['total'];
 
 // 2. Logika Pencarian Tabel
 $keyword = "";
+// Gunakan JOIN ke shop_drawing untuk mendapatkan file PDF asli
+$base_query = "SELECT b.id_boq, r.deskripsi as nama_boq, sd.file_path 
+               FROM boq b 
+               JOIN data_rfq r ON b.id_rfq = r.id_rfq 
+               LEFT JOIN shop_drawing sd ON r.id_rfq = sd.id_rfq";
+
 if (isset($_POST['cari'])) {
     $keyword = mysqli_real_escape_string($conn, $_POST['keyword']);
-    $query = "SELECT b.id_boq, r.deskripsi as nama_boq 
-              FROM boq b 
-              JOIN data_rfq r ON b.id_rfq = r.id_rfq 
-              WHERE r.deskripsi LIKE '%$keyword%'";
+    $query = $base_query . " WHERE r.deskripsi LIKE '%$keyword%'";
 } else {
-    $query = "SELECT b.id_boq, r.deskripsi as nama_boq 
-              FROM boq b 
-              JOIN data_rfq r ON b.id_rfq = r.id_rfq 
-              ORDER BY b.id_boq DESC";
+    $query = $base_query . " ORDER BY b.id_boq DESC";
 }
 $result = mysqli_query($conn, $query);
 ?>
@@ -30,41 +30,22 @@ $result = mysqli_query($conn, $query);
     <title>BuildBase - Finance Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleInputRFQCS.css"> <style>
-        .halo-text { font-family: 'Pacifico', cursive; color: #1e1b4b; text-align: center; margin-top: 20px; }
-        .section-title { font-weight: 800; text-align: center; margin-bottom: 20px; }
-        
-        /* Card BoQ Baru */
-        .info-card { background-color: #B2B9FF; border-radius: 30px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .card-body { display: flex; align-items: center; gap: 20px; justify-content: center; }
-        .card-icon { width: 100px; }
-        .card-text { font-weight: 800; font-size: 1.5rem; margin: 0; }
-
-        .search-container { position: relative; max-width: 100%; margin-bottom: 20px; display: flex; gap: 10px; }
-        .search-box { position: relative; flex-grow: 1; }
-        .search-box input { border-radius: 50px; background-color: #B2B9FF; border: none; padding: 12px 25px; color: white; width: 100%; }
-        .search-box i { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: white; }
-        .filter-btn { background-color: #B2B9FF; border-radius: 15px; width: 55px; display: flex; align-items: center; justify-content: center; color: black; border: none; }
-
-        .custom-table th { background-color: #FFC2C2 !important; border: 1px solid #000; }
-        .custom-table td { background-color: white !important; border: 1px solid #000; vertical-align: middle; }
-        .pdf-icon { color: #e74c3c; font-size: 1.5rem; }
-        .delete-icon { color: black; font-size: 1.5rem; cursor: pointer; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/styleDashboardFinance.css"> 
 </head>
 <body>
 
     <header class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="../assets/img/logo.png" alt="BuildBase" style="width: 40px;" class="ms-3 me-2">
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Finance</span>
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Customer Service</span>
+    </div>
+
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
-        <div class="me-3">
-            <a href="logout.php" class="logout-btn">
-                <div class="icon-circle"><i class="fa-solid fa-right-from-bracket logout-icon-fa"></i></div>
-                <span class="logout-text">Logout</span>
-            </a>
-        </div>
+        <span class="logout-text">Logout</span>
+    </a>
     </header>
 
     <main class="container mt-4 mb-5">
@@ -101,15 +82,33 @@ $result = mysqli_query($conn, $query);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($row = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td><?= sprintf("%03d", $row['id_boq']) ?></td>
-                        <td class="text-start"><?= htmlspecialchars($row['nama_boq']) ?></td>
-                        <td><a href="#"><i class="fa-solid fa-file-pdf pdf-icon"></i></a></td>
-                        <td><a href="hapus_boq.php?id=<?= $row['id_boq'] ?>" onclick="return confirm('Hapus BoQ?')"><i class="fa-solid fa-trash-can delete-icon"></i></a></td>
-                    </tr>
-                    <?php endwhile; ?>
-                </tbody>
+    <?php if(mysqli_num_rows($result) > 0): ?>
+        <?php while($row = mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <td><?= sprintf("%03d", $row['id_boq']) ?></td>
+            <td class="text-start"><?= htmlspecialchars($row['nama_boq']) ?></td>
+            <td>
+                <?php if(!empty($row['file_path'])): ?>
+                    <a href="../uploads/<?= $row['file_path'] ?>" target="_blank">
+                        <i class="fa-solid fa-file-pdf pdf-icon"></i>
+                    </a>
+                <?php else: ?>
+                    <i class="fa-solid fa-file-circle-xmark text-muted" title="File tidak ada"></i>
+                <?php endif; ?>
+            </td>
+            <td>
+                <a href="hapus_boq.php?id=<?= $row['id_boq'] ?>" onclick="return confirm('Hapus BoQ?')">
+                    <i class="fa-solid fa-trash-can delete-icon"></i>
+                </a>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="4" class="py-4 text-center text-muted italic">Tidak ada data Bill of Quantity.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
             </table>
         </div>
     </main>
@@ -124,11 +123,11 @@ $result = mysqli_query($conn, $query);
         </a>
 
         <a href="../finance/riwayatnegoisasi.php" class="nav-item">
-            <i class="fa-solid fa-file-export text-white" style="font-size: 24px;"></i>
+            <i class="fa-solid fa-handshake text-white" style="font-size: 24px;"></i>
         </a>
 
-        <a href="../finance/profile.php" class="nav-item">
-            <i class="fa-solid fa-magnifying-glass-chart text-white" style="font-size: 24px;"></i>
+        <a href="../finance/evaluasi.php" class="nav-item">
+            <i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i>
         </a>
     </nav>
 
@@ -137,8 +136,12 @@ $result = mysqli_query($conn, $query);
         const inputs = document.querySelectorAll('input');
 
         inputs.forEach(input => {
-            input.addEventListener('focus', () => { navbar.style.transform = 'translateY(100px)'; });
-            input.addEventListener('blur', () => { navbar.style.transform = 'translateY(0)'; });
+            input.addEventListener('focus', () => {
+                navbar.style.transform = 'translateY(100px)';
+            });
+            input.addEventListener('blur', () => {
+                navbar.style.transform = 'translateY(0)';
+            });
         });
     </script>
 </body>

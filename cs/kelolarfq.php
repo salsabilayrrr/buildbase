@@ -108,8 +108,7 @@ $result = mysqli_query($conn, $query_sql);
         <a href="dataklien.php" class="nav-item"><i class="fa-solid fa-user-group"></i></a>
     </nav>
 
-</body>
-<script>
+    <script>
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
 
@@ -122,4 +121,5 @@ $result = mysqli_query($conn, $query_sql);
             });
         });
     </script>
+</body>
 </html>

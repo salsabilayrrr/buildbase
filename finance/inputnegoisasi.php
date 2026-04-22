@@ -109,8 +109,20 @@ $query_detail = mysqli_query($conn, "SELECT * FROM detail_boq WHERE id_boq = '$i
         <a href="laporankeuangan.php" class="nav-item"><i class="fa-solid fa-file-invoice-dollar text-white"></i></a>
         <a href="dashboard_finance.php" class="nav-item"><i class="fa-solid fa-house text-white"></i></a>
         <a href="riwayatnegoisasi.php" class="active-cycle"><i class="fa-solid fa-handshake" style="color: #8B93FF;"></i></a>
-        <a href="profile.php" class="nav-item"><i class="fa-solid fa-shield-halved text-white"></i></a>
+        <a href="evaluasi.php" class="nav-item"><i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i></a>
     </nav>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const inputs = document.querySelectorAll('input');
 
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                navbar.style.transform = 'translateY(100px)';
+            });
+            input.addEventListener('blur', () => {
+                navbar.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>

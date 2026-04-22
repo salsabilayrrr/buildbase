@@ -89,8 +89,7 @@ $result = mysqli_query($conn, $query);
         <a href="laporannegoisasi.php" class="nav-item"><i class="fa-solid fa-handshake text-white text-2xl" ></i> </a>        
         <a href="dataklien.php" class="active-cycle"><i class="fa-solid fa-user-group" style="color: #8B93FF; font-size: 30px;"></i></a>
     </nav>
-</body>
-<script>
+    <script>
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
 
@@ -103,4 +102,5 @@ $result = mysqli_query($conn, $query);
             });
         });
     </script>
+</body>
 </html>

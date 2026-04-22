@@ -213,72 +213,85 @@ body {
     font-size: 30px;
 }
 
-.search-container {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-}
+ .btn-buat-laporan {
+     background-color: #B2B9FF;
+     color: black;
+     font-weight: 800;
+     border-radius: 15px;
+     padding: 15px;
+     width: 100%;
+     border: none;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 15px;
+     margin-bottom: 20px;
+ }
 
-.search-input {
-    border-radius: 50px;
-    background-color: #B2B9FF;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    padding-right: 45px;
-}
+ .search-container {
+     position: relative;
+     max-width: 100%;
+     margin-bottom: 30px;
+     display: flex;
+     gap: 10px;
+ }
 
-.search-icon-btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: white;
-}
+ .search-input-wrapper {
+     position: relative;
+     flex-grow: 1;
+ }
 
-/* Card Styles */
-.card-nego {
-    background-color: #B2B9FF;
-    border-radius: 25px;
-    border: none;
-    padding: 15px;
-    text-align: center;
-    height: 100%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+ .search-input {
+     border-radius: 50px;
+     background-color: #B2B9FF;
+     border: none;
+     padding: 12px 25px;
+     color: white;
+     width: 100%;
+ }
 
-.card-nego img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 10px;
-}
+ .search-input::placeholder {
+     color: #f0f0f0;
+ }
 
-.card-nego p {
-    font-weight: 800;
-    margin: 0;
-    font-size: 1.1rem;
-}
+ .search-icon-btn {
+     position: absolute;
+     right: 20px;
+     top: 50%;
+     transform: translateY(-50%);
+     background: none;
+     border: none;
+     color: white;
+     font-size: 1.2rem;
+ }
 
-/* Table Styles */
-.custom-table th {
-    background-color: #FFC2C2 !important;
-    border: 1px solid #000;
-}
+ .filter-btn {
+     background-color: #B2B9FF;
+     border-radius: 15px;
+     width: 55px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: black;
+     border: none;
+ }
 
-.custom-table td {
-    background-color: white !important;
-    border: 1px solid #000;
-    vertical-align: middle;
-}
+ .custom-table th {
+     background-color: #FFC2C2 !important;
+     border: 1px solid #000;
+     padding: 12px;
+ }
 
-.pagination-custom {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    font-weight: bold;
-}
+ .custom-table td {
+     background-color: white !important;
+     border: 1px solid #000;
+     vertical-align: middle;
+     padding: 10px;
+ }
+
+ .pdf-icon {
+     color: #e74c3c;
+     font-size: 1.8rem;
+     cursor: pointer;
+ }
 

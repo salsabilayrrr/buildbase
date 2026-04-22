@@ -7,33 +7,23 @@
     <title>Buat Laporan Keuangan - BuildBase</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleInputRFQCS.css">
-    <style>
-        .main-card { background-color: #C2C7FF; border-radius: 40px; padding: 25px; }
-        .input-group-custom { background: white; border-radius: 20px; padding: 15px; margin-bottom: 20px; }
-        .custom-table th { background-color: #FFC2C2 !important; border: 1px solid #000; }
-        .custom-table td { background-color: white !important; border: 1px solid #000; padding: 5px; }
-        .eval-text { width: 100%; border-radius: 15px; border: none; padding: 15px; min-height: 100px; }
-        
-        /* Radio Button Style */
-        .decision-option { display: none; }
-        .decision-label { 
-            display: block; width: 100%; background: white; border-radius: 50px; 
-            padding: 10px; text-align: center; margin-bottom: 10px; font-weight: 700; cursor: pointer;
-        }
-        .decision-option:checked + .decision-label { background-color: #1e1b4b; color: white; }
-        
-        .btn-simpan { background-color: #1e1b4b; color: white; border-radius: 50px; padding: 10px 40px; border: none; font-weight: 700; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/styleInputLaporanKeuangan.css">
 </head>
 <body>
 
-    <nav class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="../assets/img/logo.png" alt="Logo" style="width: 40px;" class="ms-3 me-2"> 
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Finance</span>
+    <header class="navbar-custom">
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Finance</span>
+    </div>
+
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
-    </nav>
+        <span class="logout-text">Logout</span>
+    </a>
+    </header>
 
     <div class="container mt-4 mb-5">
         <h2 class="text-center fw-black mb-4" style="font-weight: 900;">INPUT LAPORAN KEUANGAN</h2>
@@ -94,22 +84,22 @@
 
     
     <nav id="navbar" class="bottom-nav">
-        <a href="laporankeuangan.php" class="nav-item">
-            <i class="fa-solid fa-file-invoice-dollar" style="color: #8B93FF; font-size: 30px;"></i>
-        </a>
+    <a href="laporankeuangan.php" class="active-cycle">
+        <i class="fa-solid fa-file-invoice-dollar" style="color: #8B93FF; font-size: 30px;"></i>
+    </a>
 
-        <a href="../dashboard/finance.php" class="active-cycle">
-            <i class="fa-solid fa-house text-white" style="font-size: 24px;"></i>
-        </a>
+    <a href="../dashboard/finance.php" class="nav-item">
+        <i class="fa-solid fa-house text-white" style="font-size: 24px;"></i>
+    </a>
 
-        <a href="laporannegoisasi.php" class="nav-item">
-            <i class="fa-solid fa-handshake text-white" style="font-size: 24px;"></i>
-        </a>
+    <a href="riwayatnegoisasi.php" class="nav-item">
+        <i class="fa-solid fa-handshake text white" style="font-size: 24px;"></i>
+    </a>
 
-        <a href="profile.php" class="nav-item">
+    <a href="evaluasi.php" class="nav-item">
             <i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i>
-        </a>
-    </nav>
+    </a>
+</nav>
 
     <script>
         // Fungsi Tambah Baris (Bisa sampai 100+)

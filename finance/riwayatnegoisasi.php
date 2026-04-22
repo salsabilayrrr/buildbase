@@ -125,7 +125,7 @@ $result = mysqli_query($conn, $query);
             <i class="fa-solid fa-file-invoice-dollar text-white" style="font-size: 24px;"></i>
         </a>
 
-        <a href="dashboard_finance.php" class="nav-item">
+        <a href="../dashboard/finance.php" class="nav-item">
             <i class="fa-solid fa-house text-white" style="font-size: 24px;"></i>
         </a>
 
@@ -133,7 +133,7 @@ $result = mysqli_query($conn, $query);
             <i class="fa-solid fa-handshake" style="color: #8B93FF; font-size: 30px;"></i>
         </a>
 
-        <a href="profile.php" class="nav-item">
+        <a href="evaluasi.php" class="nav-item">
             <i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i>
         </a>
     </nav>

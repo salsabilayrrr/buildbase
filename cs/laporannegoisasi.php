@@ -41,7 +41,7 @@ $result = mysqli_query($conn, $query);
     <title>Laporan Negosiasi - BuildBase</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleLaporanNegoisasi.css">       
+    <link rel="stylesheet" href="../assets/css/styleLaporanNegoisasi.css">
 </head>
 <body>
 
@@ -123,8 +123,6 @@ $result = mysqli_query($conn, $query);
         
         <a href="dataklien.php" class="nav-item"><i class="fa-solid fa-user-group text-white" style="font-size: 24px;"></i></a>
     </nav>
-
-</body>
 <script>
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
@@ -138,4 +136,5 @@ $result = mysqli_query($conn, $query);
             });
         });
     </script>
+</body>
 </html>
