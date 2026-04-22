@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../koneksi.php";
 
 if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'manager'){
     header("Location: ../index.php");

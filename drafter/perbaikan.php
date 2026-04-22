@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+include "../koneksi.php";
 
 // PERBAIKAN: Cek apakah session user ada sebelum mengakses array-nya
 if(!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != 'drafter'){
@@ -46,6 +46,7 @@ if (isset($_POST['submit_revisi'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styleRevisiDrafter.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
