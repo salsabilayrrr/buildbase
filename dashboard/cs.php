@@ -1,6 +1,34 @@
 <?php
 session_start();
+// Koneksi Database
+$conn = mysqli_connect("localhost", "root", "", "buildbase_db");
+if (!$conn) { die("Koneksi gagal: " . mysqli_connect_error()); }
+
+// 1. Ambil Statistik Data RFQ secara Dinamis
+// RFQ Masuk (Total semua di tabel data_rfq)
+$q_masuk = mysqli_query($conn, "SELECT COUNT(*) as total FROM data_rfq");
+$rfq_masuk = mysqli_fetch_assoc($q_masuk)['total'];
+
+// Diteruskan ke Estimator (Berdasarkan status di tabel data_rfq atau keberadaan di tabel boq)
+// Contoh: Status 'Proses' dianggap sudah diteruskan
+$q_diteruskan = mysqli_query($conn, "SELECT COUNT(*) as total FROM data_rfq WHERE status_rfq != 'Baru'");
+$rfq_diteruskan = mysqli_fetch_assoc($q_diteruskan)['total'];
+
+// 2. Logika Searching
+$search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
+$query_list = "SELECT dr.*, p.nama_perusahaan as nama_klien 
+               FROM data_rfq dr 
+               JOIN pelanggan p ON dr.id_pelanggan = p.id_pelanggan";
+
+if (!empty($search)) {
+    $query_list .= " WHERE dr.deskripsi LIKE '%$search%' OR p.nama_perusahaan LIKE '%$search%'";
+}
+$query_list .= " ORDER BY dr.id_rfq DESC";
+
+$result_rfq = mysqli_query($conn, $query_list);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,7 +36,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuildBase - Customer Service Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    <link rel="stylesheet" href="../assets/css/styleDashboardCs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styleDashboardCs.css">
 </head>
 <body>
     <header class="navbar-custom">
@@ -17,7 +46,7 @@ session_start();
             <span class="text-2xl font-black text-black tracking-tighter -ml-2">BuildBase</span>
         </div>
 
-        <a href="../index.php" class="logout-btn">
+        <a href="../logout.php" class="logout-btn">
             <div class="icon-circle">
                 <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
             </div>
@@ -31,11 +60,11 @@ session_start();
         <div class="grid grid-cols-2 gap-4">
             <div class="bg-light-purple p-4 rounded-[30px] shadow-md flex flex-col items-center">
                 <img src="../assets/img/cs2.png" alt="RFQ" class="w-16 h-18 mb-2">
-                <p class="font-black text-black text-xs text-center">5 RFQ Masuk</p>
+                <p class="font-black text-black text-xs text-center"><?= $rfq_masuk ?> RFQ Masuk</p>
             </div>
             <div class="bg-light-purple p-4 rounded-[30px] shadow-md flex flex-col items-center">
                 <img src="../assets/img/cs1.png" alt="Estimator" class="w-16 h-18 mb-2">
-                <p class="font-black text-black text-xs text-center leading-tight">2 Diteruskan ke Estimator</p>
+                <p class="font-black text-black text-xs text-center leading-tight"><?= $rfq_diteruskan ?> Diteruskan ke Estimator</p>
             </div>
         </div>
 
@@ -48,20 +77,22 @@ session_start();
             </button>
         </a>
 
-        <div class="flex space-x-2">
-            <div class="bg-light-purple flex-grow flex items-center px-5 py-3 rounded-2xl shadow-inner">
-                <input type="text" placeholder="Ketik Nama Proyek/Klien..." class="bg-transparent w-full outline-none placeholder-indigo-800 text-sm font-bold text-indigo-900">
-                <i class="fa-solid fa-magnifying-glass text-white text-2xl"></i>
+        <form method="GET" action="" class="flex space-x-2">
+            <div class="bg-light-purple flex-grow flex items-center px-5 py-3 rounded-2xl shadow-inner border border-black/10">
+                <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Ketik Nama Proyek/Klien..." class="bg-transparent w-full outline-none placeholder-indigo-800 text-sm font-bold text-indigo-900">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass text-white text-2xl"></i>
+                </button>
             </div>
-            <button class="bg-light-purple px-4 rounded-2xl shadow-md">
-                <i class="fa-solid fa-chevron-down text-black"></i>
-            </button>
-        </div>
+            <a href="dashboard.php" class="bg-light-purple px-4 flex items-center rounded-2xl shadow-md">
+                <i class="fa-solid fa-rotate-right text-black"></i>
+            </a>
+        </form>
 
         <div class="space-y-3">
             <h2 class="font-black text-center text-black tracking-tight text-lg uppercase">Daftar Request For Quotation (RFQ)</h2>
-            <div class="overflow-hidden rounded-lg">
-                <table class="custom-table">
+            <div class="overflow-x-auto rounded-lg shadow-sm border border-black/5">
+                <table class="custom-table w-full">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -72,20 +103,29 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>PT. Maju</td>
-                            <td>12-11-2025</td>
-                            <td>Baru</td>
-                            <td><i class="fa-solid fa-pencil text-white"></i></td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Bpk. Budi</td>
-                            <td>13-11-2025</td>
-                            <td>Proses</td>
-                            <td><i class="fa-solid fa-pencil text-white"></i></td>
-                        </tr>
+                        <?php if(mysqli_num_rows($result_rfq) > 0): ?>
+                            <?php while($row = mysqli_fetch_assoc($result_rfq)): ?>
+                                <tr>
+                                    <td><?= str_pad($row['id_rfq'], 3, "0", STR_PAD_LEFT) ?></td>
+                                    <td class="text-left font-bold"><?= $row['nama_klien'] ?></td>
+                                    <td><?= date('d-m-Y', strtotime($row['tanggal_rfq'])) ?></td>
+                                    <td>
+                                        <span class="px-2 py-1 rounded-lg text-[10px] font-black <?= $row['status_rfq'] == 'Baru' ? 'bg-green-200 text-green-800' : 'bg-blue-200 text-blue-800' ?>">
+                                            <?= $row['status_rfq'] ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="../cs/editrfq.php?id=<?= $row['id_rfq'] ?>">
+                                            <i class="fa-solid fa-pencil text-white bg-indigo-500 p-2 rounded-lg hover:bg-indigo-700"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5" class="py-4 text-center text-gray-500 italic">Data tidak ditemukan...</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -93,26 +133,22 @@ session_start();
     </main>
 
     <nav id="navbar" class="bottom-nav">
-    <a href="../cs/inputrfq.php" class="nav-item">
-        <i class="fa-solid fa-file-circle-check text-white text-2xl"></i>
-    </a>
-
-    <a href="../cs/kelolarfq.php" class="nav-item">
-        <i class="fa-solid fa-file-lines text-white text-2xl"></i>
-    </a>
-
-    <a href="dashboard.php" class="home-button">
-        <i class="fa-solid fa-house text-[#8B93FF] text-3xl"></i>
-    </a>
-
-    <a href="../cs/laporannegoisasi.php" class="nav-item">
-        <i class="fa-solid fa-paper-plane text-white text-2xl"></i>
-    </a>
-
-    <a href="../cs/dataklien.php" class="nav-item">
-        <i class="fa-solid fa-user-group text-white text-2xl"></i>
-    </a>
-</nav>
+        <a href="../cs/inputrfq.php" class="nav-item">
+            <i class="fa-solid fa-file-circle-check text-white text-2xl"></i>
+        </a>
+        <a href="../cs/kelolarfq.php" class="nav-item">
+            <i class="fa-solid fa-file-lines text-white text-2xl"></i>
+        </a>
+        <a href="dashboard.php" class="home-button">
+            <i class="fa-solid fa-house text-[#8B93FF] text-3xl"></i>
+        </a>
+        <a href="../cs/laporannegoisasi.php" class="nav-item">
+            <i class="fa-solid fa-handshake text-white text-2xl" ></i>
+        </a>
+        <a href="../cs/dataklien.php" class="nav-item">
+            <i class="fa-solid fa-user-group text-white text-2xl"></i>
+        </a>
+    </nav>
 
     <script>
         const navbar = document.getElementById('navbar');

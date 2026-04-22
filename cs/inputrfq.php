@@ -37,13 +37,20 @@ if (isset($_GET['id'])) {
 </head>
 <body>
 
-    <nav class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="ms-3 me-2"> 
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Customer Service</span>
-        </div>
-    </nav>
+    <header class="navbar-custom">
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Customer Service</span>
+    </div>
 
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+        </div>
+        <span class="logout-text">Logout</span>
+    </a>
+</header>
+    
     <div class="container mt-4 mb-5">
         <h2 class="text-center fw-black mb-4" style="font-weight: 900;">
             <?= $is_edit ? 'EDIT DATA RFQ' : 'INPUT DATA RFQ' ?>
@@ -139,7 +146,7 @@ if (isset($_GET['id'])) {
             <i class="fa-solid fa-house"></i>
         </a>
         <a href="laporannegoisasi.php" class="nav-item">
-            <i class="fa-solid fa-paper-plane"></i>
+            <i class="fa-solid fa-handshake text-white text-2xl" ></i>
         </a>
         <a href="dataklien.php" class="nav-item">
             <i class="fa-solid fa-user-group"></i>

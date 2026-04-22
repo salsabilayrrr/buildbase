@@ -25,15 +25,22 @@ if (isset($_GET['id'])) {
     <title>Input Data Klien - BuildBase</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleInputRFQCS.css">
+    <link rel="stylesheet" href="../assets/css/styleInputDataKlien.css">
 </head>
 <body>
-    <nav class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="ms-3 me-2"> 
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Customer Service</span>
+   <header class="navbar-custom">
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Customer Service</span>
+    </div>
+
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
-    </nav>
+        <span class="logout-text">Logout</span>
+    </a>
+</header>
 
     <div class="container mt-4 mb-5">
         <h2 class="text-center fw-black mb-4" style="font-weight: 900;">INPUT DATA KLIEN</h2>

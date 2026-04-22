@@ -41,38 +41,23 @@ $result = mysqli_query($conn, $query);
     <title>Laporan Negosiasi - BuildBase</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleInputRFQCS.css">
-    <style>
-        .search-container { position: relative; max-width: 400px; margin: 0 auto; }
-        .search-input { border-radius: 50px; background-color: #B2B9FF; border: none; padding: 10px 20px; color: white; padding-right: 45px; }
-        .search-icon-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; }
-        
-        /* Card Styles */
-        .card-nego { background-color: #B2B9FF; border-radius: 25px; border: none; padding: 15px; text-align: center; height: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .card-nego img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
-        .card-nego p { font-weight: 800; margin: 0; font-size: 1.1rem; }
-
-        /* Table Styles */
-        .custom-table th { background-color: #FFC2C2 !important; border: 1px solid #000; }
-        .custom-table td { background-color: white !important; border: 1px solid #000; vertical-align: middle; }
-        
-        .pagination-custom { display: flex; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/styleLaporanNegoisasi.css">       
 </head>
 <body>
 
-    <nav class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="ms-3 me-2"> 
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Customer Service</span>
+    <header class="navbar-custom">
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Customer Service</span>
+    </div>
+
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
-        <div class="me-3">
-            <a href="logout.php" class="logout-btn">
-                <div class="icon-circle"><i class="fa-solid fa-right-from-bracket logout-icon-fa"></i></div>
-                <span class="logout-text">Logout</span>
-            </a>
-        </div>
-    </nav>
+        <span class="logout-text">Logout</span>
+    </a>
+    </header>
 
     <div class="container mt-4 mb-5">
         <h2 class="text-center fw-black mb-4" style="font-weight: 900; text-transform: uppercase;">Laporan Negosiasi Harga Dari Finance</h2>
@@ -140,4 +125,17 @@ $result = mysqli_query($conn, $query);
     </nav>
 
 </body>
+<script>
+        const navbar = document.getElementById('navbar');
+        const inputs = document.querySelectorAll('input');
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                navbar.style.transform = 'translateY(100px)';
+            });
+            input.addEventListener('blur', () => {
+                navbar.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </html>
