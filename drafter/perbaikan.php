@@ -1,28 +1,33 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start(); 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 include "../koneksi.php";
 
-// PERBAIKAN: Cek apakah session user ada sebelum mengakses array-nya
-if(!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != 'drafter'){
+// Proteksi role
+if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
     header("Location: ../index.php");
     exit;
 }
 
+// Query menggunakan nama kolom yang benar sesuai gambar kamu: status_validasi
 $query_info = mysqli_query($conn, "SELECT * FROM shop_drawing WHERE status_validasi = 'revisi' ORDER BY id DESC LIMIT 1");
 
-// Cek apakah query berhasil dan ada datanya
+// Cek apakah data benar-benar ada
 if ($query_info && mysqli_num_rows($query_info) > 0) {
     $info = mysqli_fetch_assoc($query_info);
 } else {
-    $info = null; // Set null jika tidak ada data 'revisi'
+    // Jika tidak ada data 'revisi', buat array kosong agar tidak error
+    $info = [
+        'catatan' => 'Tidak ada permintaan revisi saat ini.',
+        'tanggal_upload' => date('Y-m-d H:i:s')
+    ];
 }
 
-// Variabel untuk trigger notifikasi SweetAlert
 $show_success = false;
 
+// 5. Logika Upload
 if (isset($_POST['submit_revisi'])) {
     $catatan = mysqli_real_escape_string($conn, $_POST['catatan_revisi']);
     $id_user = $_SESSION['user']['id'];
@@ -34,6 +39,7 @@ if (isset($_POST['submit_revisi'])) {
     $target_file = $target_dir . $file_name;
 
     if (move_uploaded_file($_FILES["file_drawing"]["tmp_name"], $target_file)) {
+        // Di sini kamu pakai 'status_validasi', jadi di query SELECT atas juga harus sama
         $sql = "INSERT INTO shop_drawing (id_user, nama_file, catatan, status_validasi) 
                 VALUES ('$id_user', '$file_name', '$catatan', 'pending')";
         if (mysqli_query($conn, $sql)) {
