@@ -12,7 +12,13 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION['
 }
 
 $query_info = mysqli_query($conn, "SELECT * FROM shop_drawing WHERE status_validasi = 'revisi' ORDER BY id DESC LIMIT 1");
-$info = mysqli_fetch_assoc($query_info);
+
+// Cek apakah query berhasil dan ada datanya
+if ($query_info && mysqli_num_rows($query_info) > 0) {
+    $info = mysqli_fetch_assoc($query_info);
+} else {
+    $info = null; // Set null jika tidak ada data 'revisi'
+}
 
 // Variabel untuk trigger notifikasi SweetAlert
 $show_success = false;

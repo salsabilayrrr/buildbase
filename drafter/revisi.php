@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'drafter'){
     exit;
 }
 
-$sql = "SELECT * FROM shop_drawing WHERE status_validasi = 'revisi' ORDER BY id DESC LIMIT 1";
+$sql = "SELECT * FROM shop_drawing LIMIT 1";
 $query_revisi = mysqli_query($conn, $sql);
 
 if (!$query_revisi) {
