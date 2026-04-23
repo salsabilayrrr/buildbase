@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&display=swap');
+
+/* Reset & Global */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    /* Pastikan html/body punya tinggi penuh */
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8faff;
+    /* INI KUNCINYA: Jangan pakai overflow: hidden */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    /* Beri jarak bawah sebesar tinggi navbar + extra space */
+    padding-bottom: 120px;
+}
+
+/* NAVBAR ATAS */
+.navbar-custom {
+    background-color: #8B93FF;
+    padding: 0 15px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    /* Sticky lebih ramah untuk scroll daripada fixed */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
+}
+
+.navbar-brand-text {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: black;
+    letter-spacing: -0.05em;
+}
+
+/* TOMBOL LOGOUT KAPSUL */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 15px 4px 4px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid black;
+}
+
+.icon-circle {
+    background-color: #1e1b4b;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logout-icon-fa {
+    color: white;
+    font-size: 16px;
+}
+
+.logout-text {
+    color: black;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+/* CARD UTAMA */
+.main-card {
+    background-color: #C2C7FF;
+    border-radius: 40px;
+    border: 2.5px solid black;
+    box-shadow: 6px 6px 0px #000;
+    margin-bottom: 20px;
+    /* Pastikan tinggi otomatis mengikuti isi */
+    height: auto;
+}
+
+.btn-input-nego {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+}
+
+.btn-final-price {
+    background-color: #5c7cfa;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-style: italic;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    /* Fixed agar tetap di bawah layar */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2000;
+}
+
+.nav-item {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.active-cycle {
+    background-color: white;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-25px);
+    border: 5px solid #8B93FF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8faff;
+    margin: 0;
+}
+
+/* NAVBAR ATAS SAMA DENGAN DASHBOARD */
+.navbar-custom {
+    background-color: #8B93FF;
+    padding: 0 15px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-img {
+    width: 55px !important;
+    height: 55px !important;
+    object-fit: contain;
+}
+
+.navbar-brand-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: black;
+    letter-spacing: -0.05em;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 20px 4px 4px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logout-icon-fa {
+    color: black;
+    font-size: 16px;
+}
+
+.logout-text {
+    color: black;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+/* CARD UTAMA */
+.main-card {
+    background-color: #C2C7FF;
+    border-radius: 40px;
+    border: 2.5px solid black;
+    box-shadow: 6px 6px 0px #000;
+}
+
+.btn-input-nego {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 4px 4px 0px #000;
+    transition: 0.2s;
+}
+
+.btn-input-nego:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+.btn-final-price {
+    background-color: #5c7cfa;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-style: italic;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px #000;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1000;
+}
+
+.nav-item {
+    color: white;
+    font-size: 24px;
+}
+
+.active-cycle {
+    background-color: white;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-25px);
+    border: 5px solid #8B93FF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.active-cycle i {
+    color: #8B93FF;
+    font-size: 30px;
+}
+
+/* CARD & BUBBLE STYLE */
+.main-card {
+    background-color: #B2B9FF;
+    /* Ungu sedang sesuai gambar */
+    border-radius: 45px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.btn-kirim-cs {
+    background-color: #5c7cfa;
+    /* Biru sesuai tombol di gambar */
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: 1.5px solid black;
+    box-shadow: 3px 3px 0px #000;
+    transition: 0.2s;
+}
+
+.btn-kirim-cs:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.active-cycle {
+    background-color: white;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-25px);
+    border: 6px solid #8B93FF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

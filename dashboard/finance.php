@@ -3,11 +3,10 @@ include '../koneksi.php';
 
 // 1. Ambil jumlah Bill of Quantity (BoQ) baru (Status Draft)
 $q_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM boq WHERE status_boq = 'Draft'");
-$boq_baru = mysqli_fetch_assoc($q_count)['total'];
+$boq_baru = mysqli_fetch_assoc($q_count)['total'] ?? 0;
 
 // 2. Logika Pencarian Tabel
 $keyword = "";
-// Gunakan JOIN ke shop_drawing untuk mendapatkan file PDF asli
 $base_query = "SELECT b.id_boq, r.deskripsi as nama_boq, sd.file_path 
                FROM boq b 
                JOIN data_rfq r ON b.id_rfq = r.id_rfq 
@@ -35,17 +34,17 @@ $result = mysqli_query($conn, $query);
 <body>
 
     <header class="navbar-custom">
-    <div class="navbar-left"> 
-        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
-        <span class="navbar-brand-text">Customer Service</span>
-    </div>
-
-    <a href="../logout.php" class="logout-btn">
-        <div class="icon-circle">
-            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+        <div class="navbar-left"> 
+            <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+            <span class="navbar-brand-text">Finance</span>
         </div>
-        <span class="logout-text">Logout</span>
-    </a>
+
+        <a href="../logout.php" class="logout-btn">
+            <div class="icon-circle">
+                <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+            </div>
+            <span class="logout-text">Logout</span>
+        </a>
     </header>
 
     <main class="container mt-4 mb-5">
@@ -55,7 +54,7 @@ $result = mysqli_query($conn, $query);
         <div class="info-card text-center">
             <div class="card-body">
                 <img src="../assets/img/assetfinance.png" alt="Icon" class="card-icon"> 
-            <p class="card-text"><?= $boq_baru ?> Bill of Quantity Baru</p>
+                <p class="card-text"><?= $boq_baru ?> Bill of Quantity Baru</p>
             </div>
         </div>
 
@@ -65,8 +64,10 @@ $result = mysqli_query($conn, $query);
 
         <form method="POST" class="search-container">
             <div class="search-box">
-                <input type="text" name="keyword" placeholder="Ketik Nama BoQ..." value="<?= $keyword ?>">
-                <button type="submit" name="cari" style="background:none; border:none;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="keyword" placeholder="Ketik Nama BoQ..." value="<?= htmlspecialchars($keyword) ?>">
+                <button type="submit" name="cari" style="background:none; border:none;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
             <button type="button" class="filter-btn"><i class="fa-solid fa-chevron-down"></i></button>
         </form>
@@ -76,39 +77,45 @@ $result = mysqli_query($conn, $query);
                 <thead>
                     <tr>
                         <th width="15%">ID</th>
-                        <th width="45%">Nama BoQ</th>
-                        <th width="20%">File Asli</th>
-                        <th width="20%">Aksi</th>
+                        <th width="40%">Nama BoQ</th>
+                        <th width="15%">File Asli</th>
+                        <th width="30%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-    <?php if(mysqli_num_rows($result) > 0): ?>
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
-        <tr>
-            <td><?= sprintf("%03d", $row['id_boq']) ?></td>
-            <td class="text-start"><?= htmlspecialchars($row['nama_boq']) ?></td>
-            <td>
-                <?php if(!empty($row['file_path'])): ?>
-                    <a href="../uploads/<?= $row['file_path'] ?>" target="_blank">
-                        <i class="fa-solid fa-file-pdf pdf-icon"></i>
-                    </a>
-                <?php else: ?>
-                    <i class="fa-solid fa-file-circle-xmark text-muted" title="File tidak ada"></i>
-                <?php endif; ?>
-            </td>
-            <td>
-                <a href="hapus_boq.php?id=<?= $row['id_boq'] ?>" onclick="return confirm('Hapus BoQ?')">
-                    <i class="fa-solid fa-trash-can delete-icon"></i>
-                </a>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <tr>
-            <td colspan="4" class="py-4 text-center text-muted italic">Tidak ada data Bill of Quantity.</td>
-        </tr>
-    <?php endif; ?>
-</tbody>
+                    <?php if(mysqli_num_rows($result) > 0): ?>
+                        <?php while($row = mysqli_fetch_assoc($result)): ?>
+                        <tr>
+                            <td><?= sprintf("%03d", $row['id_boq']) ?></td>
+                            <td class="text-start"><?= htmlspecialchars($row['nama_boq']) ?></td>
+                            <td>
+                                <?php if(!empty($row['file_path'])): ?>
+                                    <a href="../uploads/<?= $row['file_path'] ?>" target="_blank">
+                                        <i class="fa-solid fa-file-pdf text-danger fs-4"></i>
+                                    </a>
+                                <?php else: ?>
+                                    -
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <a href="../finance/evaluasi.php?id=<?= $row['id_boq'] ?>" 
+                                   class="btn btn-sm rounded-pill px-3 shadow-sm font-bold" 
+                                   style="background-color: #8B93FF; color: white;">
+                                   Evaluasi & Setujui
+                                </a>
+                                
+                                <a href="hapus_boq.php?id=<?= $row['id_boq'] ?>" class="ms-2 text-dark" onclick="return confirm('Hapus BoQ?')">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4" class="py-4 text-center text-muted italic">Tidak ada data Bill of Quantity.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
             </table>
         </div>
     </main>
@@ -117,15 +124,12 @@ $result = mysqli_query($conn, $query);
         <a href="../finance/laporankeuangan.php" class="nav-item">
             <i class="fa-solid fa-file-invoice-dollar text-white" style="font-size: 24px;"></i>
         </a>
-
         <a href="finance.php" class="active-cycle">
             <i class="fa-solid fa-house" style="color: #8B93FF; font-size: 30px;"></i>
         </a>
-
         <a href="../finance/riwayatnegoisasi.php" class="nav-item">
             <i class="fa-solid fa-handshake text-white" style="font-size: 24px;"></i>
         </a>
-
         <a href="../finance/evaluasi.php" class="nav-item">
             <i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i>
         </a>

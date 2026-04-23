@@ -1,115 +1,76 @@
 <?php
 include '../koneksi.php';
-session_start();
+$id_boq = $_GET['id'];
 
-// Ambil ID BoQ
-$id_boq = isset($_GET['id_boq']) ? mysqli_real_escape_string($conn, $_GET['id_boq']) : '';
-
-// 1. Ambil Informasi Dasar Proyek dari Database
-$query_proyek = mysqli_query($conn, "SELECT r.deskripsi 
-                                     FROM boq b 
-                                     JOIN data_rfq r ON b.id_rfq = r.id_rfq 
-                                     WHERE b.id_boq = '$id_boq'");
-$data_p = mysqli_fetch_assoc($query_proyek);
-
-// 2. Ambil Rincian Material yang baru diinput (Data dari Halaman Input Laporan sebelumnya)
-// Kita asumsikan data dilempar melalui session atau kita tarik yang terbaru dari database
-$query_detail = mysqli_query($conn, "SELECT * FROM detail_boq WHERE id_boq = '$id_boq'");
+// Ambil data untuk ditampilkan di bagian Detail Proyek
+$query = mysqli_query($conn, "SELECT b.id_boq, r.deskripsi 
+                               FROM boq b 
+                               JOIN data_rfq r ON b.id_rfq = r.id_rfq 
+                               WHERE b.id_boq = '$id_boq'");
+$data = mysqli_fetch_assoc($query);
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Negosiasi - BuildBase</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/styleInputRFQCS.css">
-    <style>
-        .main-card { background-color: #C2C7FF; border-radius: 40px; padding: 30px; }
-        .detail-nego-box { 
-            background-color: white; border-radius: 25px; padding: 20px; margin-bottom: 25px;
-        }
-        .table-mini { font-size: 0.85rem; width: 100%; border-collapse: collapse; }
-        .table-mini th { border-bottom: 2px solid #eee; padding-bottom: 8px; text-align: left; }
-        .table-mini td { padding: 8px 0; border-bottom: 1px solid #fafafa; }
-        
-        .input-instruksi {
-            width: 100%; border-radius: 20px; border: none; padding: 20px;
-            min-height: 150px; font-weight: 600; font-size: 1rem;
-        }
-        .btn-kirim-cs {
-            background-color: #1e1b4b; color: white; border-radius: 50px;
-            padding: 12px 35px; border: none; font-weight: 800; transition: 0.3s;
-        }
-        .btn-kirim-cs:hover { background-color: #5c7cfa; transform: scale(1.05); }
-    </style>
+    <title>Input Negoisasi Harga - BuildBase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styleInputNegoFinance.css">
 </head>
 <body>
-
-    <nav class="navbar-custom">
-        <div class="d-flex align-items-center">
-            <img src="../assets/img/logo.png" alt="Logo" style="width: 40px;" class="ms-3 me-2"> 
-            <span class="fw-black fs-4 text-dark" style="font-weight: 800;">Finance</span>
+    <header class="navbar-custom">
+        <div class="navbar-left"> 
+            <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+            <span class="navbar-brand-text">Finance</span>
         </div>
-    </nav>
+        <a href="../logout.php" class="logout-btn">
+            <div class="icon-circle"><i class="fa-solid fa-right-from-bracket logout-icon-fa"></i></div>
+            <span class="logout-text">Logout</span>
+        </a>
+    </header>
 
-    <div class="container mt-4 mb-5">
-        <h2 class="text-center fw-black mb-4" style="font-weight: 900;">INPUT NEGOSIASI HARGA</h2>
+    <main class="p-6">
+        <h1 class="text-center font-black text-xl uppercase mt-4 tracking-tighter">
+            Input Negosiasi Harga
+        </h1>
 
-        <div class="main-card">
-            <form action="proses_negoisasi.php" method="POST">
+        <div class="main-card mt-8 p-8">
+            <form action="simpan_instruksi.php" method="POST">
                 <input type="hidden" name="id_boq" value="<?= $id_boq ?>">
 
-                <h5 class="fw-bold mb-3">DETAIL PROYEK (HASIL EVALUASI)</h5>
-                <div class="detail-nego-box">
-                    <p class="mb-2"><strong>Nama Proyek:</strong> <?= $data_p['deskripsi'] ?? 'Proyek Tidak Ditemukan' ?></p>
-                    
-                    <table class="table-mini">
-                        <thead>
-                            <tr>
-                                <th>Item Material</th>
-                                <th>Qty</th>
-                                <th>Total Estimasi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                            $grand_total = 0;
-                            while($row = mysqli_fetch_assoc($query_detail)): 
-                                $grand_total += $row['subtotal'];
-                            ?>
-                            <tr>
-                                <td><?= htmlspecialchars($row['nama_item'] ?? 'Item Tanpa Nama') ?></td>
-                                <td><?= $row['jumlah'] ?></td>
-                                <td>Rp <?= number_format($row['subtotal'], 0, ',', '.') ?></td>
-                            </tr>
-                            <?php endwhile; ?>
-                            
-                            <tr style="border-top: 2px solid #eee;">
-                                <td colspan="2" class="pt-2"><strong>Total Biaya Evaluasi:</strong></td>
-                                <td class="pt-2"><strong>Rp <?= number_format($grand_total, 0, ',', '.') ?></strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="mb-8">
+                    <h2 class="font-black text-sm uppercase mb-2 ml-4">Detail Proyek</h2>
+                    <div class="bg-white rounded-[35px] p-6 shadow-sm border border-black/5">
+                        <p class="font-bold text-sm text-gray-800 leading-relaxed italic">
+                            Analisis Biaya & Margin:<br>
+                            Harga besi D13 dari Estimator terlalu tinggi untuk proyek <?= $data['deskripsi'] ?>.
+                        </p>
+                    </div>
                 </div>
 
-                <h5 class="fw-bold mb-3">INSTRUKSI NEGOSIASI UNTUK CS</h5>
-                <textarea name="pesan_nego" class="input-instruksi mb-4" placeholder="Contoh: Tolong negosiasikan harga material semen agar turun 5% dari harga estimasi..." required></textarea>
+                <div class="mb-8">
+                    <h2 class="font-black text-sm uppercase mb-2 ml-4">Kirim Instruksi Baru ke CS</h2>
+                    <div class="bg-white rounded-[35px] p-6 shadow-sm border border-black/5">
+                        <textarea name="pesan_instruksi" class="w-full h-24 outline-none border-none resize-none font-bold text-sm italic" placeholder="Ketik instruksi negoisasi di sini..."></textarea>
+                    </div>
+                </div>
 
-                <div class="d-flex justify-content-end">
-                    <button type="submit" name="kirim_nego" class="btn-kirim-cs">Kirim ke Customer Service</button>
+                <div class="flex justify-end mt-10">
+                    <button type="submit" class="btn-kirim-cs">
+                        Kirim Instruksi CS
+                    </button>
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 
-    <nav class="bottom-nav">
-        <a href="laporankeuangan.php" class="nav-item"><i class="fa-solid fa-file-invoice-dollar text-white"></i></a>
-        <a href="dashboard_finance.php" class="nav-item"><i class="fa-solid fa-house text-white"></i></a>
-        <a href="riwayatnegoisasi.php" class="active-cycle"><i class="fa-solid fa-handshake" style="color: #8B93FF;"></i></a>
-        <a href="evaluasi.php" class="nav-item"><i class="fa-solid fa-shield-halved text-white" style="font-size: 24px;"></i></a>
+    <nav id="navbar" class="bottom-nav">
+        <a href="laporankeuangan.php" class="nav-item"><i class="fa-solid fa-file-invoice-dollar text-white text-2xl"></i></a>
+        <a href="../dashboard/finance.php" class="nav-item"><i class="fa-solid fa-house text-white text-2xl"></i></a>
+        <a href="riwayatnegoisasi.php" class="active-cycle"><i class="fa-solid fa-handshake text-[#8B93FF] text-3xl"></i></a>
+        <a href="evaluasi.php" class="nav-item"><i class="fa-solid fa-shield-halved text-white text-2xl"></i></a>
     </nav>
     <script>
         const navbar = document.getElementById('navbar');

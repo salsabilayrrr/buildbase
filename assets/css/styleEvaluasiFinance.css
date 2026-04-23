@@ -1,0 +1,146 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&family=Pacifico&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8faff;
+    margin: 0;
+    overflow-x: hidden;
+    padding-bottom: 120px;
+}
+
+/* --- CSS NAVBAR YANG DIPERBAIKI --- */
+.navbar-custom {
+    background-color: #8B93FF;
+    padding: 0 15px;
+    /* Hilangkan padding atas bawah agar tidak terlalu besar */
+    position: relative;
+    width: 100%;
+    height: 70px;
+    /* Kunci tinggi navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+/* Container untuk Logo dan Teks */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Kunci ukuran logo agar tidak besar */
+.logo-img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
+}
+
+.navbar-brand-text {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: black;
+    letter-spacing: -0.05em;
+}
+
+/* Tombol Logout Kapsul Putih */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    padding: 4px 15px 4px 4px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    /* Agar tombol tidak menciut */
+}
+
+/* Lingkaran Biru di Ikon */
+.icon-circle {
+    background-color: #5c7cfa;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logout-icon-fa {
+    color: black;
+    font-size: 16px;
+}
+
+.logout-text {
+    color: black;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.main-card {
+    background-color: #C2C7FF;
+    border-radius: 45px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.btn-evaluasi {
+    width: fit-content;
+    background-color: white;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.btn-evaluasi:active {
+    transform: scale(0.95);
+}
+
+/* Style Navbar Atas Sama Seperti Sebelumnya */
+.navbar-custom {
+    background-color: #8B93FF;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
+
+/* Bottom Nav Style */
+.bottom-nav {
+    background-color: #8B93FF;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 85px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.active-cycle {
+    background-color: white;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-25px);
+    border: 6px solid #8B93FF;
+}
