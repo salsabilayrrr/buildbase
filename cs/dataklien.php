@@ -1,6 +1,18 @@
 <?php
 include '../koneksi.php';
 
+// Logika Hapus Data (Jika ada parameter hapus)
+if (isset($_GET['hapus'])) {
+    $id_pelanggan = mysqli_real_escape_string($conn, $_GET['hapus']);
+    $delete = mysqli_query($conn, "DELETE FROM pelanggan WHERE id_pelanggan = '$id_pelanggan'");
+    if ($delete) {
+        echo "<script>
+                alert('Data klien berhasil dihapus!');
+                window.location.href='dataklien.php';
+              </script>";
+    }
+}
+
 // Logika Pencarian
 $keyword = "";
 if (isset($_POST['cari'])) {
@@ -21,6 +33,7 @@ $result = mysqli_query($conn, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styleDataKlien.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -53,8 +66,8 @@ $result = mysqli_query($conn, $query);
                         <th style="width: 10%;">ID</th>
                         <th style="width: 25%;">Nama Klien</th>
                         <th style="width: 25%;">Perusahaan</th>
-                        <th style="width: 25%;">Email</th>
-                        <th style="width: 15%;">Aksi</th>
+                        <th style="width: 20%;">Email</th>
+                        <th style="width: 20%;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,8 +78,11 @@ $result = mysqli_query($conn, $query);
                         <td><?= $row['tipe_klien'] == 'Perusahaan' ? htmlspecialchars($row['nama_instansi']) : 'Perorangan' ?></td>
                         <td><?= htmlspecialchars($row['email']) ?></td>
                         <td>
-                            <a href="inputdataklien.php?id=<?= $row['id_pelanggan'] ?>" class="text-dark">
+                            <a href="inputdataklien.php?id=<?= $row['id_pelanggan'] ?>" class="text-dark me-2">
                                 <i class="fa-solid fa-pen-to-square fs-5"></i>
+                            </a>
+                            <a href="javascript:void(0);" onclick="hapusKlien(<?= $row['id_pelanggan'] ?>)" class="text-danger">
+                                <i class="fa-solid fa-trash fs-5"></i>
                             </a>
                         </td>
                     </tr>
@@ -89,7 +105,27 @@ $result = mysqli_query($conn, $query);
         <a href="laporannegoisasi.php" class="nav-item"><i class="fa-solid fa-handshake text-white text-2xl" ></i> </a>        
         <a href="dataklien.php" class="active-cycle"><i class="fa-solid fa-user-group" style="color: #8B93FF; font-size: 30px;"></i></a>
     </nav>
+
     <script>
+        // Fungsi untuk konfirmasi hapus menggunakan SweetAlert2
+        function hapusKlien(id) {
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data klien yang dihapus tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#8B93FF',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika setuju, arahkan ke URL hapus
+                    window.location.href = "dataklien.php?hapus=" + id;
+                }
+            })
+        }
+
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
 
