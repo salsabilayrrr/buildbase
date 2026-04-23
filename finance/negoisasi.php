@@ -22,14 +22,17 @@ $data = mysqli_fetch_assoc($query);
 </head>
 <body>
     <header class="navbar-custom">
-        <div class="navbar-left">
-            <img src="../assets/img/logo.png" alt="Logo" class="logo-img">
-            <span class="navbar-brand-text">Finance</span>
+    <div class="navbar-left"> 
+        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+        <span class="navbar-brand-text">Finance</span>
+    </div>
+
+    <a href="../logout.php" class="logout-btn">
+        <div class="icon-circle">
+            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
         </div>
-        <a href="../logout.php" class="logout-btn">
-            <div class="icon-circle"><i class="fa-solid fa-right-from-bracket logout-icon-fa text-white"></i></div>
-            <span class="logout-text">Logout</span>
-        </a>
+        <span class="logout-text">Logout</span>
+    </a>
     </header>
 
     <main class="p-4 pb-40"> 
@@ -52,19 +55,38 @@ $data = mysqli_fetch_assoc($query);
             </div>
 
             <h2 class="font-black text-xs uppercase mb-2 italic tracking-tighter text-gray-700">Riwayat Negosiasi</h2>
-            
-            <div class="border-2 border-black rounded-xl overflow-hidden mb-6 shadow-sm">
-                <table class="w-full text-[11px] font-bold border-collapse">
-                    <tr class="border-b-2 border-black">
-                        <td class="p-3 border-r-2 border-black bg-white w-1/3 text-center">[14 Nov '25] Customer :</td>
-                        <td class="p-3 bg-white italic text-center text-gray-500">"Budget kami hanya 75jt."</td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 border-r-2 border-black bg-white text-center">[13 Nov '25] Finance :</td>
-                        <td class="p-3 bg-white italic text-center text-gray-500">"Penawaran baru kami Rp 77jt."</td>
-                    </tr>
-                </table>
-            </div>
+
+        <div class="border-2 border-black rounded-xl overflow-hidden mb-6 shadow-sm bg-white">
+            <table class="w-full text-[11px] font-bold border-collapse">
+                <?php
+                // Ambil riwayat pesan dari database berdasarkan id_boq
+                $q_pesan = mysqli_query($conn, "SELECT * FROM pesan_negosiasi WHERE id_boq = '$id_boq' ORDER BY waktu_kirim ASC");
+                
+                if (mysqli_num_rows($q_pesan) > 0) {
+                    while($p = mysqli_fetch_assoc($q_pesan)) {
+                        // Beri label pengirim
+                        $label = ($p['pengirim'] == 'finance') ? 'Finance' : 'Customer';
+                        $tanggal = date('d M Y', strtotime($p['waktu_kirim']));
+                ?>
+                        <tr class="border-b-2 border-black">
+                            <td class="p-3 border-r-2 border-black bg-gray-50 w-1/3 text-center">
+                                [<?= $tanggal ?>] <?= $label ?> :
+                            </td>
+                            <td class="p-3 bg-white italic text-center text-gray-700">
+                                "<?= htmlspecialchars($p['isi_pesan']) ?>"
+                                <?php if($p['harga_ajuan'] > 0): ?>
+                                    <br><small class="text-indigo-600">(Ajuan: Rp <?= number_format($p['harga_ajuan'], 0, ',', '.') ?>)</small>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                <?php 
+                    }
+                } else {
+                    echo "<tr><td colspan='2' class='p-3 text-center text-gray-400'>Belum ada riwayat negosiasi.</td></tr>";
+                }
+                ?>
+            </table>
+        </div>
 
             <h2 class="font-black text-xs uppercase mb-2 tracking-tighter text-gray-700">Kirim Penawaran/Tanggapan Baru</h2>
             <div class="bg-white rounded-[30px] p-5 border-2 border-black shadow-inner mb-6">

@@ -1,20 +1,18 @@
 <?php
 include '../koneksi.php';
 
-// 1. Hitung Statistik untuk Card Atas
-// Hitung total proses negosiasi (semua data di tabel negosiasi_harga)
+// 1. Hitung Statistik untuk Card Atas (Tetap Panjang Seperti Aslinya)
 $q_total = mysqli_query($conn, "SELECT COUNT(*) as total FROM negosiasi_harga");
 $total_proses = mysqli_fetch_assoc($q_total)['total'];
 
-// Hitung laporan baru (status Pending)
 $q_baru = mysqli_query($conn, "SELECT COUNT(*) as baru FROM negosiasi_harga WHERE status_nego = 'Pending'");
 $total_baru = mysqli_fetch_assoc($q_baru)['baru'];
 
-// 2. Logika Pencarian Tabel
+// 2. Logika Pencarian Tabel (DIPERBAIKI: Menambahkan n.id_boq agar tidak NULL di halaman berikutnya)
 $keyword = "";
 if (isset($_POST['cari'])) {
     $keyword = mysqli_real_escape_string($conn, $_POST['keyword']);
-    $query = "SELECT n.id_nego, r.deskripsi as nama_proyek, p.isi_pesan as detail 
+    $query = "SELECT n.id_nego, n.id_boq, r.deskripsi as nama_proyek, p.isi_pesan as detail 
               FROM negosiasi_harga n
               JOIN boq b ON n.id_boq = b.id_boq
               JOIN data_rfq r ON b.id_rfq = r.id_rfq
@@ -23,7 +21,7 @@ if (isset($_POST['cari'])) {
               GROUP BY n.id_nego
               ORDER BY n.id_nego DESC";
 } else {
-    $query = "SELECT n.id_nego, r.deskripsi as nama_proyek, p.isi_pesan as detail 
+    $query = "SELECT n.id_nego, n.id_boq, r.deskripsi as nama_proyek, p.isi_pesan as detail 
               FROM negosiasi_harga n
               JOIN boq b ON n.id_boq = b.id_boq
               JOIN data_rfq r ON b.id_rfq = r.id_rfq
@@ -46,17 +44,17 @@ $result = mysqli_query($conn, $query);
 <body>
 
     <header class="navbar-custom">
-    <div class="navbar-left"> 
-        <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
-        <span class="navbar-brand-text">Customer Service</span>
-    </div>
-
-    <a href="../logout.php" class="logout-btn">
-        <div class="icon-circle">
-            <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+        <div class="navbar-left"> 
+            <img src="../assets/img/logo.png" alt="BuildBase" class="logo-img">
+            <span class="navbar-brand-text">Customer Service</span>
         </div>
-        <span class="logout-text">Logout</span>
-    </a>
+
+        <a href="../logout.php" class="logout-btn">
+            <div class="icon-circle">
+                <i class="fa-solid fa-right-from-bracket logout-icon-fa"></i>
+            </div>
+            <span class="logout-text">Logout</span>
+        </a>
     </header>
 
     <div class="container mt-4 mb-5">
@@ -86,9 +84,10 @@ $result = mysqli_query($conn, $query);
             <table class="custom-table text-center w-100">
                 <thead>
                     <tr>
-                        <th style="width: 15%;">ID</th>
-                        <th style="width: 35%;">Nama Proyek</th>
-                        <th style="width: 50%;">Detail</th>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 30%;">Nama Proyek</th>
+                        <th style="width: 40%;">Detail</th>
+                        <th style="width: 20%;">Aksi</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -97,11 +96,20 @@ $result = mysqli_query($conn, $query);
                         <tr>
                             <td>N-<?= sprintf("%03d", $row['id_nego']) ?></td>
                             <td><?= htmlspecialchars($row['nama_proyek']) ?></td>
-                            <td class="text-start"><?= $row['detail'] ? htmlspecialchars(substr($row['detail'], 0, 50)).'...' : 'Belum ada pesan' ?></td>
+                            <td class="text-start">
+                                <?= $row['detail'] ? htmlspecialchars(substr($row['detail'], 0, 50)).'...' : 'Belum ada pesan' ?>
+                            </td>
+                            <td>
+                                <a href="input_hasil_nego.php?id=<?= $row['id_boq'] ?>" 
+                                   class="btn btn-sm rounded-pill px-3 fw-bold shadow-sm" 
+                                   style="background-color: #8B93FF; color: white; font-size: 11px;">
+                                   <i class="fa-solid fa-pen-to-square me-1"></i> Respon Klien
+                                </a>
+                            </td>
                         </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <tr><td colspan="3">Tidak ada data negosiasi.</td></tr>
+                        <tr><td colspan="4" class="text-center py-4">Tidak ada data negosiasi.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -116,14 +124,13 @@ $result = mysqli_query($conn, $query);
         <a href="inputrfq.php" class="nav-item"><i class="fa-solid fa-file-circle-check text-white" style="font-size: 24px;"></i></a>
         <a href="kelolarfq.php" class="nav-item"><i class="fa-solid fa-file-lines text-white" style="font-size: 24px;"></i></a>
         <a href="../dashboard/cs.php" class="nav-item"><i class="fa-solid fa-house text-white" style="font-size: 24px;"></i></a>
-        
         <a href="laporannegoisasi.php" class="active-cycle">
             <i class="fa-solid fa-handshake" style="color: #8B93FF; font-size: 30px;"></i>
         </a>
-        
         <a href="dataklien.php" class="nav-item"><i class="fa-solid fa-user-group text-white" style="font-size: 24px;"></i></a>
     </nav>
-<script>
+
+    <script>
         const navbar = document.getElementById('navbar');
         const inputs = document.querySelectorAll('input');
 
